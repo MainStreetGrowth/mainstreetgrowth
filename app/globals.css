@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --forest:   #1e3a2f;
+  --green:    #3a6b47;
+  --sage:     #7aab6e;
+  --amber:    #c4713e;
+  --ivory:    #faf3e8;
+  --linen:    #f0e3cc;
+  --charcoal: #2a2118;
+  --sand:     #d9c9b0;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body:    var(--font-bricolage), system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #faf3e8;
+  color: #2a2118;
+  font-family: var(--font-bricolage), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography helpers ────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Grain texture overlay ─────────────────────────────────── */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/></filter><rect width='300' height='300' filter='url(%23g)'/></svg>");
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  mix-blend-mode: overlay;
+}
+.grain > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Clip-path section break ───────────────────────────────── */
+.clip-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
+  padding-bottom: 100px;
+}
+
+/* ── Marquee ───────────────────────────────────────────────── */
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: scroll-left 32s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Micro-interactions ────────────────────────────────────── */
+.lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(30, 58, 47, 0.14);
+}
+
+a { text-decoration: none; }
