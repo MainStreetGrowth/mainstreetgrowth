@@ -100,3 +100,9 @@ body {
 }
 
 a { text-decoration: none; }
+
+/* Mobile base resets */
+@media (max-width: 767px) {
+  .marquee-track { gap: 32px !important; }
+  .clip-bottom { clip-path: none !important; }
+}

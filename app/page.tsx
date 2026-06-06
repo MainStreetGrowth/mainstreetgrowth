@@ -19,6 +19,18 @@ function useScrollReveal() {
   }, []);
 }
 
+/* ─── Mobile detection hook ────────────────────────────────── */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
 /* ─── SVG icons ────────────────────────────────────────────── */
 const IcoGlobe = () => <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>;
 const IcoMap = () => <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>;
@@ -238,6 +250,7 @@ function ServiceVisual({ type, flip }: { type: string; flip: boolean }) {
 /* ─── Main component ───────────────────────────────────────── */
 export default function Home() {
   useScrollReveal();
+  const isMobile = useIsMobile();
 
   const heroRef = useRef<HTMLElement>(null);
   const [showCTABar, setShowCTABar] = useState(false);
@@ -298,7 +311,7 @@ export default function Home() {
           </a>
 
           {/* Links */}
-          <nav style={{ display: "flex", gap: 32, fontSize: 13, fontWeight: 500 }}>
+          <nav style={{ display: isMobile ? "none" : "flex", gap: 32, fontSize: 13, fontWeight: 500 }}>
             {[["#services","Services"],["#how-it-works","How it works"],["#pricing","Pricing"]].map(([h,l]) =>
               <a key={h} href={h} style={{ color: "rgba(250,243,232,0.6)", transition: "color 0.2s", textDecoration: "none" }}>{l}</a>
             )}
@@ -353,11 +366,11 @@ export default function Home() {
           <div style={{ position: "absolute", left: -120, bottom: -60, width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, rgba(196,113,62,0.08), transparent 70%)", pointerEvents: "none" }}/>
 
           {/* Main hero content */}
-          <div style={{ flex: 1, display: "flex", alignItems: "center", padding: "0 24px", position: "relative", zIndex: 1 }}>
+          <div style={{ flex: 1, display: "flex", alignItems: "center", padding: isMobile ? "0 16px" : "0 24px", position: "relative", zIndex: 1 }}>
             <div style={{
               maxWidth: 1100, margin: "0 auto", width: "100%",
               paddingTop: 24, paddingBottom: 16,
-              display: "grid", gridTemplateColumns: "68% 32%", gap: 0, alignItems: "center",
+              display: "grid", gridTemplateColumns: isMobile ? "1fr" : "68% 32%", gap: 0, alignItems: "center",
             }}>
 
               {/* Left — headline + CTAs */}
@@ -438,7 +451,7 @@ export default function Home() {
                 style={{
                   borderLeft: "1px solid rgba(255,255,255,0.08)",
                   paddingLeft: "clamp(32px, 5vw, 64px)",
-                  display: "flex", flexDirection: "column", gap: 0,
+                  display: isMobile ? "none" : "flex", flexDirection: "column", gap: 0,
                 }}
               >
                 {[
@@ -490,10 +503,20 @@ export default function Home() {
 
         {/* ── HOW IT WORKS: sticky-left scrollytelling ────────── */}
         <section id="how-it-works" style={{ background: "white" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr" }}>
 
             {/* Sticky left panel */}
-            <div style={{ position: "sticky", top: 66, height: "calc(100vh - 66px)", display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 64, paddingTop: 48, paddingBottom: 48 }}>
+            <div style={{
+              position: isMobile ? "relative" : "sticky",
+              top: isMobile ? undefined : 66,
+              height: isMobile ? "auto" : "calc(100vh - 66px)",
+              display: "flex", alignItems: "center",
+              justifyContent: isMobile ? "flex-start" : "flex-end",
+              paddingRight: isMobile ? 0 : 64,
+              paddingLeft: isMobile ? 0 : undefined,
+              paddingTop: isMobile ? 48 : 48,
+              paddingBottom: isMobile ? 24 : 48,
+            }}>
               <div style={{ maxWidth: 320 }}>
                 <Tag>How it works</Tag>
                 <h2 className="font-display" style={{ fontSize: "clamp(2.2rem, 3.5vw, 3rem)", fontWeight: 900, color: "var(--forest, #1e3a2f)", lineHeight: 1.1, letterSpacing: "-0.025em" }}>
@@ -506,12 +529,12 @@ export default function Home() {
             </div>
 
             {/* Scrolling right — steps */}
-            <div style={{ borderLeft: "1px solid rgba(42,33,24,0.07)", paddingLeft: 64 }}>
+            <div style={{ borderLeft: isMobile ? "none" : "1px solid rgba(42,33,24,0.07)", paddingLeft: isMobile ? 0 : 64 }}>
               {STEPS.map(({ num, title, body }, i) => (
                 <div
                   key={num}
                   className="reveal"
-                  style={{ padding: "96px 0", borderBottom: i < STEPS.length - 1 ? "1px solid rgba(42,33,24,0.06)" : "none" }}
+                  style={{ padding: isMobile ? "48px 0" : "96px 0", borderBottom: i < STEPS.length - 1 ? "1px solid rgba(42,33,24,0.06)" : "none" }}
                 >
                   <span className="font-display" style={{ fontSize: "clamp(5rem, 12vw, 9rem)", fontWeight: 900, color: "var(--linen, #f0e3cc)", lineHeight: 1, letterSpacing: "-0.04em", display: "block", marginBottom: 16 }}>{num}</span>
                   <h3 className="font-display" style={{ fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "var(--forest, #1e3a2f)", marginBottom: 14, lineHeight: 1.25, letterSpacing: "-0.015em" }}>{title}</h3>
@@ -523,7 +546,7 @@ export default function Home() {
         </section>
 
         {/* ── SERVICES: typographic poster ────────────────────── */}
-        <section id="services" className="grain" style={{ background: "var(--forest, #1e3a2f)", padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
+        <section id="services" className="grain" style={{ background: "var(--forest, #1e3a2f)", padding: isMobile ? "64px 0 48px" : "96px 0 80px", position: "relative", overflow: "hidden" }}>
 
           {/* Ghost word */}
           <div aria-hidden="true" style={{
@@ -536,10 +559,10 @@ export default function Home() {
             whiteSpace: "nowrap",
           }}>GROWTH</div>
 
-          <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px", position: "relative", zIndex: 1 }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 16px" : "0 48px", position: "relative", zIndex: 1 }}>
 
             {/* Section header */}
-            <div className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 52 }}>
+            <div className="reveal" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "flex-end", marginBottom: 52 }}>
               <div>
                 <Tag light>Services</Tag>
                 <h2 className="font-display" style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", fontWeight: 900, color: "var(--ivory, #faf3e8)", lineHeight: 1.1, letterSpacing: "-0.025em" }}>
@@ -547,19 +570,21 @@ export default function Home() {
                   <em style={{ fontStyle: "italic", color: "var(--sage, #7aab6e)" }}>Nothing extra to buy.</em>
                 </h2>
               </div>
-              <p style={{ fontSize: 15, color: "rgba(250,243,232,0.72)", lineHeight: 1.75, maxWidth: 240, textAlign: "right" }}>
-                One flat monthly fee. We run your entire online presence.
-              </p>
+              {!isMobile && (
+                <p style={{ fontSize: 15, color: "rgba(250,243,232,0.72)", lineHeight: 1.75, maxWidth: 240, textAlign: "right" }}>
+                  One flat monthly fee. We run your entire online presence.
+                </p>
+              )}
             </div>
 
             {/* ── TOP ROW: huge left + medium right ───────────── */}
-            <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 44, display: "grid", gridTemplateColumns: "1fr 220px", gap: "clamp(24px, 4vw, 48px)", alignItems: "flex-start" }}>
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 44, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 220px", gap: "clamp(24px, 4vw, 48px)", alignItems: "flex-start" }}>
 
               {/* Huge: Professional Website */}
               <div className="reveal" style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 11, color: "rgba(250,243,232,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber, #c4713e)" }}>01 —</span> Core</div>
                 <h3 className="font-display" style={{
-                  fontSize: "clamp(3rem, 5.5vw, 5.5rem)", fontWeight: 900,
+                  fontSize: isMobile ? "clamp(2.4rem, 10vw, 3.5rem)" : "clamp(3rem, 5.5vw, 5.5rem)", fontWeight: 900,
                   color: "var(--ivory, #faf3e8)", lineHeight: 0.92,
                   letterSpacing: "-0.05em", marginBottom: 20,
                 }}>
@@ -600,13 +625,13 @@ export default function Home() {
                 borderBottom: "1px solid rgba(255,255,255,0.08)",
                 padding: "clamp(20px, 3vw, 36px) 0",
                 margin: "44px 0",
-                display: "grid", gridTemplateColumns: "1fr 220px", gap: "clamp(24px, 4vw, 48px)", alignItems: "center",
+                display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 220px", gap: "clamp(24px, 4vw, 48px)", alignItems: "center",
               }}
             >
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 11, color: "rgba(250,243,232,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber, #c4713e)" }}>03 —</span> Rankings</div>
                 <h3 className="font-display" style={{
-                  fontSize: "clamp(3rem, 6.5vw, 6rem)", fontWeight: 900,
+                  fontSize: isMobile ? "clamp(2.4rem, 10vw, 3.5rem)" : "clamp(3rem, 6.5vw, 6rem)", fontWeight: 900,
                   fontStyle: "italic", color: "var(--sage, #7aab6e)",
                   lineHeight: 1, letterSpacing: "-0.045em", marginBottom: 16,
                 }}>
@@ -638,7 +663,7 @@ export default function Home() {
             </div>
 
             {/* ── BOTTOM TWO ───────────────────────────────────── */}
-            <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 clamp(24px, 5vw, 56px)" }}>
+            <div className="reveal" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "clamp(24px, 4vw, 32px)" : "0 clamp(24px, 5vw, 56px)" }}>
               {[
                 { n: "05", label: "Reports",  title: "Lead & Call Tracking", desc: "Monthly report — calls, visits, and leads. Always know what you're getting.", color: "rgba(250,243,232,0.85)" },
                 { n: "06", label: "Support",  title: "Ongoing Maintenance",  desc: "Updates, fixes, seasonal changes — handled without you lifting a finger.",    color: "rgba(250,243,232,0.85)" },
@@ -666,8 +691,8 @@ export default function Home() {
                 Real results.<br/><em style={{ fontStyle: "italic", color: "var(--green, #3a6b47)" }}>Real restaurants.</em>
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "7fr 5fr", gap: 16 }}>
-              <div className="lift reveal" style={{ background: "var(--forest, #1e3a2f)", borderRadius: 26, padding: 48, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 320 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "7fr 5fr", gap: 16 }}>
+              <div className="lift reveal" style={{ background: "var(--forest, #1e3a2f)", borderRadius: 26, padding: isMobile ? 28 : 48, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 320 }}>
                 <div>
                   <div className="font-display" style={{ fontSize: 80, color: "var(--amber, #c4713e)", lineHeight: 0.75, marginBottom: 28, fontWeight: 900 }}>&ldquo;</div>
                   <p className="font-display" style={{ fontSize: 22, color: "var(--ivory, #faf3e8)", lineHeight: 1.55, fontWeight: 600, fontStyle: "italic" }}>
@@ -699,7 +724,7 @@ export default function Home() {
         {/* ── PRICING ─────────────────────────────────────────── */}
         <section id="pricing" style={{ background: "var(--ivory, #faf3e8)", padding: "104px 24px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "end", marginBottom: 56 }} className="reveal">
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 48, alignItems: "end", marginBottom: 56 }} className="reveal">
               <div>
                 <Tag>Pricing</Tag>
                 <h2 className="font-display" style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", fontWeight: 900, color: "var(--forest, #1e3a2f)", lineHeight: 1.1, letterSpacing: "-0.025em" }}>
@@ -708,7 +733,7 @@ export default function Home() {
               </div>
               <p style={{ fontSize: 17, color: "var(--charcoal, #2a2118)", opacity: 0.65, lineHeight: 1.8 }}>No setup fees. No long-term contracts. No surprises.<br/>Cancel any time.</p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 820, margin: "0 auto" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 20, maxWidth: isMobile ? "100%" : 820, margin: "0 auto" }}>
               {/* Starter */}
               <div className="lift reveal" style={{ background: "white", borderRadius: 26, padding: 38, border: "1px solid rgba(42,33,24,0.07)" }}>
                 <div style={{ fontSize: 12, fontWeight: 700, color: "var(--charcoal, #2a2118)", opacity: 0.45, textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Starter</div>
@@ -775,7 +800,7 @@ export default function Home() {
             </div>
 
             {/* Bottom — trust left + form right */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "clamp(40px, 6vw, 96px)", alignItems: "start" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.4fr", gap: "clamp(40px, 6vw, 96px)", alignItems: isMobile ? "stretch" : "start" }}>
 
               {/* Left — trust signals */}
               <div className="reveal" style={{ paddingTop: 8 }}>
@@ -794,7 +819,7 @@ export default function Home() {
                     </div>
                   ))}
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 20 }}>
-                    <div style={{ display: "flex", gap: 18, fontSize: 13, color: "rgba(250,243,232,0.45)" }}>
+                    <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 10 : 18, fontSize: 13, color: "rgba(250,243,232,0.45)" }}>
                       {["Starting at $200/mo", "Mississippi & the Southeast"].map(t => (
                         <span key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                           <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="var(--sage, #7aab6e)" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -807,7 +832,7 @@ export default function Home() {
               </div>
 
               {/* Right — form card */}
-              <div className="reveal reveal-delay-1" style={{ background: "var(--ivory, #faf3e8)", borderRadius: 24, padding: "40px clamp(24px, 4vw, 48px)" }}>
+              <div className="reveal reveal-delay-1" style={{ background: "var(--ivory, #faf3e8)", borderRadius: 24, padding: isMobile ? "28px 20px" : "40px clamp(24px, 4vw, 48px)" }}>
                 {submitted ? (
                   <div style={{ textAlign: "center", padding: "40px 0" }}>
                     <div style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(58,107,71,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", color: "var(--green, #3a6b47)" }}>
@@ -862,12 +887,12 @@ export default function Home() {
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
       <footer style={{ background: "var(--forest, #1e3a2f)", padding: "24px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "center" : "center", justifyContent: "space-between", gap: isMobile ? 8 : 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 26, height: 26, borderRadius: 7, background: "rgba(122,171,110,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage, #7aab6e)", fontSize: 12, fontWeight: 700 }}>M</div>
             <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory, #faf3e8)", fontSize: 15, letterSpacing: "-0.01em" }}>Main Street Growth</span>
           </div>
-          <p style={{ fontSize: 12, color: "rgba(250,243,232,0.4)", margin: 0 }}>
+          <p style={{ fontSize: 12, color: "rgba(250,243,232,0.4)", margin: 0, textAlign: isMobile ? "center" : "left" }}>
             © {new Date().getFullYear()} Main Street Growth · Serving Mississippi &amp; the Southeast
           </p>
         </div>
@@ -883,15 +908,17 @@ export default function Home() {
         transition: "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
         padding: "14px 24px",
       }}>
-        <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+        <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "stretch" : "center", justifyContent: "space-between", gap: isMobile ? 10 : 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span className="font-display" style={{ fontWeight: 800, fontSize: 16, color: "var(--ivory, #faf3e8)", letterSpacing: "-0.01em" }}>Ready to fill more tables?</span>
-            <span style={{ fontSize: 13, color: "rgba(250,243,232,0.7)", display: "flex", alignItems: "center", gap: 5 }}>
-              <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="rgba(250,243,232,0.7)" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
-              Starting at $200/month
-            </span>
+            {!isMobile && (
+              <span style={{ fontSize: 13, color: "rgba(250,243,232,0.7)", display: "flex", alignItems: "center", gap: 5 }}>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="rgba(250,243,232,0.7)" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Starting at $200/month
+              </span>
+            )}
           </div>
-          <a href="#contact" style={{ background: "var(--ivory, #faf3e8)", color: "var(--forest, #1e3a2f)", padding: "10px 24px", borderRadius: 99, fontSize: 14, fontWeight: 800, display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0, transition: "transform 0.15s" }}>
+          <a href="#contact" style={{ background: "var(--ivory, #faf3e8)", color: "var(--forest, #1e3a2f)", padding: "10px 24px", borderRadius: 99, fontSize: 14, fontWeight: 800, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, flexShrink: 0, transition: "transform 0.15s" }}>
             Get my free consultation <IcoArrow />
           </a>
         </div>
