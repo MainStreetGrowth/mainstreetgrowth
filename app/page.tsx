@@ -178,7 +178,7 @@ export default function Home() {
         }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <div style={{ width: 28, height: 28, borderRadius: 7, background: "rgba(122,171,110,0.15)", border: "1px solid rgba(122,171,110,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#7aab6e)", fontSize: 12, fontWeight: 800 }}>M</div>
-            <span className="font-display" style={{ fontWeight: 700, fontSize: 15, color: "var(--ivory,#faf3e8)", letterSpacing: "-0.01em" }}>Main Street Growth</span>
+            <span className="font-display" style={{ fontWeight: 700, fontSize: 15, color: "var(--ivory,#faf3e8)", letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 32, fontSize: 13, fontWeight: 500 }}>
             {[["#services","Services"],["#how-it-works","How it works"],["#pricing","Pricing"]].map(([h,l]) =>
@@ -412,7 +412,7 @@ export default function Home() {
             fontWeight: 900, letterSpacing: "-0.06em",
             color: "rgba(122,171,110,0.045)",
             lineHeight: 1, userSelect: "none", pointerEvents: "none", whiteSpace: "nowrap",
-          }}>GROWTH</div>
+          }}>COMPASS</div>
 
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "0 16px" : "0 48px", position: "relative", zIndex: 1 }}>
             <div className="reveal" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "flex-end", marginBottom: 52 }}>
@@ -503,7 +503,9 @@ export default function Home() {
         {/* ── ROI: THE MATH ────────────────────────────────────── */}
         <section style={{ background: "var(--ivory,#faf3e8)", padding: isMobile ? "72px 16px" : "104px 24px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div className="reveal" style={{ marginBottom: isMobile ? 48 : 64 }}>
+
+            {/* Header */}
+            <div className="reveal" style={{ marginBottom: isMobile ? 40 : 56 }}>
               <Tag>The math</Tag>
               <h2 className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 900, color: "var(--forest,#1e3a2f)", lineHeight: 1.1, letterSpacing: "-0.025em" }}>
                 What better digital capture<br/>
@@ -514,65 +516,81 @@ export default function Home() {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 20 : 32, alignItems: "start" }}>
-
-              {/* Opportunity column */}
-              <div className="reveal" style={{ background: "var(--forest,#1e3a2f)", borderRadius: 24, padding: isMobile ? 28 : 40 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(250,243,232,0.5)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 28 }}>Revenue opportunity</div>
-                {[
-                  { label: "Extra table bookings",     calc: "5 tables/week × $80 avg × 4 weeks", value: "$1,600/mo" },
-                  { label: "Catering & private events", calc: "2 bookings/month × $750 avg",       value: "$1,500/mo" },
-                ].map(({ label, calc, value }) => (
-                  <div key={label} style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 20, paddingBottom: 20 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16 }}>
-                      <div>
-                        <div style={{ fontWeight: 700, fontSize: 15, color: "var(--ivory,#faf3e8)", marginBottom: 4 }}>{label}</div>
-                        <div style={{ fontSize: 12, color: "rgba(250,243,232,0.4)" }}>{calc}</div>
-                      </div>
-                      <div className="font-display" style={{ fontSize: 20, fontWeight: 900, color: "var(--sage,#7aab6e)", letterSpacing: "-0.02em", flexShrink: 0 }}>{value}</div>
-                    </div>
-                  </div>
-                ))}
-                <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: "rgba(250,243,232,0.8)" }}>Potential monthly uplift</div>
-                  <div className="font-display" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", fontWeight: 900, color: "var(--amber,#c4713e)", letterSpacing: "-0.03em" }}>~$3,100</div>
-                </div>
-                <p style={{ fontSize: 12, color: "rgba(250,243,232,0.3)", marginTop: 16, lineHeight: 1.6 }}>
-                  Illustrative estimates. Actual results vary by market and execution.
-                </p>
+            {/* Equation row — full-width dark card */}
+            <div className="reveal" style={{
+              background: "var(--forest,#1e3a2f)", borderRadius: 24,
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 32px 1fr 32px 1.1fr",
+              overflow: "hidden",
+              marginBottom: 16,
+            }}>
+              {/* Tables block */}
+              <div style={{ padding: isMobile ? "28px 24px" : "40px 44px" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(250,243,232,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Extra table bookings</div>
+                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 900, color: "var(--sage,#7aab6e)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
+                <div style={{ fontSize: 12, color: "rgba(250,243,232,0.35)", lineHeight: 1.65 }}>5 tables/week × $80 avg × 4 weeks</div>
               </div>
 
-              {/* Investment column */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <div className="reveal reveal-delay-1" style={{ background: "white", borderRadius: 22, padding: isMobile ? 24 : 32, border: "1px solid rgba(42,33,24,0.07)" }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(42,33,24,0.4)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 16 }}>Your investment</div>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 8 }}>
-                    <span className="font-display" style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 900, color: "var(--forest,#1e3a2f)", letterSpacing: "-0.04em" }}>$200–$300</span>
-                    <span style={{ fontSize: 15, color: "var(--charcoal,#2a2118)", opacity: 0.45 }}>/month</span>
-                  </div>
-                  <p style={{ fontSize: 14, color: "var(--charcoal,#2a2118)", opacity: 0.6, lineHeight: 1.7 }}>Full website, Google listing, SEO, ads, reporting, and maintenance — all done for you.</p>
-                </div>
+              {/* + */}
+              <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
+                <span className="font-display" style={{ fontSize: 28, fontWeight: 900, color: "rgba(255,255,255,0.12)" }}>+</span>
+              </div>
 
-                <div className="reveal reveal-delay-2" style={{ background: "var(--green,#3a6b47)", borderRadius: 22, padding: isMobile ? 24 : 32 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                    <div style={{ color: "var(--sage,#7aab6e)" }}><IcoTrend /></div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(250,243,232,0.7)", textTransform: "uppercase", letterSpacing: "0.09em" }}>The point</div>
-                  </div>
-                  <p className="font-display" style={{ fontSize: "clamp(1rem,1.5vw,1.15rem)", color: "var(--ivory,#faf3e8)", fontWeight: 700, lineHeight: 1.6, fontStyle: "italic", margin: 0 }}>
-                    &ldquo;You aren&apos;t paying for digital assets — you&apos;re investing in customer acquisition. One catering booking can pay for months of service.&rdquo;
-                  </p>
-                </div>
+              {/* Catering block */}
+              <div style={{ padding: isMobile ? "28px 24px" : "40px 44px", borderTop: isMobile ? "1px solid rgba(255,255,255,0.07)" : "none", borderLeft: isMobile ? "none" : "1px solid rgba(255,255,255,0.07)" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(250,243,232,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Catering &amp; private events</div>
+                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 900, color: "var(--amber,#c4713e)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
+                <div style={{ fontSize: 12, color: "rgba(250,243,232,0.35)", lineHeight: 1.65 }}>2 bookings/month × $750 avg</div>
+              </div>
 
-                <div className="reveal reveal-delay-3" style={{ background: "var(--linen,#f0e3cc)", borderRadius: 22, padding: isMobile ? 20 : 28, border: "1px solid rgba(42,33,24,0.05)" }}>
-                  <p style={{ fontSize: 14, color: "var(--charcoal,#2a2118)", opacity: 0.7, lineHeight: 1.7, marginBottom: 16 }}>
-                    A single catering booking at $750–$3,000 can cover your entire subscription cost for months.
-                  </p>
-                  <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--forest,#1e3a2f)", color: "var(--ivory,#faf3e8)", padding: "11px 22px", borderRadius: 99, fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
-                    Get a free revenue audit <IcoArrow />
-                  </a>
-                </div>
+              {/* = */}
+              <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
+                <span className="font-display" style={{ fontSize: 28, fontWeight: 900, color: "rgba(255,255,255,0.12)" }}>=</span>
+              </div>
+
+              {/* Total block */}
+              <div style={{ padding: isMobile ? "28px 24px" : "40px 44px", borderTop: isMobile ? "1px solid rgba(255,255,255,0.07)" : "none", borderLeft: isMobile ? "none" : "1px solid rgba(255,255,255,0.07)", background: "rgba(122,171,110,0.08)" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(250,243,232,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Potential monthly uplift</div>
+                <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 900, color: "var(--ivory,#faf3e8)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
+                <div style={{ fontSize: 12, color: "rgba(250,243,232,0.35)", lineHeight: 1.65 }}>per month</div>
               </div>
             </div>
+
+            {/* Bottom row — investment + quote */}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 16 }}>
+
+              {/* Investment */}
+              <div className="reveal" style={{ background: "white", borderRadius: 20, padding: isMobile ? 24 : 32, border: "1px solid rgba(42,33,24,0.07)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(42,33,24,0.4)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Your investment</div>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 10 }}>
+                    <span className="font-display" style={{ fontSize: "clamp(2rem,3.5vw,2.8rem)", fontWeight: 900, color: "var(--forest,#1e3a2f)", letterSpacing: "-0.04em" }}>$200–$300</span>
+                    <span style={{ fontSize: 14, color: "var(--charcoal,#2a2118)", opacity: 0.4 }}>/month</span>
+                  </div>
+                  <p style={{ fontSize: 14, color: "var(--charcoal,#2a2118)", opacity: 0.6, lineHeight: 1.75 }}>Full website, Google listing, SEO, ads, reporting, and maintenance — all done for you.</p>
+                </div>
+                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(42,33,24,0.07)", fontSize: 12, color: "rgba(42,33,24,0.35)", lineHeight: 1.6 }}>
+                  Illustrative estimates. Actual results vary by market and execution.
+                </div>
+              </div>
+
+              {/* Quote + CTA */}
+              <div className="reveal reveal-delay-1" style={{ background: "var(--green,#3a6b47)", borderRadius: 20, padding: isMobile ? 24 : 32, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                    <div style={{ color: "var(--sage,#7aab6e)" }}><IcoTrend /></div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(250,243,232,0.6)", textTransform: "uppercase", letterSpacing: "0.09em" }}>The point</div>
+                  </div>
+                  <p className="font-display" style={{ fontSize: "clamp(1.05rem,1.6vw,1.2rem)", color: "var(--ivory,#faf3e8)", fontWeight: 700, lineHeight: 1.65, fontStyle: "italic" }}>
+                    &ldquo;One catering booking can pay for months of service. You aren&apos;t buying digital assets — you&apos;re investing in customer acquisition.&rdquo;
+                  </p>
+                </div>
+                <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--ivory,#faf3e8)", color: "var(--forest,#1e3a2f)", padding: "12px 24px", borderRadius: 99, fontSize: 13, fontWeight: 800, textDecoration: "none", marginTop: 24, alignSelf: "flex-start" }}>
+                  Get a free revenue audit <IcoArrow />
+                </a>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -769,10 +787,10 @@ export default function Home() {
         <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 8 : 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 26, height: 26, borderRadius: 7, background: "rgba(122,171,110,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#7aab6e)", fontSize: 12, fontWeight: 700 }}>M</div>
-            <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory,#faf3e8)", fontSize: 15, letterSpacing: "-0.01em" }}>Main Street Growth</span>
+            <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory,#faf3e8)", fontSize: 15, letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </div>
           <p style={{ fontSize: 12, color: "rgba(250,243,232,0.4)", margin: 0, textAlign: isMobile ? "center" : "left" }}>
-            © {new Date().getFullYear()} Main Street Growth · Serving Mississippi &amp; the Southeast
+            © {new Date().getFullYear()} Main Street Compass · Serving Mississippi &amp; the Southeast
           </p>
         </div>
       </footer>

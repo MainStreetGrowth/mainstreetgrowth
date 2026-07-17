@@ -18,7 +18,7 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Main Street Growth — Get Found. Get Customers. Grow.",
+  title: "Main Street Compass — Get Found. Get Customers. Grow.",
   description:
     "Affordable digital marketing for small-town independent restaurants. Website, Google Ads, and local search — all done for you, starting at $200/month.",
 };
