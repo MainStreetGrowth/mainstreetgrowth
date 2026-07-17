@@ -200,7 +200,7 @@ export default function Home() {
             fontWeight: 900, letterSpacing: "-0.05em",
             color: "rgba(134,164,150,0.07)",
             lineHeight: 1, userSelect: "none", pointerEvents: "none", whiteSpace: "nowrap",
-          }}>CAPTURE</div>
+          }}>FOUND</div>
           <div style={{ position: "absolute", left: -120, bottom: -60, width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle,rgba(223,135,82,0.08),transparent 70%)", pointerEvents: "none" }}/>
 
           <div style={{ flex: 1, display: "flex", alignItems: "center", padding: isMobile ? "0 16px" : "0 24px", position: "relative", zIndex: 1 }}>
@@ -227,10 +227,9 @@ export default function Home() {
                   lineHeight: 1.06, letterSpacing: "-0.035em",
                   color: "var(--ivory,#fff8f4)", marginBottom: 28,
                 }}>
-                  Your restaurant doesn&apos;t have a demand problem.
-                  {" "}It has a{" "}
-                  <em style={{ fontStyle: "italic", color: "var(--sage,#86a496)" }}>demand capture</em>
-                  {" "}problem.
+                  People already want great food.
+                  <br/>
+                  <em style={{ fontStyle: "italic", color: "var(--sage,#86a496)" }}>Help them find yours.</em>
                 </h1>
 
                 <p className="reveal reveal-delay-2" style={{
