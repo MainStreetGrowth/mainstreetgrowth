@@ -349,7 +349,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="reveal" style={{ textAlign: "center", marginTop: isMobile ? 48 : 64, paddingTop: isMobile ? 36 : 48, borderTop: "1px solid rgba(34,26,17,0.07)" }}>
+            <div className="reveal" style={{ textAlign: "center", marginTop: isMobile ? 48 : 64, paddingTop: isMobile ? 36 : 48 }}>
               <p className="font-display" style={{ fontSize: "clamp(1.2rem,2vw,1.7rem)", fontWeight: 700, color: "var(--forest,#1e3a2f)", lineHeight: 1.4, maxWidth: 600, margin: "0 auto" }}>
                 We fix all three. That&apos;s what we call a{" "}
                 <em style={{ color: "var(--green,#3b6933)", fontStyle: "italic" }}>revenue capture system</em>
