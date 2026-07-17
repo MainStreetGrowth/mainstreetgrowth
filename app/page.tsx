@@ -572,7 +572,7 @@ export default function Home() {
               <div className="reveal reveal-delay-1" style={{ background: "white", borderRadius: 8, padding: isMobile ? 24 : 32, border: "1px solid rgba(34,26,17,0.07)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(34,26,17,0.35)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 20 }}>The point</div>
-                  <p className="font-display" style={{ fontSize: "clamp(1.15rem,1.8vw,1.4rem)", color: "var(--forest-mid,#1e3a2f)", fontWeight: 800, lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>
+                  <p className="font-display" style={{ fontSize: "clamp(1.15rem,1.8vw,1.4rem)", color: "var(--charcoal,#221a11)", fontWeight: 800, lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>
                     &ldquo;One catering booking pays for months of service. This isn&apos;t a website purchase. It&apos;s an investment in customer acquisition.&rdquo;
                   </p>
                 </div>
