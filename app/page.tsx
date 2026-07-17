@@ -71,23 +71,23 @@ const STEPS = [
   {
     num: "01",
     title: "We audit your revenue funnel",
-    body: "Before we build anything, we map where customers are slipping away — search rankings, website gaps, Google profile, local competitors. You see the leaks before we fix them.",
+    body: "Before we build anything, we map exactly where customers are slipping away. Search rankings, website gaps, Google profile, local competitors. You see every leak before we fix it.",
   },
   {
     num: "02",
     title: "We build your revenue capture system",
-    body: "Professional website, Google Business Profile, local SEO, and targeted Google Ads — all live within two weeks. Every piece is designed to turn online searches into customers at your door.",
+    body: "Professional website, Google Business Profile, local SEO, and Google Ads. Everything goes live within two weeks. Every piece is built to turn searches into customers walking through your door.",
   },
   {
     num: "03",
     title: "You see results every month",
-    body: "A clear monthly report: calls received, website visits, reservations, and leads captured. No jargon — just the numbers that show your investment is working.",
+    body: "A clear monthly report showing calls, website visits, reservations, and leads captured. No jargon. Just the numbers that prove your investment is working.",
   },
 ];
 
 const TESTIMONIALS = [
   { quote: "We went from invisible to showing up first in Google for our area. Our Friday nights are now fully booked weeks in advance.", name: "Tommy R.", restaurant: "Red River Smokehouse", location: "Natchez, MS" },
-  { quote: "I was skeptical — I've wasted money on marketing before. Within 6 weeks we were getting 30–40 extra calls a month.", name: "Maria L.", restaurant: "Delta Blues Café", location: "Greenville, MS" },
+  { quote: "I've wasted money on marketing before, so I was skeptical. Within 6 weeks we were getting 30 to 40 extra calls a month.", name: "Maria L.", restaurant: "Delta Blues Café", location: "Greenville, MS" },
   { quote: "They built everything in two weeks and handled every detail. I didn't have to think about it once.", name: "James P.", restaurant: "Porch & Table", location: "Tupelo, MS" },
 ];
 
@@ -237,7 +237,7 @@ export default function Home() {
                   color: "rgba(255,248,244,0.7)", lineHeight: 1.8,
                   marginBottom: 36, maxWidth: 460,
                 }}>
-                  Customers are already searching for you. We build the system that makes sure they find you — and choose you.{" "}
+                  Someone in your town is searching for a restaurant right now. We build the system that makes sure they find yours.{" "}
                   <strong style={{ color: "rgba(255,248,244,0.95)", fontWeight: 600 }}>Starting at $200/month.</strong>
                 </p>
 
@@ -351,9 +351,8 @@ export default function Home() {
 
             <div className="reveal" style={{ textAlign: "center", marginTop: isMobile ? 48 : 64, paddingTop: isMobile ? 36 : 48 }}>
               <p className="font-display" style={{ fontSize: "clamp(1.2rem,2vw,1.7rem)", fontWeight: 700, color: "var(--forest,#1e3a2f)", lineHeight: 1.4, maxWidth: 600, margin: "0 auto" }}>
-                We fix all three. That&apos;s what we call a{" "}
-                <em style={{ color: "var(--green,#3b6933)", fontStyle: "italic" }}>revenue capture system</em>
-                {" "}— not just a website.
+                A website is just the start. This is a full{" "}
+                <em style={{ color: "var(--green,#3b6933)", fontStyle: "italic" }}>revenue capture system.</em>
               </p>
             </div>
           </div>
@@ -380,7 +379,7 @@ export default function Home() {
                   Your revenue<br/><em style={{ fontStyle: "italic", color: "var(--green,#3b6933)" }}>capture system.</em>
                 </h2>
                 <p style={{ marginTop: 16, fontSize: 15, color: "var(--charcoal,#221a11)", opacity: 0.6, lineHeight: 1.75 }}>
-                  We don&apos;t sell websites. We sell customer acquisition — and we handle every part of it for you.
+                  We don&apos;t sell websites. We sell customer acquisition, and we handle every part of it.
                 </p>
               </div>
             </div>
@@ -482,8 +481,8 @@ export default function Home() {
             {/* BOTTOM TWO */}
             <div className="reveal" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "clamp(24px,4vw,32px)" : "0 clamp(24px,5vw,56px)" }}>
               {[
-                { n: "05", label: "Reports", title: "Lead & Call Tracking", desc: "Monthly report — calls, reservations, catering inquiries, and website visits. Always know your return." },
-                { n: "06", label: "Support", title: "Ongoing Maintenance",  desc: "Menu updates, seasonal content, Google review responses — handled without you lifting a finger." },
+                { n: "05", label: "Reports", title: "Lead & Call Tracking", desc: "Every month you get a clear report: calls, reservations, catering inquiries, website visits. You always know what you're getting back." },
+                { n: "06", label: "Support", title: "Ongoing Maintenance",  desc: "Menu updates, seasonal content, Google review responses. We handle all of it. You focus on the food." },
               ].map(({ n, label, title, desc }) => (
                 <div key={n} style={{ paddingTop: 22 }}>
                   <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}><span style={{ color: "var(--amber,#df8752)" }}>{n} —</span> {label}</div>
@@ -562,7 +561,7 @@ export default function Home() {
                     <span className="font-display" style={{ fontSize: "clamp(2rem,3.5vw,2.8rem)", fontWeight: 900, color: "var(--forest,#1e3a2f)", letterSpacing: "-0.04em" }}>$200–$300</span>
                     <span style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.4 }}>/month</span>
                   </div>
-                  <p style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.6, lineHeight: 1.75 }}>Full website, Google listing, SEO, ads, reporting, and maintenance — all done for you.</p>
+                  <p style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.6, lineHeight: 1.75 }}>Full website, Google listing, SEO, ads, reporting, and maintenance. All done for you.</p>
                 </div>
                 <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(34,26,17,0.07)", fontSize: 12, color: "rgba(34,26,17,0.35)", lineHeight: 1.6 }}>
                   Illustrative estimates. Actual results vary by market and execution.
@@ -577,7 +576,7 @@ export default function Home() {
                     <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,248,244,0.6)", textTransform: "uppercase", letterSpacing: "0.09em" }}>The point</div>
                   </div>
                   <p className="font-display" style={{ fontSize: "clamp(1.05rem,1.6vw,1.2rem)", color: "var(--ivory,#fff8f4)", fontWeight: 700, lineHeight: 1.65, fontStyle: "italic" }}>
-                    &ldquo;One catering booking can pay for months of service. You aren&apos;t buying digital assets — you&apos;re investing in customer acquisition.&rdquo;
+                    &ldquo;One catering booking pays for months of service. This isn&apos;t a website purchase. It&apos;s an investment in customer acquisition.&rdquo;
                   </p>
                 </div>
                 <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--ivory,#fff8f4)", color: "var(--forest,#1e3a2f)", padding: "12px 24px", borderRadius: 4, fontSize: 13, fontWeight: 800, textDecoration: "none", marginTop: 24, alignSelf: "flex-start" }}>
@@ -674,7 +673,7 @@ export default function Home() {
             </div>
             <p style={{ textAlign: "center", fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.6, marginTop: 24 }}>
               Not sure which plan fits?{" "}
-              <a href="#contact" style={{ color: "var(--green,#3b6933)", fontWeight: 700, textDecoration: "none" }}>Let&apos;s talk</a> — we&apos;ll help you decide.
+              <a href="#contact" style={{ color: "var(--green,#3b6933)", fontWeight: 700, textDecoration: "none" }}>Let&apos;s talk.</a> We&apos;ll help you figure it out.
             </p>
           </div>
         </section>
@@ -692,7 +691,7 @@ export default function Home() {
                 <em style={{ fontStyle: "italic", color: "var(--sage,#86a496)" }}>revenue is leaking.</em>
               </h2>
               <p style={{ fontSize: 18, color: "rgba(255,248,244,0.65)", lineHeight: 1.75, marginTop: 20, maxWidth: 500 }}>
-                We&apos;ll audit your current online presence for free — and show you exactly what&apos;s costing you customers before we get on the phone.
+                We&apos;ll audit your current online presence for free and show you exactly what&apos;s costing you customers. Before we even get on the phone.
               </p>
             </div>
 
@@ -701,7 +700,7 @@ export default function Home() {
                 <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                   {[
                     { n: "01", heading: "Free revenue audit",  body: "We review your search rankings, Google listing, website, and local competitors before we even get on the phone." },
-                    { n: "02", heading: "Live in ~2 weeks",    body: "Website, Google listing, and ads all set up and running — fast. No months of back-and-forth." },
+                    { n: "02", heading: "Live in ~2 weeks",    body: "Your website, Google listing, and ads are all live within two weeks. No long drawn-out process." },
                     { n: "03", heading: "No setup fees",       body: "One flat monthly fee. No contracts. Cancel any time. We earn your business every single month." },
                   ].map(({ n, heading, body }) => (
                     <div key={n} style={{ padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
