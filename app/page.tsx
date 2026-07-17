@@ -129,7 +129,6 @@ export default function Home() {
 
   const heroRef = useRef<HTMLElement>(null);
   const [showCTABar, setShowCTABar] = useState(false);
-  const [navScrolled, setNavScrolled] = useState(false);
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -140,7 +139,6 @@ export default function Home() {
     const handleScroll = () => {
       const heroH = heroRef.current?.offsetHeight ?? 700;
       setShowCTABar(window.scrollY > heroH * 0.7);
-      setNavScrolled(window.scrollY > 72);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -158,23 +156,11 @@ export default function Home() {
     <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: "var(--forest,#1e3a2f)", color: "var(--charcoal,#2a2118)" }}>
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{
-        position: "sticky", top: 0, zIndex: 50,
-        background: "transparent",
-        padding: navScrolled ? "10px 24px" : "0 32px",
-        transition: "padding 0.45s cubic-bezier(0.16,1,0.3,1)",
-      }}>
+      <header style={{ position: "relative", zIndex: 50, padding: "0 32px", background: "transparent" }}>
         <div style={{
           maxWidth: 1100, margin: "0 auto",
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          height: navScrolled ? undefined : 64,
-          padding: navScrolled ? "11px 22px" : "0",
-          background: navScrolled ? "rgba(20,42,32,0.92)" : "transparent",
-          backdropFilter: navScrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: navScrolled ? "blur(20px)" : "none",
-          border: `1px solid ${navScrolled ? "rgba(255,255,255,0.1)" : "transparent"}`,
-          borderRadius: navScrolled ? 16 : 0,
-          transition: "background 0.45s cubic-bezier(0.16,1,0.3,1), border-color 0.45s ease, border-radius 0.45s ease, padding 0.45s ease",
+          height: 64,
         }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <div style={{ width: 28, height: 28, borderRadius: 7, background: "rgba(122,171,110,0.15)", border: "1px solid rgba(122,171,110,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#7aab6e)", fontSize: 12, fontWeight: 800 }}>M</div>
@@ -182,16 +168,15 @@ export default function Home() {
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 32, fontSize: 13, fontWeight: 500 }}>
             {[["#services","Services"],["#how-it-works","How it works"],["#pricing","Pricing"]].map(([h,l]) =>
-              <a key={h} href={h} style={{ color: "rgba(250,243,232,0.6)", transition: "color 0.2s", textDecoration: "none" }}>{l}</a>
+              <a key={h} href={h} style={{ color: "rgba(250,243,232,0.6)", textDecoration: "none" }}>{l}</a>
             )}
           </nav>
           <a href="#contact" style={{
-            background: navScrolled ? "var(--ivory,#faf3e8)" : "transparent",
-            color: navScrolled ? "var(--forest,#1e3a2f)" : "var(--ivory,#faf3e8)",
-            border: `1px solid ${navScrolled ? "transparent" : "rgba(250,243,232,0.35)"}`,
+            background: "transparent",
+            color: "var(--ivory,#faf3e8)",
+            border: "1px solid rgba(250,243,232,0.35)",
             padding: "8px 18px", borderRadius: 99, fontSize: 13, fontWeight: 700,
             display: "inline-flex", alignItems: "center", gap: 6,
-            transition: "background 0.45s cubic-bezier(0.16,1,0.3,1), color 0.45s ease, border-color 0.45s ease",
             textDecoration: "none",
           }}>
             Get started <IcoArrow />
