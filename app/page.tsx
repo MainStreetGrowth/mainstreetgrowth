@@ -156,7 +156,7 @@ export default function Home() {
     <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: "var(--forest,#1e3a2f)", color: "var(--charcoal,#2a2118)" }}>
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{ position: "relative", zIndex: 50, padding: "0 32px", background: "transparent" }}>
+      <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 32px", background: "var(--forest,#1e3a2f)" }}>
         <div style={{
           maxWidth: 1100, margin: "0 auto",
           display: "flex", alignItems: "center", justifyContent: "space-between",
