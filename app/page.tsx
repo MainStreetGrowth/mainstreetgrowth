@@ -227,7 +227,7 @@ export default function Home() {
                   lineHeight: 1.06, letterSpacing: "-0.035em",
                   color: "var(--ivory,#fff8f4)", marginBottom: 28,
                 }}>
-                  People already want great food.
+                  Your next customer is already searching.
                   <br/>
                   <em style={{ fontStyle: "italic", color: "var(--sage,#86a496)" }}>Help them find yours.</em>
                 </h1>
