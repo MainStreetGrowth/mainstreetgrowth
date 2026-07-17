@@ -1,4 +1,5 @@
-@import "tailwindcss";
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
 
 /* ── Design tokens ─────────────────────────────────────────── */
 :root {
