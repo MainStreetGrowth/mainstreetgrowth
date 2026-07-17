@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Fraunces, Bricolage_Grotesque } from "next/font/google";
+import { Source_Serif_4, Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-source-serif",
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
 });
 
-const bricolage = Bricolage_Grotesque({
+const workSans = Work_Sans({
   subsets: ["latin"],
-  variable: "--font-bricolage",
+  variable: "--font-work-sans",
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${bricolage.variable} h-full antialiased`}
+      className={`${sourceSerif.variable} ${workSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
