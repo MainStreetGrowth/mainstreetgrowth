@@ -320,21 +320,32 @@ export default function Home() {
               </h2>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 20 }}>
+            <div style={{ borderTop: "1px solid rgba(34,26,17,0.12)" }}>
               {LEAKS.map(({ n, label, title, body }, i) => (
                 <div key={n} className={`reveal reveal-delay-${i}`} style={{
-                  background: "var(--ivory,#fff8f4)", borderRadius: 8, padding: isMobile ? 28 : 36,
-                  border: "1px solid rgba(34,26,17,0.06)", position: "relative", overflow: "hidden",
+                  display: "grid",
+                  gridTemplateColumns: isMobile ? "1fr" : "160px 1fr",
+                  gap: isMobile ? 12 : 48,
+                  padding: isMobile ? "32px 0" : "48px 0",
+                  borderBottom: "1px solid rgba(34,26,17,0.08)",
+                  alignItems: "start",
                 }}>
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "var(--amber,#df8752)", borderRadius: "8px 8px 0 0" }}/>
-                  <div style={{ fontSize: 11, color: "rgba(34,26,17,0.4)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 16 }}>
-                    <span style={{ color: "var(--amber,#df8752)", fontWeight: 700 }}>{n} —</span> {label}
+                  {/* Left: number + label */}
+                  <div>
+                    <span className="font-display" style={{
+                      fontSize: 12, fontWeight: 700, letterSpacing: "0.1em",
+                      textTransform: "uppercase", color: "var(--amber,#df8752)",
+                    }}>{n} — {label}</span>
                   </div>
-                  <h3 className="font-display" style={{
-                    fontSize: "clamp(1.1rem,1.6vw,1.4rem)", fontWeight: 800,
-                    color: "var(--forest,#1e3a2f)", letterSpacing: "-0.015em", lineHeight: 1.25, marginBottom: 14,
-                  }}>{title}</h3>
-                  <p style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.65, lineHeight: 1.8, margin: 0 }}>{body}</p>
+                  {/* Right: title + body */}
+                  <div>
+                    <h3 className="font-display" style={{
+                      fontSize: "clamp(1.15rem,1.7vw,1.45rem)", fontWeight: 700,
+                      color: "var(--forest-mid,#1e3a2f)", letterSpacing: "-0.02em",
+                      lineHeight: 1.25, marginBottom: 12, marginTop: 0,
+                    }}>{title}</h3>
+                    <p style={{ fontSize: 15, color: "var(--charcoal,#221a11)", opacity: 0.65, lineHeight: 1.8, margin: 0 }}>{body}</p>
+                  </div>
                 </div>
               ))}
             </div>
