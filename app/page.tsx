@@ -569,17 +569,14 @@ export default function Home() {
               </div>
 
               {/* Quote + CTA */}
-              <div className="reveal reveal-delay-1" style={{ background: "var(--green,#3b6933)", borderRadius: 8, padding: isMobile ? 24 : 32, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div className="reveal reveal-delay-1" style={{ background: "white", borderRadius: 8, padding: isMobile ? 24 : 32, border: "1px solid rgba(34,26,17,0.07)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                    <div style={{ color: "var(--sage,#86a496)" }}><IcoTrend /></div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,248,244,0.6)", textTransform: "uppercase", letterSpacing: "0.09em" }}>The point</div>
-                  </div>
-                  <p className="font-display" style={{ fontSize: "clamp(1.05rem,1.6vw,1.2rem)", color: "var(--ivory,#fff8f4)", fontWeight: 700, lineHeight: 1.65, fontStyle: "italic" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(34,26,17,0.35)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 20 }}>The point</div>
+                  <p className="font-display" style={{ fontSize: "clamp(1.15rem,1.8vw,1.4rem)", color: "var(--forest-mid,#1e3a2f)", fontWeight: 800, lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>
                     &ldquo;One catering booking pays for months of service. This isn&apos;t a website purchase. It&apos;s an investment in customer acquisition.&rdquo;
                   </p>
                 </div>
-                <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--ivory,#fff8f4)", color: "var(--forest,#1e3a2f)", padding: "12px 24px", borderRadius: 4, fontSize: 13, fontWeight: 800, textDecoration: "none", marginTop: 24, alignSelf: "flex-start" }}>
+                <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--forest-mid,#1e3a2f)", color: "var(--ivory,#fff8f4)", padding: "12px 24px", borderRadius: 4, fontSize: 13, fontWeight: 800, textDecoration: "none", marginTop: 28, alignSelf: "flex-start" }}>
                   Get a free revenue audit <IcoArrow />
                 </a>
               </div>
