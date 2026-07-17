@@ -53,17 +53,17 @@ const LEAKS = [
   {
     n: "01", label: "Discovery",
     title: "Search Traffic Goes to Your Competitors",
-    body: "When locals search “restaurants near me,” they land on directory pages, review sites, and competitor websites — not you. Every uncaptured search is a customer you never see.",
+    body: "When someone nearby searches for a place to eat, your competitors show up. You don’t. If you’re not on the first page of Google, that customer is walking into someone else’s restaurant.",
   },
   {
     n: "02", label: "Capture",
     title: "High-Value Customers Slip Away",
-    body: "Catering, rehearsal dinners, birthday parties, private events — these customers spend 5–20× more than regular diners. Without dedicated landing pages, those leads have nowhere to go.",
+    body: "Private events, catering jobs, rehearsal dinners. These customers spend 5 to 20 times more than a regular table. Most restaurants have no dedicated way to reach them, so those leads go to whoever shows up first.",
   },
   {
     n: "03", label: "Retention",
     title: "No Way to Bring Customers Back",
-    body: "If retention depends on Facebook posts and word of mouth, you're leaving repeat business to chance. Without an email list, SMS list, or VIP club, you have no owned channel.",
+    body: "Your best customers want to come back. But if you have no way to reach them directly, you’re relying on them to remember. A text list, email newsletter, or loyalty program changes that.",
   },
 ];
 
