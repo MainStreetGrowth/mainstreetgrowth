@@ -328,7 +328,6 @@ export default function Americana() {
                   gap: isMobile ? 16 : 40, alignItems: "start",
                   padding: isMobile ? "24px 0" : "34px 0",
                   borderTop: `2px solid ${INK}`,
-                  marginLeft: i === 1 ? (isMobile ? 0 : 32) : 0, // break the grid on purpose
                 }}>
                   <div style={{ fontFamily: SLAB, fontSize: isMobile ? "3.2rem" : "clamp(4rem,8vw,7rem)", lineHeight: 0.8, color: GOLD, textShadow: `2px 2px 0 ${INK}` }}>{n}</div>
                   <div>
@@ -494,7 +493,7 @@ export default function Americana() {
                     position: "relative", background: OFFWHITE, border: `2px solid ${INK}`,
                     padding: isMobile ? "22px 20px" : "26px 28px",
                     boxShadow: `4px 4px 0 ${INK}`,
-                    transform: isMobile ? "none" : `rotate(${i === 1 ? 1.2 : -0.9}deg)`, marginLeft: i === 1 ? (isMobile ? 0 : 24) : 0,
+                    transform: isMobile ? "none" : `rotate(${i === 1 ? 1.2 : -0.9}deg)`,
                   }}>
                     <span style={{ position: "absolute", top: 8, right: 14, fontFamily: SLAB, fontSize: 44, color: GOLD, lineHeight: 1 }}>&rdquo;</span>
                     <span style={{ color: GOLD, fontFamily: SLAB, fontSize: 14, letterSpacing: 2 }}>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
