@@ -21,6 +21,16 @@ const DIRECTIONS: {
     serif: true,
   },
   {
+    href: "/americana",
+    name: "Americana",
+    tag: "Hand-painted",
+    desc: "Vintage sign-painter vernacular: heavy condensed display type, a hand-script accent, enamel oxblood/cream/gold color blocking, ticket-stub and badge motifs, paper texture. Built to not look templated. Photo slots ready for real restaurant shots.",
+    bg: "#8E2B20",
+    fg: "#F1E7CE",
+    accent: "#D19A3E",
+    serif: false,
+  },
+  {
     href: "/classic",
     name: "Classic",
     tag: "Proven",
