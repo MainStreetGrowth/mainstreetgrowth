@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, Work_Sans } from "next/font/google";
 import "./globals.css";
+import PreviewSwitcher from "./_components/PreviewSwitcher";
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -33,7 +34,10 @@ export default function RootLayout({
       lang="en"
       className={`${sourceSerif.variable} ${workSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <PreviewSwitcher />
+      </body>
     </html>
   );
 }
