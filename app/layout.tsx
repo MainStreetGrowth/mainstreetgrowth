@@ -33,8 +33,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${sourceSerif.variable} ${workSans.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        {/* Mark JS-enabled before paint so `.reveal` only hides when JS can un-hide it. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         {children}
         <PreviewSwitcher />
       </body>

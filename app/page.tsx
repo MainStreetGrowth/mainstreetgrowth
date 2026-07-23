@@ -23,10 +23,13 @@ function useScrollReveal() {
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check, { passive: true });
-    return () => window.removeEventListener("resize", check);
+    const mq = window.matchMedia("(max-width: 767px)");
+    // Only re-render when the breakpoint is actually crossed (matchMedia fires
+    // on cross, not on every resize) and bail when the value is unchanged.
+    const apply = () => setIsMobile((prev) => (prev === mq.matches ? prev : mq.matches));
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
   }, []);
   return isMobile;
 }
@@ -145,6 +148,7 @@ export default function Home() {
 
   const heroRef = useRef<HTMLElement>(null);
   const [showCTABar, setShowCTABar] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -184,20 +188,66 @@ export default function Home() {
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 32, fontSize: 13, fontWeight: 500 }}>
             {[["#services","Services"],["#how-it-works","How it works"],["#pricing","Pricing"]].map(([h,l]) =>
-              <a key={h} href={h} style={{ color: "rgba(255,248,244,0.6)", textDecoration: "none" }}>{l}</a>
+              <a key={h} href={h} style={{ color: "rgba(255,248,244,0.7)", textDecoration: "none" }}>{l}</a>
             )}
           </nav>
-          <a href="#contact" style={{
-            background: "transparent",
-            color: "var(--ivory,#fff8f4)",
-            border: "1px solid rgba(255,248,244,0.35)",
-            padding: "8px 18px", borderRadius: 4, fontSize: 13, fontWeight: 700,
-            display: "inline-flex", alignItems: "center", gap: 6,
-            textDecoration: "none",
-          }}>
-            Get started <IcoArrow />
-          </a>
+          {isMobile ? (
+            <button
+              type="button"
+              onClick={() => setMenuOpen(o => !o)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              style={{
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                width: 44, height: 44, marginRight: -10,
+                background: "transparent", border: "none", cursor: "pointer",
+                color: "var(--ivory,#fff8f4)",
+              }}
+            >
+              {menuOpen ? (
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18"/></svg>
+              ) : (
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+              )}
+            </button>
+          ) : (
+            <a href="#contact" style={{
+              background: "transparent",
+              color: "var(--ivory,#fff8f4)",
+              border: "1px solid rgba(255,248,244,0.35)",
+              padding: "8px 18px", borderRadius: 4, fontSize: 13, fontWeight: 700,
+              display: "inline-flex", alignItems: "center", gap: 6,
+              textDecoration: "none",
+            }}>
+              Get started <IcoArrow />
+            </a>
+          )}
         </div>
+
+        {/* Mobile dropdown menu */}
+        {isMobile && menuOpen && (
+          <nav id="mobile-menu" style={{
+            display: "flex", flexDirection: "column", gap: 2,
+            padding: "8px 0 16px",
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+          }}>
+            {[["#services","Services"],["#how-it-works","How it works"],["#pricing","Pricing"]].map(([h,l]) =>
+              <a key={h} href={h} onClick={() => setMenuOpen(false)} style={{
+                color: "rgba(255,248,244,0.85)", textDecoration: "none",
+                fontSize: 15, fontWeight: 600, padding: "12px 4px",
+              }}>{l}</a>
+            )}
+            <a href="#contact" onClick={() => setMenuOpen(false)} style={{
+              marginTop: 10, background: "var(--ivory,#fff8f4)", color: "var(--forest,#07241a)",
+              padding: "13px 20px", borderRadius: 4, fontSize: 15, fontWeight: 800,
+              display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
+              textDecoration: "none",
+            }}>
+              Get started <IcoArrow />
+            </a>
+          </nav>
+        )}
       </header>
 
       <main>
@@ -307,7 +357,7 @@ export default function Home() {
 
           {/* Marquee */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", padding: "24px 24px 36px", position: "relative", zIndex: 1 }}>
-            <p style={{ textAlign: "center", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,248,244,0.45)", marginBottom: 16 }}>
+            <p style={{ textAlign: "center", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,248,244,0.6)", marginBottom: 16 }}>
               Trusted by local restaurants across the region
             </p>
             <div style={{ overflow: "hidden", WebkitMaskImage: "linear-gradient(to right,transparent,rgba(0,0,0,0.8) 12%,rgba(0,0,0,0.8) 88%,transparent)" }}>
@@ -443,7 +493,7 @@ export default function Home() {
             {/* TOP ROW */}
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 44, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 220px", gap: "clamp(24px,4vw,48px)", alignItems: "flex-start" }}>
               <div className="reveal" style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber,#df8752)" }}>01 —</span> Core</div>
+                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber,#df8752)" }}>01 —</span> Core</div>
                 <h3 className="font-display" style={{ fontSize: isMobile ? "clamp(2.4rem,10vw,3.5rem)" : "clamp(3rem,5.5vw,5.5rem)", fontWeight: 900, color: "var(--ivory,#fff8f4)", lineHeight: 0.92, letterSpacing: "-0.05em", marginBottom: 20 }}>
                   Professional<br/>Website
                 </h3>
@@ -454,7 +504,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="reveal reveal-delay-1" style={{ textAlign: "right", paddingTop: 16 }}>
-                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber,#df8752)" }}>02 —</span> Visibility</div>
+                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber,#df8752)" }}>02 —</span> Visibility</div>
                 <h3 className="font-display" style={{ fontSize: "clamp(1.6rem,2.4vw,2.4rem)", fontWeight: 900, color: "var(--ivory,#fff8f4)", lineHeight: 1.05, letterSpacing: "-0.025em", marginBottom: 12 }}>
                   Google<br/>Business<br/>Profile
                 </h3>
@@ -473,7 +523,7 @@ export default function Home() {
               display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 220px", gap: "clamp(24px,4vw,48px)", alignItems: "center",
             }}>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber,#df8752)" }}>03 —</span> Rankings</div>
+                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}><span style={{ color: "var(--amber,#df8752)" }}>03 —</span> Rankings</div>
                 <h3 className="font-display" style={{ fontSize: isMobile ? "clamp(2.4rem,10vw,3.5rem)" : "clamp(3rem,6.5vw,6rem)", fontWeight: 900, fontStyle: "italic", color: "var(--sage,#86a496)", lineHeight: 1, letterSpacing: "-0.045em", marginBottom: 16 }}>
                   Local Search (SEO)
                 </h3>
@@ -484,7 +534,7 @@ export default function Home() {
                 </div>
               </div>
               <div style={{ textAlign: "right" }}>
-                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}><span style={{ color: "var(--amber,#df8752)" }}>04 —</span> Paid Search</div>
+                <div style={{ fontSize: 11, color: "rgba(255,248,244,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}><span style={{ color: "var(--amber,#df8752)" }}>04 —</span> Paid Search</div>
                 <h3 className="font-display" style={{ fontSize: "clamp(1.6rem,2.4vw,2.4rem)", fontWeight: 900, color: "var(--amber,#df8752)", lineHeight: 1.05, letterSpacing: "-0.025em", marginBottom: 10 }}>
                   Google<br/>Ads
                 </h3>
@@ -501,7 +551,7 @@ export default function Home() {
                 { n: "06", label: "Support", title: "Ongoing Maintenance",  desc: "Menu updates, seasonal content, Google review responses. We handle all of it. You focus on the food." },
               ].map(({ n, label, title, desc }) => (
                 <div key={n} style={{ paddingTop: 22 }}>
-                  <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}><span style={{ color: "var(--amber,#df8752)" }}>{n} —</span> {label}</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,248,244,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}><span style={{ color: "var(--amber,#df8752)" }}>{n} —</span> {label}</div>
                   <h3 className="font-display" style={{ fontSize: "clamp(1.4rem,2.4vw,2rem)", fontWeight: 900, color: "rgba(255,248,244,0.85)", letterSpacing: "-0.025em", lineHeight: 1.1, marginBottom: 12 }}>{title}</h3>
                   <p style={{ fontSize: 13, color: "rgba(255,248,244,0.72)", lineHeight: 1.7 }}>{desc}</p>
                 </div>
@@ -527,7 +577,7 @@ export default function Home() {
             </div>
 
             {/* Equation row — full-width dark card */}
-            <div className="reveal" style={{
+            <div className="reveal reveal-scale" style={{
               background: "var(--forest-mid,#1e3a2f)", borderRadius: 8,
               display: "grid",
               gridTemplateColumns: isMobile ? "1fr" : "1fr 32px 1fr 32px 1.1fr",
@@ -536,9 +586,9 @@ export default function Home() {
             }}>
               {/* Tables block */}
               <div style={{ padding: isMobile ? "28px 24px" : "40px 44px" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,248,244,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Extra table bookings</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,248,244,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Extra table bookings</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 900, color: "var(--sage,#86a496)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
-                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.35)", lineHeight: 1.65 }}>5 tables/week × $80 avg × 4 weeks</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.6)", lineHeight: 1.65 }}>5 tables/week × $80 avg × 4 weeks</div>
               </div>
 
               {/* + */}
@@ -548,9 +598,9 @@ export default function Home() {
 
               {/* Catering block */}
               <div style={{ padding: isMobile ? "28px 24px" : "40px 44px", borderTop: isMobile ? "1px solid rgba(255,255,255,0.07)" : "none", borderLeft: isMobile ? "none" : "1px solid rgba(255,255,255,0.07)" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,248,244,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Catering &amp; private events</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,248,244,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Catering &amp; private events</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 900, color: "var(--amber,#df8752)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
-                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.35)", lineHeight: 1.65 }}>2 bookings/month × $750 avg</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.6)", lineHeight: 1.65 }}>2 bookings/month × $750 avg</div>
               </div>
 
               {/* = */}
@@ -560,9 +610,9 @@ export default function Home() {
 
               {/* Total block */}
               <div style={{ padding: isMobile ? "28px 24px" : "40px 44px", borderTop: isMobile ? "1px solid rgba(255,255,255,0.07)" : "none", borderLeft: isMobile ? "none" : "1px solid rgba(255,255,255,0.07)", background: "rgba(134,164,150,0.08)" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,248,244,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Potential monthly uplift</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,248,244,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>Potential monthly uplift</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 900, color: "var(--ivory,#fff8f4)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
-                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.35)", lineHeight: 1.65 }}>per month</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.6)", lineHeight: 1.65 }}>per month</div>
               </div>
             </div>
 
@@ -572,14 +622,14 @@ export default function Home() {
               {/* Investment */}
               <div className="reveal" style={{ background: "white", borderRadius: 8, padding: isMobile ? 24 : 32, border: "1px solid rgba(34,26,17,0.07)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(34,26,17,0.4)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Your investment</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(34,26,17,0.68)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Your investment</div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 10 }}>
                     <span className="font-display" style={{ fontSize: "clamp(2rem,3.5vw,2.8rem)", fontWeight: 900, color: "var(--forest,#1e3a2f)", letterSpacing: "-0.04em" }}>$200–$300</span>
-                    <span style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.4 }}>/month</span>
+                    <span style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.68 }}>/month</span>
                   </div>
                   <p style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.6, lineHeight: 1.75 }}>Full website, Google listing, SEO, ads, reporting, and maintenance. All done for you.</p>
                 </div>
-                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(34,26,17,0.07)", fontSize: 12, color: "rgba(34,26,17,0.35)", lineHeight: 1.6 }}>
+                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(34,26,17,0.07)", fontSize: 12, color: "rgba(34,26,17,0.68)", lineHeight: 1.6 }}>
                   Illustrative estimates. Actual results vary by market and execution.
                 </div>
               </div>
@@ -587,7 +637,7 @@ export default function Home() {
               {/* Quote + CTA */}
               <div className="reveal reveal-delay-1" style={{ background: "white", borderRadius: 8, padding: isMobile ? 24 : 32, border: "1px solid rgba(34,26,17,0.07)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(34,26,17,0.35)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 20 }}>The point</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(34,26,17,0.68)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 20 }}>The point</div>
                   <p className="font-display" style={{ fontSize: "clamp(1.15rem,1.8vw,1.4rem)", color: "var(--charcoal,#221a11)", fontWeight: 800, lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>
                     &ldquo;One catering booking pays for months of service. This isn&apos;t a website purchase. It&apos;s an investment in customer acquisition.&rdquo;
                   </p>
@@ -619,7 +669,7 @@ export default function Home() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginTop: 36 }}>
                   <div>
                     <div style={{ fontWeight: 700, color: "var(--ivory,#fff8f4)", fontSize: 15 }}>{TESTIMONIALS[0].name}</div>
-                    <div style={{ color: "rgba(255,248,244,0.45)", fontSize: 13, marginTop: 3 }}>{TESTIMONIALS[0].restaurant} · {TESTIMONIALS[0].location}</div>
+                    <div style={{ color: "rgba(255,248,244,0.6)", fontSize: 13, marginTop: 3 }}>{TESTIMONIALS[0].restaurant} · {TESTIMONIALS[0].location}</div>
                   </div>
                   <Stars />
                 </div>
@@ -652,13 +702,13 @@ export default function Home() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 20, maxWidth: isMobile ? "100%" : 820, margin: "0 auto" }}>
               {/* Starter */}
-              <div className="lift reveal" style={{ background: "var(--ivory,#fff8f4)", borderRadius: 8, padding: 38, border: "1px solid rgba(34,26,17,0.07)" }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "var(--charcoal,#221a11)", opacity: 0.45, textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Starter</div>
+              <div className="lift reveal reveal-scale" style={{ background: "var(--ivory,#fff8f4)", borderRadius: 8, padding: 38, border: "1px solid rgba(34,26,17,0.07)" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "var(--charcoal,#221a11)", opacity: 0.68, textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Starter</div>
                 <div style={{ marginBottom: 4 }}>
                   <span className="font-display" style={{ fontSize: 60, fontWeight: 900, color: "var(--forest,#1e3a2f)", letterSpacing: "-0.04em" }}>$200</span>
-                  <span style={{ fontSize: 16, color: "var(--charcoal,#221a11)", opacity: 0.45, marginLeft: 4 }}>/month</span>
+                  <span style={{ fontSize: 16, color: "var(--charcoal,#221a11)", opacity: 0.68, marginLeft: 4 }}>/month</span>
                 </div>
-                <p style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.55, marginBottom: 28 }}>Get found online</p>
+                <p style={{ fontSize: 14, color: "var(--charcoal,#221a11)", opacity: 0.68, marginBottom: 28 }}>Get found online</p>
                 <div style={{ height: 1, background: "var(--linen,#fcebdc)", marginBottom: 24 }}/>
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px", display: "flex", flexDirection: "column", gap: 12 }}>
                   {["Professional website","Domain & hosting","Google Business Profile","Local SEO","Monthly report","2 content updates/month"].map(item => <CheckItem key={item} label={item} />)}
@@ -667,9 +717,9 @@ export default function Home() {
               </div>
 
               {/* Growth */}
-              <div className="lift reveal reveal-delay-1" style={{ background: "var(--forest-mid,#1e3a2f)", borderRadius: 8, padding: 38, position: "relative" }}>
+              <div className="lift reveal reveal-delay-1 reveal-scale" style={{ background: "var(--forest-mid,#1e3a2f)", borderRadius: 8, padding: 38, position: "relative" }}>
                 <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: "var(--amber,#df8752)", color: "white", fontSize: 12, fontWeight: 700, padding: "5px 16px", borderRadius: 4, whiteSpace: "nowrap" }}>Most popular</div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,248,244,0.5)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Growth</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,248,244,0.6)", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Growth</div>
                 <div style={{ marginBottom: 4 }}>
                   <span className="font-display" style={{ fontSize: 60, fontWeight: 900, color: "var(--ivory,#fff8f4)", letterSpacing: "-0.04em" }}>$300</span>
                   <span style={{ fontSize: 16, color: "rgba(255,248,244,0.55)", marginLeft: 4 }}>/month</span>
@@ -717,7 +767,7 @@ export default function Home() {
                     { n: "03", heading: "No setup fees",       body: "One flat monthly fee. No contracts. Cancel any time. We earn your business every single month." },
                   ].map(({ n, heading, body }) => (
                     <div key={n} style={{ padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                      <div style={{ fontSize: 11, color: "rgba(255,248,244,0.5)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>
+                      <div style={{ fontSize: 11, color: "rgba(255,248,244,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>
                         <span style={{ color: "var(--amber,#df8752)" }}>{n} —</span> What to expect
                       </div>
                       <div style={{ fontSize: 16, fontWeight: 700, color: "var(--ivory,#fff8f4)", marginBottom: 6 }}>{heading}</div>
@@ -725,7 +775,7 @@ export default function Home() {
                     </div>
                   ))}
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 20 }}>
-                    <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 10 : 18, fontSize: 13, color: "rgba(255,248,244,0.45)" }}>
+                    <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 10 : 18, fontSize: 13, color: "rgba(255,248,244,0.6)" }}>
                       {["Starting at $200/mo","Mississippi & the Southeast"].map(t => (
                         <span key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                           <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="var(--sage,#86a496)" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -750,36 +800,36 @@ export default function Home() {
                   <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                     <div style={{ marginBottom: 4 }}>
                       <h3 className="font-display" style={{ fontSize: 20, fontWeight: 800, color: "var(--forest,#1e3a2f)", marginBottom: 4, letterSpacing: "-0.015em" }}>Tell us about your restaurant</h3>
-                      <p style={{ fontSize: 13, color: "var(--charcoal,#221a11)", opacity: 0.5 }}>We&apos;ll audit your online presence before we call.</p>
+                      <p style={{ fontSize: 13, color: "var(--charcoal,#221a11)", opacity: 0.68 }}>We&apos;ll audit your online presence before we call.</p>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>YOUR NAME *</label>
-                        <input type="text" required value={form.name} onChange={up("name")} placeholder="Jane Smith" style={inp}/>
+                        <label htmlFor="msc-name" style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>YOUR NAME *</label>
+                        <input id="msc-name" type="text" required value={form.name} onChange={up("name")} placeholder="Jane Smith" style={inp}/>
                       </div>
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>RESTAURANT NAME *</label>
-                        <input type="text" required value={form.business} onChange={up("business")} placeholder="Main Street Diner" style={inp}/>
+                        <label htmlFor="msc-business" style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>RESTAURANT NAME *</label>
+                        <input id="msc-business" type="text" required value={form.business} onChange={up("business")} placeholder="Main Street Diner" style={inp}/>
                       </div>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>EMAIL *</label>
-                        <input type="email" required value={form.email} onChange={up("email")} placeholder="you@example.com" style={inp}/>
+                        <label htmlFor="msc-email" style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>EMAIL *</label>
+                        <input id="msc-email" type="email" required value={form.email} onChange={up("email")} placeholder="you@example.com" style={inp}/>
                       </div>
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>PHONE</label>
-                        <input type="tel" value={form.phone} onChange={up("phone")} placeholder="(601) 555-0100" style={inp}/>
+                        <label htmlFor="msc-phone" style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>PHONE</label>
+                        <input id="msc-phone" type="tel" value={form.phone} onChange={up("phone")} placeholder="(601) 555-0100" style={inp}/>
                       </div>
                     </div>
                     <div>
-                      <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>ABOUT YOUR RESTAURANT</label>
-                      <textarea rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS — rely on word of mouth and want to grow..." style={{ ...inp, resize: "none" } as React.CSSProperties}/>
+                      <label htmlFor="msc-message" style={{ display: "block", fontSize: 11, fontWeight: 600, color: "var(--forest,#1e3a2f)", marginBottom: 5, letterSpacing: "0.05em" }}>ABOUT YOUR RESTAURANT</label>
+                      <textarea id="msc-message" rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS — rely on word of mouth and want to grow..." style={{ ...inp, resize: "none" } as React.CSSProperties}/>
                     </div>
                     <button type="submit" style={{ background: "var(--forest-mid,#1e3a2f)", color: "var(--ivory,#fff8f4)", padding: "15px 24px", borderRadius: 4, fontSize: 15, fontWeight: 800, border: "none", cursor: "pointer", fontFamily: "var(--font-body,system-ui)", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, transition: "background 0.2s,transform 0.15s" }}>
                       Get my free revenue audit <IcoArrow />
                     </button>
-                    <p style={{ textAlign: "center", fontSize: 12, color: "rgba(34,26,17,0.4)", margin: 0 }}>No spam. No sales pressure. Just a conversation.</p>
+                    <p style={{ textAlign: "center", fontSize: 12, color: "rgba(34,26,17,0.68)", margin: 0 }}>No spam. No sales pressure. Just a conversation.</p>
                   </form>
                 )}
               </div>
@@ -796,7 +846,7 @@ export default function Home() {
             <CompassMark size={28} />
             <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory,#fff8f4)", fontSize: 15, letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </div>
-          <p style={{ fontSize: 12, color: "rgba(255,248,244,0.4)", margin: 0, textAlign: isMobile ? "center" : "left" }}>
+          <p style={{ fontSize: 12, color: "rgba(255,248,244,0.6)", margin: 0, textAlign: isMobile ? "center" : "left" }}>
             © {new Date().getFullYear()} Main Street Compass · Serving Mississippi &amp; the Southeast
           </p>
         </div>
