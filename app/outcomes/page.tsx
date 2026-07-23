@@ -237,29 +237,25 @@ export default function Outcomes() {
         minHeight: isMobile ? "auto" : 300,
         display: "flex", flexDirection: "column",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 22 }}>
-          <div style={{
-            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            background: t.iconBg, color: t.iconColor,
-          }}>
-            <Icon />
-          </div>
-          <div className="font-display" style={{
-            fontSize: "clamp(2.6rem,4.4vw,3.6rem)", fontWeight: 800,
-            color: t.stat, letterSpacing: "-0.045em", lineHeight: 1,
-          }}>{o.stat}</div>
+        <div style={{
+          width: 48, height: 48, borderRadius: 12, flexShrink: 0, marginBottom: 20,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          background: t.iconBg, color: t.iconColor,
+        }}>
+          <Icon />
         </div>
+        <div className="font-display" style={{
+          fontSize: "clamp(2.6rem,4.4vw,3.6rem)", fontWeight: 800,
+          color: t.stat, letterSpacing: "-0.045em", lineHeight: 1, marginBottom: 8,
+        }}>{o.stat}</div>
+        <div style={{
+          fontSize: 13.5, fontWeight: 500, color: t.sub, lineHeight: 1.45, maxWidth: 300,
+        }}>{o.statLabel}</div>
         <h3 style={{
           fontSize: "clamp(1.35rem,2.1vw,1.75rem)", fontWeight: 800,
-          color: t.text, letterSpacing: "-0.025em", lineHeight: 1.15, margin: "0 0 10px",
+          color: t.text, letterSpacing: "-0.025em", lineHeight: 1.15, margin: "auto 0 10px",
         }}>{o.title}</h3>
         <p style={{ fontSize: 14.5, lineHeight: 1.6, margin: 0, color: t.sub }}>{o.body}</p>
-        <div style={{
-          marginTop: "auto", paddingTop: 18,
-          fontSize: 12.5, fontWeight: 600, letterSpacing: "0.02em",
-          color: t.sub, lineHeight: 1.45,
-        }}>{o.statLabel}</div>
       </div>
     );
   };
