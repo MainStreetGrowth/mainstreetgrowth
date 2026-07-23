@@ -1,4 +1,5 @@
 "use client";
+import CompassMark from "../_components/CompassMark";
 import { useState, useEffect } from "react";
 
 /* ─── Scroll reveal hook ───────────────────────────────────── */
@@ -273,7 +274,7 @@ export default function Outcomes() {
           height: 62,
         }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", color: "#FFF3EC", fontSize: 13, fontWeight: 800 }}>M</div>
+            <CompassMark size={28} ring={C.ink} north={C.coral} south={C.ink} hub={C.cream} />
             <span style={{ fontWeight: 800, fontSize: 15, color: C.ink, letterSpacing: "-0.02em" }}>Main Street Compass</span>
           </a>
           <a href="#contact" style={{
@@ -726,7 +727,7 @@ export default function Outcomes() {
       <footer style={{ background: C.ink, padding: "24px", borderTop: "1px solid rgba(251,243,228,0.08)" }}>
         <div style={{ maxWidth: 1160, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 8 : 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 26, height: 26, borderRadius: 8, background: C.coral, display: "flex", alignItems: "center", justifyContent: "center", color: "#FFF3EC", fontSize: 12, fontWeight: 800 }}>M</div>
+            <CompassMark size={26} ring={C.cream} north={C.coral} south={C.cream} hub={C.ink} />
             <span style={{ fontWeight: 800, color: C.onInk, fontSize: 15, letterSpacing: "-0.02em" }}>Main Street Compass</span>
           </div>
           <p style={{ fontSize: 12, color: C.onInkMuted, margin: 0, textAlign: isMobile ? "center" : "left" }}>

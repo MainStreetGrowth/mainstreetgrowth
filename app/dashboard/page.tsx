@@ -1,4 +1,5 @@
 "use client";
+import CompassMark from "../_components/CompassMark";
 import { useState, useEffect } from "react";
 
 /* ─── Scroll reveal hook (threshold 0.08) ──────────────────── */
@@ -150,7 +151,7 @@ export default function Dashboard() {
       <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 24px", background: "rgba(255,248,244,0.85)", backdropFilter: "blur(10px)", borderBottom: HAIR }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 62 }}>
           <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: "var(--forest,#07241a)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 13, fontWeight: 800 }}>M</div>
+            <CompassMark size={28} ring="#1E3A2F" north="#C4713E" south="#1E3A2F" hub="#FBF4E9" />
             <span className="font-display" style={{ fontWeight: 700, fontSize: 15, color: "var(--forest,#07241a)", letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 30, fontSize: 13, fontWeight: 500 }}>
@@ -674,7 +675,7 @@ export default function Dashboard() {
       <footer style={{ background: "var(--forest,#07241a)", padding: 28 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 10 : 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 26, height: 26, borderRadius: 8, background: "rgba(134,164,150,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 12, fontWeight: 700 }}>M</div>
+            <CompassMark size={26} ring="#FBF4E9" north="#E08A54" south="#FBF4E9" hub="#07241a" />
             <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory,#fff8f4)", fontSize: 15, letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </div>
           <p style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", margin: 0, textAlign: "center" }}>

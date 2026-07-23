@@ -1,4 +1,5 @@
 "use client";
+import CompassMark from "../_components/CompassMark";
 import { useState, useEffect } from "react";
 
 /* ─── Scroll reveal hook ───────────────────────────────────── */
@@ -156,7 +157,7 @@ export default function Modernist() {
       <header style={{ position: "sticky", top: 0, zIndex: 50, background: FOREST, borderBottom: "1px solid rgba(255,248,244,0.12)" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", padding: isMobile ? "0 20px" : "0 clamp(32px,6vw,88px)", height: 66, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: IVORY }}>
-            <div style={{ width: 30, height: 30, background: AMBER, color: FOREST, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 800 }}>M</div>
+            <CompassMark size={30} ring={IVORY} north={AMBER} south={IVORY} hub={FOREST} />
             <span style={{ fontWeight: 800, fontSize: 15, letterSpacing: "-0.02em", textTransform: "uppercase" }}>Main Street Compass</span>
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 34, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -464,7 +465,7 @@ export default function Modernist() {
         <footer style={{ background: FOREST, borderTop: "1px solid rgba(255,248,244,0.14)", padding: isMobile ? "28px 20px 88px" : "32px clamp(32px,6vw,88px)" }}>
           <div style={{ maxWidth: 1180, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 12 : 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 28, height: 28, background: AMBER, color: FOREST, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800 }}>M</div>
+              <CompassMark size={28} ring={IVORY} north={AMBER} south={IVORY} hub={FOREST} />
               <span style={{ fontWeight: 800, fontSize: 15, letterSpacing: "-0.02em", textTransform: "uppercase", color: IVORY }}>Main Street Compass</span>
             </div>
             <p style={{ fontSize: 13, color: "rgba(255,248,244,0.45)", margin: 0, textAlign: "center" }}>

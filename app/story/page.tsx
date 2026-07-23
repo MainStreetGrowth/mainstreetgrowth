@@ -1,4 +1,5 @@
 "use client";
+import CompassMark from "../_components/CompassMark";
 import { useState, useEffect } from "react";
 
 /* ─── Scroll reveal hook ───────────────────────────────────── */
@@ -186,7 +187,7 @@ export default function StoryPage() {
       <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 22px", background: "var(--forest,#07241a)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 26, height: 26, borderRadius: 4, background: "rgba(134,164,150,0.15)", border: "1px solid rgba(134,164,150,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 12, fontWeight: 800 }}>M</div>
+            <CompassMark size={26} ring="#FBF4E9" north="#E08A54" south="#FBF4E9" hub="#07241a" />
             <span className="font-display" style={{ fontWeight: 700, fontSize: 15, color: "var(--ivory,#fff8f4)", letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </a>
           <a href="#contact" style={{

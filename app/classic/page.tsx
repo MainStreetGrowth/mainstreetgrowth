@@ -1,4 +1,5 @@
 "use client";
+import CompassMark from "../_components/CompassMark";
 import { useState, useEffect } from "react";
 
 /* ─── Scroll reveal hook ───────────────────────────────────── */
@@ -126,7 +127,7 @@ export default function Classic() {
       <header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,248,244,0.92)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(34,26,17,0.08)", padding: "0 24px" }}>
         <div style={{ maxWidth: 1140, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 66 }}>
           <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 30, height: 30, borderRadius: 8, background: "var(--forest,#07241a)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 13, fontWeight: 800 }}>M</div>
+            <CompassMark size={30} ring="#1E3A2F" north="#C4713E" south="#1E3A2F" hub="#FBF4E9" />
             <span className="font-display" style={{ fontWeight: 700, fontSize: 16, color: "var(--forest,#07241a)", letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 34, fontSize: 14, fontWeight: 500 }}>
@@ -509,7 +510,7 @@ export default function Classic() {
             {/* Brand */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <div style={{ width: 30, height: 30, borderRadius: 8, background: "rgba(134,164,150,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 13, fontWeight: 800 }}>M</div>
+                <CompassMark size={30} ring="#FBF4E9" north="#E08A54" south="#FBF4E9" hub="#1E3A2F" />
                 <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory,#fff8f4)", fontSize: 16, letterSpacing: "-0.01em" }}>Main Street Compass</span>
               </div>
               <p style={{ fontSize: 14, color: "rgba(255,248,244,0.55)", lineHeight: 1.7, margin: 0, maxWidth: 320 }}>
