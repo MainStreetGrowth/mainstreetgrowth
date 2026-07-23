@@ -563,7 +563,7 @@ export default function Outcomes() {
         {/* ── PRICING ─────────────────────────────────────────── */}
         <section id="pricing" style={{ background: C.cream, padding: isMobile ? "68px 20px" : "100px 24px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 48, alignItems: "end", marginBottom: 52 }} className="reveal">
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.2fr 1fr", gap: isMobile ? 16 : 48, alignItems: "center", marginBottom: 52 }} className="reveal">
               <div>
                 <Kicker>Pricing</Kicker>
                 <h2 style={{ fontSize: "clamp(2.2rem,4.2vw,3.4rem)", fontWeight: 800, color: C.ink, lineHeight: 1.05, letterSpacing: "-0.03em", margin: 0 }}>
@@ -571,7 +571,7 @@ export default function Outcomes() {
                   <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: C.coral }}>what it returns.</span>
                 </h2>
               </div>
-              <p style={{ fontSize: 17, color: C.muted, lineHeight: 1.75, margin: 0 }}>No setup fees. No long-term contracts. No surprises.<br />Cancel any time.</p>
+              <p style={{ fontSize: 17, color: C.muted, lineHeight: 1.7, margin: 0, maxWidth: 360 }}>No setup fees. No long-term contracts. No surprises. Cancel any time.</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 20, maxWidth: isMobile ? "100%" : 840, margin: "0 auto" }}>
               {/* Starter */}
