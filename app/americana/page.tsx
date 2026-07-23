@@ -147,7 +147,7 @@ function DoubleRule({ color = INK, ornament = true }: { color?: string; ornament
 }
 
 /* ─── Framed photo slot (signboard keyline) ────────────────── */
-function PhotoSlot({ caption, height, rotate = 0, bg = FOREST, fg = CREAM }: { caption: string; height: number | string; rotate?: number; bg?: string; fg?: string }) {
+function PhotoSlot({ caption, height, rotate = 0, bg = FOREST, fg = CREAM, src }: { caption: string; height: number | string; rotate?: number; bg?: string; fg?: string; src?: string }) {
   return (
     <div style={{ transform: `rotate(${rotate}deg)`, padding: 9, background: fg, boxShadow: `0 2px 0 ${INK}` }}>
       <div style={{
@@ -155,15 +155,26 @@ function PhotoSlot({ caption, height, rotate = 0, bg = FOREST, fg = CREAM }: { c
         border: `2px solid ${fg}`, outline: `2px solid ${bg}`, outlineOffset: 4,
         display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
       }}>
-        {/* crossed keylines to read as an empty photo plate */}
-        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, opacity: 0.18 }} aria-hidden="true">
-          <line x1="0" y1="0" x2="100" y2="100" stroke={fg} strokeWidth={0.5} />
-          <line x1="100" y1="0" x2="0" y2="100" stroke={fg} strokeWidth={0.5} />
-        </svg>
-        <div style={{ textAlign: "center", position: "relative", padding: "0 20px" }}>
-          <div style={{ fontFamily: SIGN, fontSize: 13, letterSpacing: 4, color: fg, opacity: 0.85 }}>PHOTO</div>
-          <div style={{ fontFamily: BODY, fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: fg, opacity: 0.6, marginTop: 6 }}>{caption}</div>
-        </div>
+        {src ? (
+          <>
+            <img src={src} alt={caption} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, background: INK, padding: "6px 12px", textAlign: "center" }}>
+              <span style={{ fontFamily: SIGN, fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: CREAM }}>{caption}</span>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* crossed keylines to read as an empty photo plate */}
+            <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, opacity: 0.18 }} aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke={fg} strokeWidth={0.5} />
+              <line x1="100" y1="0" x2="0" y2="100" stroke={fg} strokeWidth={0.5} />
+            </svg>
+            <div style={{ textAlign: "center", position: "relative", padding: "0 20px" }}>
+              <div style={{ fontFamily: SIGN, fontSize: 13, letterSpacing: 4, color: fg, opacity: 0.85 }}>PHOTO</div>
+              <div style={{ fontFamily: BODY, fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: fg, opacity: 0.6, marginTop: 6 }}>{caption}</div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
@@ -280,7 +291,7 @@ export default function Americana() {
 
               {/* Right — photo slot + badge */}
               <div className="reveal reveal-delay-2" style={{ position: "relative", paddingTop: isMobile ? 10 : 0 }}>
-                <PhotoSlot caption="storefront at dusk" height={isMobile ? 240 : 360} rotate={2.2} bg={FOREST} fg={CREAM} />
+                <PhotoSlot caption="storefront at dusk" height={isMobile ? 240 : 360} rotate={2.2} bg={FOREST} fg={CREAM} src="/americana/storefront.svg" />
                 <div style={{ position: "absolute", left: isMobile ? "auto" : -34, right: isMobile ? -6 : "auto", bottom: isMobile ? -26 : -38 }}>
                   <EnamelBadge size={isMobile ? 108 : 138} rotate={-9} />
                 </div>
@@ -482,7 +493,7 @@ export default function Americana() {
                   </h2>
                 </div>
                 <div className="reveal reveal-delay-1">
-                  <PhotoSlot caption="owner behind the counter" height={isMobile ? 200 : 300} rotate={-2} bg={FOREST} fg={INK} />
+                  <PhotoSlot caption="owner behind the counter" height={isMobile ? 200 : 300} rotate={-2} bg={FOREST} fg={INK} src="/americana/owner.svg" />
                 </div>
               </div>
 

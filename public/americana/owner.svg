@@ -1,0 +1,49 @@
+<svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" font-family="'Anton','Arial Narrow',sans-serif">
+  <!-- back wall -->
+  <rect width="800" height="560" fill="#F1E7CE"/>
+  <rect x="0" y="0" width="800" height="560" fill="#FBF4E4" opacity="0.4"/>
+  <!-- hanging bulb -->
+  <line x1="400" y1="0" x2="400" y2="70" stroke="#241C14" stroke-width="3"/>
+  <circle cx="400" cy="86" r="18" fill="#D19A3E"/>
+  <circle cx="400" cy="86" r="30" fill="#D19A3E" opacity="0.2"/>
+  <!-- chalk menu board -->
+  <rect x="66" y="70" width="250" height="180" fill="#1E3A2F" stroke="#241C14" stroke-width="5"/>
+  <text x="191" y="108" font-size="22" fill="#D19A3E" text-anchor="middle" letter-spacing="2">TODAY&apos;S SPECIAL</text>
+  <g stroke="#F1E7CE" stroke-width="3" opacity="0.7" stroke-linecap="round">
+    <line x1="92" y1="140" x2="290" y2="140"/><line x1="92" y1="166" x2="270" y2="166"/>
+    <line x1="92" y1="192" x2="290" y2="192"/><line x1="92" y1="218" x2="240" y2="218"/>
+  </g>
+  <!-- shelf with jars -->
+  <rect x="512" y="120" width="230" height="12" fill="#241C14"/>
+  <g>
+    <rect x="536" y="80" width="40" height="40" rx="6" fill="#D19A3E" stroke="#241C14" stroke-width="3"/>
+    <rect x="606" y="72" width="40" height="48" rx="6" fill="#8E2B20" stroke="#241C14" stroke-width="3"/>
+    <rect x="676" y="84" width="40" height="36" rx="6" fill="#D19A3E" stroke="#241C14" stroke-width="3"/>
+  </g>
+  <!-- owner silhouette -->
+  <g fill="#241C14">
+    <circle cx="400" cy="250" r="46"/>
+    <path d="M330 400 Q330 312 400 312 Q470 312 470 400 Z"/>
+  </g>
+  <!-- apron -->
+  <path d="M366 330 L434 330 L446 400 L354 400 Z" fill="#F1E7CE"/>
+  <line x1="400" y1="330" x2="400" y2="400" stroke="#241C14" stroke-width="2" opacity="0.3"/>
+  <!-- counter -->
+  <rect x="0" y="392" width="800" height="14" fill="#241C14"/>
+  <rect x="0" y="406" width="800" height="154" fill="#8E2B20"/>
+  <g stroke="#241C14" stroke-width="2" opacity="0.25">
+    <line x1="0" y1="450" x2="800" y2="450"/>
+  </g>
+  <!-- coffee cup -->
+  <g>
+    <rect x="196" y="356" width="52" height="34" rx="4" fill="#FBF4E4" stroke="#241C14" stroke-width="3"/>
+    <path d="M248 362 q18 4 0 22" fill="none" stroke="#241C14" stroke-width="3"/>
+    <g stroke="#241C14" stroke-width="2.5" opacity="0.5" fill="none" stroke-linecap="round">
+      <path d="M210 348 q-6 -10 0 -20"/><path d="M228 348 q-6 -10 0 -20"/>
+    </g>
+  </g>
+  <!-- pie dome -->
+  <path d="M556 390 a56 56 0 0 1 112 0 Z" fill="#FBF4E4" opacity="0.85" stroke="#241C14" stroke-width="3"/>
+  <circle cx="612" cy="334" r="5" fill="#241C14"/>
+  <rect x="548" y="386" width="128" height="8" fill="#241C14"/>
+</svg>
