@@ -251,8 +251,7 @@ export default function Outcomes() {
           }}>{o.stat}</div>
         </div>
         <div style={{
-          fontSize: 13.5, fontWeight: 500, color: t.sub, lineHeight: 1.45, maxWidth: 300,
-          minHeight: isMobile ? "auto" : 39,
+          fontSize: 13.5, fontWeight: 500, color: t.sub, lineHeight: 1.45,
         }}>{o.statLabel}</div>
         <h3 style={{
           fontSize: "clamp(1.35rem,2.1vw,1.75rem)", fontWeight: 800,
