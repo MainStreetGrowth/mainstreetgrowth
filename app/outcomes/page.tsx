@@ -253,7 +253,7 @@ export default function Outcomes() {
         }}>{o.statLabel}</div>
         <h3 style={{
           fontSize: "clamp(1.35rem,2.1vw,1.75rem)", fontWeight: 800,
-          color: t.text, letterSpacing: "-0.025em", lineHeight: 1.15, margin: "auto 0 10px",
+          color: t.text, letterSpacing: "-0.025em", lineHeight: 1.15, margin: "20px 0 10px",
         }}>{o.title}</h3>
         <p style={{ fontSize: 14.5, lineHeight: 1.6, margin: 0, color: t.sub }}>{o.body}</p>
       </div>
