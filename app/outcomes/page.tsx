@@ -227,37 +227,39 @@ export default function Outcomes() {
     marginBottom: 5, letterSpacing: "0.06em",
   };
 
-  const renderTile = (o: Outcome, i: number, extra: React.CSSProperties = {}, center = false) => {
+  const renderTile = (o: Outcome, i: number) => {
     const t = tileColors(o.fill);
     const Icon = o.icon;
-    const feat = o.fill === "ink";
     return (
       <div key={o.title} className={`lift reveal reveal-delay-${i}`} style={{
         background: t.bg, color: t.text, border: t.border,
-        borderRadius: 20, padding: isMobile ? "30px 26px" : feat ? "40px 38px" : "32px 30px",
+        borderRadius: 20, padding: isMobile ? "28px 24px" : "34px 32px",
+        minHeight: isMobile ? "auto" : 300,
         display: "flex", flexDirection: "column",
-        justifyContent: center ? "center" : "flex-start",
-        ...extra,
       }}>
-        <div style={{
-          width: 50, height: 50, borderRadius: 13, marginBottom: 20,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          background: t.iconBg, color: t.iconColor,
-        }}>
-          <Icon />
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 22 }}>
+          <div style={{
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: t.iconBg, color: t.iconColor,
+          }}>
+            <Icon />
+          </div>
+          <div className="font-display" style={{
+            fontSize: "clamp(2.6rem,4.4vw,3.6rem)", fontWeight: 800,
+            color: t.stat, letterSpacing: "-0.045em", lineHeight: 1,
+          }}>{o.stat}</div>
         </div>
-        <div className="font-display" style={{
-          fontSize: feat ? "clamp(3.6rem,7vw,5.4rem)" : "clamp(2.6rem,4.6vw,3.6rem)",
-          fontWeight: 800, color: t.stat, letterSpacing: "-0.045em",
-          lineHeight: 0.9, marginBottom: 10,
-        }}>{o.stat}</div>
-        <div style={{ fontSize: 13, color: t.sub, lineHeight: 1.5, maxWidth: 320, marginBottom: feat ? 24 : 0 }}>{o.statLabel}</div>
         <h3 style={{
-          fontSize: feat ? "clamp(1.7rem,2.8vw,2.2rem)" : "clamp(1.3rem,2.1vw,1.65rem)",
-          fontWeight: 800, color: t.text, letterSpacing: "-0.025em",
-          lineHeight: 1.12, margin: feat ? "0 0 12px" : "auto 0 12px",
+          fontSize: "clamp(1.35rem,2.1vw,1.75rem)", fontWeight: 800,
+          color: t.text, letterSpacing: "-0.025em", lineHeight: 1.15, margin: "0 0 10px",
         }}>{o.title}</h3>
-        <p style={{ fontSize: 14.5, lineHeight: 1.65, margin: 0, color: t.sub }}>{o.body}</p>
+        <p style={{ fontSize: 14.5, lineHeight: 1.6, margin: 0, color: t.sub }}>{o.body}</p>
+        <div style={{
+          marginTop: "auto", paddingTop: 18,
+          fontSize: 12.5, fontWeight: 600, letterSpacing: "0.02em",
+          color: t.sub, lineHeight: 1.45,
+        }}>{o.statLabel}</div>
       </div>
     );
   };
@@ -394,25 +396,14 @@ export default function Outcomes() {
               </h2>
             </div>
 
-            {/* Bento: feature tile + right stack; single column on mobile */}
-            {isMobile ? (
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {OUTCOMES.map((o, i) => renderTile(o, i))}
-              </div>
-            ) : (
-              <div style={{ display: "flex", gap: 20, alignItems: "stretch" }}>
-                <div style={{ flex: "1.12 1 0", display: "flex" }}>
-                  {renderTile(OUTCOMES[0], 0, { flex: 1 }, true)}
-                </div>
-                <div style={{ flex: "1 1 0", display: "flex", flexDirection: "column", gap: 20 }}>
-                  {renderTile(OUTCOMES[1], 1, { flex: 1 })}
-                  <div style={{ display: "flex", gap: 20, flex: 1 }}>
-                    {renderTile(OUTCOMES[2], 2, { flex: 1 })}
-                    {renderTile(OUTCOMES[3], 3, { flex: 1 })}
-                  </div>
-                </div>
-              </div>
-            )}
+            {/* Outcomes: balanced 2×2 grid (single column on mobile) */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+              gap: isMobile ? 16 : 20,
+            }}>
+              {OUTCOMES.map((o, i) => renderTile(o, i))}
+            </div>
           </div>
         </section>
 
