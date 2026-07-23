@@ -31,6 +31,16 @@ const DIRECTIONS: {
     serif: false,
   },
   {
+    href: "/americana-outcomes",
+    name: "Americana + Outcomes",
+    tag: "Recommended",
+    desc: "The hybrid: Americana's hand-painted sign look wearing the outcomes-led message. Leads with what the restaurant gets (more tables, catering, regulars) as painted enamel panels; how-it-works and what's-included are demoted to quiet secondary detail.",
+    bg: "#8E2B20",
+    fg: "#F1E7CE",
+    accent: "#D19A3E",
+    serif: false,
+  },
+  {
     href: "/classic",
     name: "Classic",
     tag: "Proven",
