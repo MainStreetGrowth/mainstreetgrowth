@@ -126,17 +126,26 @@ const SmallCaps = ({ children, color = "var(--amber,#df8752)" }: { children: Rea
   }}>{children}</span>
 );
 
-const SectionRule = ({ title, kicker }: { title: string; kicker: string }) => (
+const SectionRule = ({ title, kicker, dark = false }: { title: string; kicker: string; dark?: boolean }) => (
   <div style={{ marginBottom: 28 }}>
-    <div style={{ borderTop: "2px solid var(--charcoal,#221a11)", paddingTop: 8, display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+    <div style={{ borderTop: `2px solid ${dark ? "var(--ivory,#fff8f4)" : "var(--charcoal,#221a11)"}`, paddingTop: 8, display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
       <SmallCaps>{kicker}</SmallCaps>
-      <SmallCaps color="rgba(34,26,17,0.4)">Main Street Compass</SmallCaps>
+      <SmallCaps color={dark ? "rgba(255,248,244,0.4)" : "rgba(34,26,17,0.4)"}>Main Street Compass</SmallCaps>
     </div>
     <h2 className="font-display" style={{
       fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 900,
-      color: "var(--forest,#07241a)", lineHeight: 1.08, letterSpacing: "-0.02em",
+      color: dark ? "var(--ivory,#fff8f4)" : "var(--forest,#07241a)", lineHeight: 1.08, letterSpacing: "-0.02em",
       margin: "18px 0 0",
     }}>{title}</h2>
+  </div>
+);
+
+/* ─── Ornamental divider ───────────────────────────────────── */
+const RoseDivider = () => (
+  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 18, margin: "8px 0 48px" }}>
+    <span style={{ flex: 1, height: 1, background: "rgba(34,26,17,0.2)" }} />
+    <CompassRose size={30} color="rgba(34,26,17,0.4)" />
+    <span style={{ flex: 1, height: 1, background: "rgba(34,26,17,0.2)" }} />
   </div>
 );
 
@@ -353,27 +362,32 @@ export default function Almanac() {
               </div>
             </section>
 
-            {/* ── II. HOW IT WORKS ─────────────────────────── */}
+            {/* ── II. HOW IT WORKS (inked plate) ───────────── */}
             <section id="how-it-works" className="reveal" style={{ scrollMarginTop: 24, marginBottom: 56 }}>
-              <SectionRule kicker="Article II &middot; How It Works" title="Your revenue capture system, in three movements." />
-              <div>
-                {STEPS.map(({ num, title, body }, i) => (
-                  <div key={num} style={{
-                    display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "72px 1fr",
-                    gap: isMobile ? 8 : 28,
-                    padding: isMobile ? "20px 0" : "24px 0",
-                    borderTop: i === 0 ? HAIR : "none",
-                    borderBottom: HAIR_SOFT,
-                    alignItems: "baseline",
-                  }}>
-                    <div className="font-display" style={{ fontSize: "clamp(2.4rem,4vw,3.4rem)", fontWeight: 900, color: "var(--amber,#df8752)", lineHeight: 1, letterSpacing: "-0.03em" }}>{num}</div>
-                    <div>
-                      <h3 className="font-display" style={{ fontSize: "clamp(1.25rem,2vw,1.6rem)", fontWeight: 800, color: "var(--forest,#07241a)", margin: "0 0 8px", letterSpacing: "-0.015em", lineHeight: 1.2 }}>{title}</h3>
-                      <p style={{ fontSize: 16, lineHeight: 1.78, margin: 0, color: "rgba(34,26,17,0.78)" }}>{body}</p>
+              <div style={{
+                background: "var(--forest,#07241a)", color: "var(--ivory,#fff8f4)",
+                padding: isMobile ? "30px 22px" : "44px 46px",
+              }}>
+                <SectionRule dark kicker="Article II &middot; How It Works" title="Your revenue capture system, in three movements." />
+                <div>
+                  {STEPS.map(({ num, title, body }, i) => (
+                    <div key={num} style={{
+                      display: "grid",
+                      gridTemplateColumns: isMobile ? "1fr" : "72px 1fr",
+                      gap: isMobile ? 8 : 28,
+                      padding: isMobile ? "20px 0" : "24px 0",
+                      borderTop: i === 0 ? "1px solid rgba(255,248,244,0.25)" : "none",
+                      borderBottom: "1px solid rgba(255,248,244,0.15)",
+                      alignItems: "baseline",
+                    }}>
+                      <div className="font-display" style={{ fontSize: "clamp(2.4rem,4vw,3.4rem)", fontWeight: 900, color: "var(--amber,#df8752)", lineHeight: 1, letterSpacing: "-0.03em" }}>{num}</div>
+                      <div>
+                        <h3 className="font-display" style={{ fontSize: "clamp(1.25rem,2vw,1.6rem)", fontWeight: 800, color: "var(--ivory,#fff8f4)", margin: "0 0 8px", letterSpacing: "-0.015em", lineHeight: 1.2 }}>{title}</h3>
+                        <p style={{ fontSize: 16, lineHeight: 1.78, margin: 0, color: "rgba(255,248,244,0.75)" }}>{body}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </section>
 
@@ -407,6 +421,8 @@ export default function Almanac() {
                 ))}
               </div>
             </section>
+
+            <RoseDivider />
 
             {/* ── IV. THE MATH (FIGURES infographic) ───────── */}
             <section id="the-math" className="reveal" style={{ scrollMarginTop: 24, marginBottom: 56 }}>
@@ -471,8 +487,12 @@ export default function Almanac() {
               </p>
             </section>
 
-            {/* ── V. TESTIMONIALS ──────────────────────────── */}
+            {/* ── V. TESTIMONIALS (linen band) ─────────────── */}
             <section id="testimonials" className="reveal" style={{ scrollMarginTop: 24, marginBottom: 56 }}>
+              <div style={{
+                background: "var(--linen,#fcebdc)",
+                padding: isMobile ? "30px 22px" : "40px 46px",
+              }}>
               <SectionRule kicker="Article V &middot; Testimonials" title="Real results. Real restaurants." />
               <div style={{
                 borderTop: "2px solid var(--charcoal,#221a11)",
@@ -481,7 +501,7 @@ export default function Almanac() {
                 {TESTIMONIALS.map((t) => (
                   <figure key={t.name} style={{
                     breakInside: "avoid", margin: 0,
-                    padding: "22px 0", borderBottom: HAIR_SOFT,
+                    padding: "22px 0", borderBottom: "1px solid rgba(34,26,17,0.16)",
                   }}>
                     <span style={{ color: "var(--amber,#df8752)", fontSize: 14, letterSpacing: 2 }}>★★★★★</span>
                     <blockquote className="font-display" style={{
@@ -494,6 +514,7 @@ export default function Almanac() {
                     </figcaption>
                   </figure>
                 ))}
+              </div>
               </div>
             </section>
 

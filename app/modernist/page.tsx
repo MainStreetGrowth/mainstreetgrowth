@@ -132,10 +132,8 @@ export default function Modernist() {
   });
 
   const sectionBase: React.CSSProperties = {
-    minHeight: "100vh", scrollSnapAlign: "start",
     position: "relative", overflow: "hidden",
-    display: "flex", flexDirection: "column", justifyContent: "center",
-    padding: isMobile ? "88px 20px" : "96px clamp(32px,6vw,88px)",
+    padding: isMobile ? "64px 20px" : "clamp(80px,11vh,128px) clamp(32px,6vw,88px)",
   };
 
   const inner: React.CSSProperties = { maxWidth: 1180, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 };
@@ -152,9 +150,6 @@ export default function Modernist() {
         fontFamily: "var(--font-body,system-ui)",
         background: FOREST,
         color: IVORY,
-        height: "100vh", overflowY: "auto",
-        scrollSnapType: "y proximity",
-        WebkitOverflowScrolling: "touch",
       }}
     >
       {/* ── NAV ─────────────────────────────────────────────── */}
@@ -177,7 +172,7 @@ export default function Modernist() {
 
       <main>
         {/* ── 01 · HERO ─────────────────────────────────────── */}
-        <section style={{ ...sectionBase, background: FOREST }}>
+        <section style={{ ...sectionBase, background: FOREST, minHeight: isMobile ? "auto" : "calc(100vh - 66px)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: isMobile ? -8 : 16, bottom: isMobile ? 24 : 40, fontSize: "clamp(11rem,40vw,34rem)", fontWeight: 800, letterSpacing: "-0.06em", lineHeight: 0.8, color: "rgba(223,135,82,0.07)", userSelect: "none", pointerEvents: "none", zIndex: 0 }}>
             GET FOUND
           </div>
@@ -466,7 +461,7 @@ export default function Modernist() {
         </section>
 
         {/* ── FOOTER ────────────────────────────────────────── */}
-        <footer style={{ background: FOREST, borderTop: "1px solid rgba(255,248,244,0.14)", padding: isMobile ? "28px 20px" : "32px clamp(32px,6vw,88px)", scrollSnapAlign: "end" }}>
+        <footer style={{ background: FOREST, borderTop: "1px solid rgba(255,248,244,0.14)", padding: isMobile ? "28px 20px 88px" : "32px clamp(32px,6vw,88px)" }}>
           <div style={{ maxWidth: 1180, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 12 : 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div style={{ width: 28, height: 28, background: AMBER, color: FOREST, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800 }}>M</div>
