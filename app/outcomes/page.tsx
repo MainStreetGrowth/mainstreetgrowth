@@ -227,6 +227,41 @@ export default function Outcomes() {
     marginBottom: 5, letterSpacing: "0.06em",
   };
 
+  const renderTile = (o: Outcome, i: number, extra: React.CSSProperties = {}, center = false) => {
+    const t = tileColors(o.fill);
+    const Icon = o.icon;
+    const feat = o.fill === "ink";
+    return (
+      <div key={o.title} className={`lift reveal reveal-delay-${i}`} style={{
+        background: t.bg, color: t.text, border: t.border,
+        borderRadius: 20, padding: isMobile ? "30px 26px" : feat ? "40px 38px" : "32px 30px",
+        display: "flex", flexDirection: "column",
+        justifyContent: center ? "center" : "flex-start",
+        ...extra,
+      }}>
+        <div style={{
+          width: 50, height: 50, borderRadius: 13, marginBottom: 20,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          background: t.iconBg, color: t.iconColor,
+        }}>
+          <Icon />
+        </div>
+        <div className="font-display" style={{
+          fontSize: feat ? "clamp(3.6rem,7vw,5.4rem)" : "clamp(2.6rem,4.6vw,3.6rem)",
+          fontWeight: 800, color: t.stat, letterSpacing: "-0.045em",
+          lineHeight: 0.9, marginBottom: 10,
+        }}>{o.stat}</div>
+        <div style={{ fontSize: 13, color: t.sub, lineHeight: 1.5, maxWidth: 320, marginBottom: feat ? 24 : 0 }}>{o.statLabel}</div>
+        <h3 style={{
+          fontSize: feat ? "clamp(1.7rem,2.8vw,2.2rem)" : "clamp(1.3rem,2.1vw,1.65rem)",
+          fontWeight: 800, color: t.text, letterSpacing: "-0.025em",
+          lineHeight: 1.12, margin: feat ? "0 0 12px" : "auto 0 12px",
+        }}>{o.title}</h3>
+        <p style={{ fontSize: 14.5, lineHeight: 1.65, margin: 0, color: t.sub }}>{o.body}</p>
+      </div>
+    );
+  };
+
   return (
     <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: C.cream, color: C.ink }}>
 
@@ -359,46 +394,25 @@ export default function Outcomes() {
               </h2>
             </div>
 
-            {/* Bento: 4 columns desktop, mixed spans; single column mobile */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "repeat(4, 1fr)",
-              gridAutoRows: isMobile ? "auto" : "minmax(240px, auto)",
-              gap: isMobile ? 16 : 20,
-            }}>
-              {OUTCOMES.map(({ icon: Icon, stat, statLabel, title, body, fill, colSpan, rowSpan }, i) => {
-                const t = tileColors(fill);
-                return (
-                  <div key={title} className={`lift reveal reveal-delay-${i}`} style={{
-                    gridColumn: isMobile ? "auto" : `span ${colSpan}`,
-                    gridRow: isMobile ? "auto" : `span ${rowSpan}`,
-                    background: t.bg, color: t.text, border: t.border,
-                    borderRadius: 20, padding: isMobile ? "30px 26px" : "34px 34px",
-                    display: "flex", flexDirection: "column",
-                  }}>
-                    <div style={{
-                      width: 50, height: 50, borderRadius: 13, marginBottom: 22,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      background: t.iconBg, color: t.iconColor,
-                    }}>
-                      <Icon />
-                    </div>
-                    <div className="font-display" style={{
-                      fontSize: fill === "ink" ? "clamp(3.4rem,7vw,5.2rem)" : "clamp(2.8rem,5vw,3.8rem)",
-                      fontWeight: 800, color: t.stat, letterSpacing: "-0.045em",
-                      lineHeight: 0.9, marginBottom: 10,
-                    }}>{stat}</div>
-                    <div style={{ fontSize: 13, color: t.sub, lineHeight: 1.5, marginBottom: 20, maxWidth: 320 }}>{statLabel}</div>
-                    <h3 style={{
-                      fontSize: fill === "ink" ? "clamp(1.7rem,2.8vw,2.3rem)" : "clamp(1.35rem,2.2vw,1.7rem)",
-                      fontWeight: 800, color: t.text, letterSpacing: "-0.025em",
-                      lineHeight: 1.12, margin: "auto 0 12px",
-                    }}>{title}</h3>
-                    <p style={{ fontSize: 14.5, lineHeight: 1.65, margin: 0, color: t.sub }}>{body}</p>
+            {/* Bento: feature tile + right stack; single column on mobile */}
+            {isMobile ? (
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {OUTCOMES.map((o, i) => renderTile(o, i))}
+              </div>
+            ) : (
+              <div style={{ display: "flex", gap: 20, alignItems: "stretch" }}>
+                <div style={{ flex: "1.12 1 0", display: "flex" }}>
+                  {renderTile(OUTCOMES[0], 0, { flex: 1 }, true)}
+                </div>
+                <div style={{ flex: "1 1 0", display: "flex", flexDirection: "column", gap: 20 }}>
+                  {renderTile(OUTCOMES[1], 1, { flex: 1 })}
+                  <div style={{ display: "flex", gap: 20, flex: 1 }}>
+                    {renderTile(OUTCOMES[2], 2, { flex: 1 })}
+                    {renderTile(OUTCOMES[3], 3, { flex: 1 })}
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
