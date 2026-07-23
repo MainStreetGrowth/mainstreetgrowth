@@ -42,6 +42,22 @@ const IcoCheck  = () => <svg width="14" height="14" fill="none" viewBox="0 0 24 
 const IcoArrow  = () => <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>;
 const IcoTrend  = () => <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>;
 
+/* ─── Compass mark (brand logo, reversed for dark backgrounds) ─ */
+const CompassMark = ({ size = 30 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 128 128" aria-hidden="true" style={{ display: "block" }}>
+    <circle cx="64" cy="64" r="56" fill="none" stroke="var(--ivory,#fff8f4)" strokeWidth={7}/>
+    <g stroke="var(--ivory,#fff8f4)" strokeWidth={7} strokeLinecap="round">
+      <line x1="64" y1="3" x2="64" y2="18"/>
+      <line x1="64" y1="110" x2="64" y2="125"/>
+      <line x1="3" y1="64" x2="18" y2="64"/>
+      <line x1="110" y1="64" x2="125" y2="64"/>
+    </g>
+    <polygon points="64,22 76,64 52,64" fill="var(--amber,#df8752)"/>
+    <polygon points="64,106 76,64 52,64" fill="var(--ivory,#fff8f4)"/>
+    <circle cx="64" cy="64" r="8.5" fill="var(--forest-mid,#1e3a2f)" stroke="var(--ivory,#fff8f4)" strokeWidth={5}/>
+  </svg>
+);
+
 /* ─── Data ─────────────────────────────────────────────────── */
 const MARQUEE = [
   "The Magnolia Café","River Bend BBQ","Cotton Row Diner",
@@ -163,7 +179,7 @@ export default function Home() {
           height: 64,
         }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 28, height: 28, borderRadius: 4, background: "rgba(134,164,150,0.15)", border: "1px solid rgba(134,164,150,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 12, fontWeight: 800 }}>M</div>
+            <CompassMark size={30} />
             <span className="font-display" style={{ fontWeight: 700, fontSize: 15, color: "var(--ivory,#fff8f4)", letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </a>
           <nav style={{ display: isMobile ? "none" : "flex", gap: 32, fontSize: 13, fontWeight: 500 }}>
@@ -777,7 +793,7 @@ export default function Home() {
       <footer style={{ background: "var(--forest-mid,#1e3a2f)", padding: "24px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 8 : 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 26, height: 26, borderRadius: 4, background: "rgba(134,164,150,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--sage,#86a496)", fontSize: 12, fontWeight: 700 }}>M</div>
+            <CompassMark size={28} />
             <span className="font-display" style={{ fontWeight: 700, color: "var(--ivory,#fff8f4)", fontSize: 15, letterSpacing: "-0.01em" }}>Main Street Compass</span>
           </div>
           <p style={{ fontSize: 12, color: "rgba(255,248,244,0.4)", margin: 0, textAlign: isMobile ? "center" : "left" }}>
