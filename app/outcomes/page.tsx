@@ -237,17 +237,19 @@ export default function Outcomes() {
         minHeight: isMobile ? "auto" : 300,
         display: "flex", flexDirection: "column",
       }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: 12, flexShrink: 0, marginBottom: 20,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          background: t.iconBg, color: t.iconColor,
-        }}>
-          <Icon />
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 8 }}>
+          <div style={{
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: t.iconBg, color: t.iconColor,
+          }}>
+            <Icon />
+          </div>
+          <div className="font-display" style={{
+            fontSize: "clamp(2.6rem,4.4vw,3.6rem)", fontWeight: 800,
+            color: t.stat, letterSpacing: "-0.045em", lineHeight: 1,
+          }}>{o.stat}</div>
         </div>
-        <div className="font-display" style={{
-          fontSize: "clamp(2.6rem,4.4vw,3.6rem)", fontWeight: 800,
-          color: t.stat, letterSpacing: "-0.045em", lineHeight: 1, marginBottom: 8,
-        }}>{o.stat}</div>
         <div style={{
           fontSize: 13.5, fontWeight: 500, color: t.sub, lineHeight: 1.45, maxWidth: 300,
           minHeight: isMobile ? "auto" : 39,
