@@ -90,6 +90,16 @@ const DIRECTIONS: {
     accent: "#b5551f",
     serif: true,
   },
+  {
+    href: "/motion",
+    name: "Motion",
+    tag: "Cinematic",
+    desc: "An Azure-style motion demo: smooth momentum scroll (Lenis), scroll reveals with parallax, clip-path image reveals, a sticky chapter sequence for the outcomes, and a count-up. Loads GSAP + Lenis from CDN; respects reduced-motion.",
+    bg: "#07241a",
+    fg: "#fff8f4",
+    accent: "#df8752",
+    serif: true,
+  },
 ];
 
 export default function PreviewsIndex() {

@@ -10,6 +10,7 @@ const LINKS: { href: string; label: string }[] = [
   { href: "/modernist", label: "Modernist" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/story", label: "Story" },
+  { href: "/motion", label: "Motion" },
 ];
 
 export default function PreviewSwitcher() {
