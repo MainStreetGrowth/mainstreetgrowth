@@ -82,10 +82,25 @@ export default function Motion() {
         gsap.registerPlugin(ScrollTrigger);
 
         if (!reduce && w.Lenis) {
-          lenis = new w.Lenis({ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1 });
+          // Lenis requires its own CSS (scroll-behavior:auto, html/body height).
+          if (!document.getElementById("lenis-css")) {
+            const st = document.createElement("style");
+            st.id = "lenis-css";
+            st.textContent =
+              "html.lenis,html.lenis body{height:auto}" +
+              ".lenis.lenis-smooth{scroll-behavior:auto!important}" +
+              ".lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}" +
+              ".lenis.lenis-stopped{overflow:hidden}" +
+              ".lenis.lenis-smooth iframe{pointer-events:none}";
+            document.head.appendChild(st);
+          }
+          // autoRaf:false — GSAP's ticker is the single driver (no double-stepping).
+          lenis = new w.Lenis({ lerp: 0.1, smoothWheel: true, autoRaf: false });
           lenis.on("scroll", ScrollTrigger.update);
-          gsap.ticker.add((t: number) => lenis.raf(t * 1000));
+          const rafFn = (t: number) => lenis && lenis.raf(t * 1000);
+          gsap.ticker.add(rafFn);
           gsap.ticker.lagSmoothing(0);
+          cleanups.push(() => gsap.ticker.remove(rafFn));
         }
 
         if (reduce) {
