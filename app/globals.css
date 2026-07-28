@@ -179,6 +179,13 @@ a { text-decoration: none; }
   .clip-bottom { clip-path: none !important; }
 }
 
+/* ── Signboard hover (physical lift; gated, GPU-only, rotation preserved) ── */
+.signboard { transform: rotate(var(--rot, 0deg)); }
+@media (hover: hover) and (pointer: fine) {
+  .signboard { transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+  .signboard:hover { transform: rotate(var(--rot, 0deg)) translateY(-5px); }
+}
+
 /* ── Reduced motion ────────────────────────────────────────── */
 /* Targeted: kill gratuitous movement (scroll reveal, marquee, smooth
    scroll, lift travel) while preserving instant state changes and short
@@ -195,4 +202,6 @@ a { text-decoration: none; }
   .lift:hover { transform: none !important; }
   html.js .reveal.reveal-scale { transform: none !important; }
   a[href^="#"]:active, button:active { transform: none !important; }
+  .signboard { transition: none !important; }
+  .signboard:hover { transform: rotate(var(--rot, 0deg)) !important; }
 }

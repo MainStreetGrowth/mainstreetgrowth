@@ -344,14 +344,14 @@ export default function AmericanaOutcomes() {
                   For Independent Restaurants &middot; MS &amp; the Southeast
                 </div>
 
-                <h1 className="reveal reveal-delay-1" style={{ margin: 0 }}>
-                  <span style={{ display: "block", fontFamily: SIGN, fontSize: "clamp(2.9rem,8vw,6.4rem)", lineHeight: 0.92, letterSpacing: 1, color: CREAM, textTransform: "uppercase", textShadow: `3px 3px 0 ${INK}` }}>
+                <h1 style={{ margin: 0 }}>
+                  <span className="reveal reveal-delay-1" style={{ display: "block", fontFamily: SIGN, fontSize: "clamp(2.9rem,8vw,6.4rem)", lineHeight: 0.92, letterSpacing: 1, color: CREAM, textTransform: "uppercase", textShadow: `3px 3px 0 ${INK}` }}>
                     More Full Tables.
                   </span>
-                  <span style={{ display: "block", fontFamily: SIGN, fontSize: "clamp(2.9rem,8vw,6.4rem)", lineHeight: 0.92, letterSpacing: 1, color: GOLD, textTransform: "uppercase", textShadow: `3px 3px 0 ${INK}` }}>
+                  <span className="reveal reveal-delay-2" style={{ display: "block", fontFamily: SIGN, fontSize: "clamp(2.9rem,8vw,6.4rem)", lineHeight: 0.92, letterSpacing: 1, color: GOLD, textTransform: "uppercase", textShadow: `3px 3px 0 ${INK}` }}>
                     More Catering.
                   </span>
-                  <span style={{ display: "block", fontFamily: SCRIPT, fontSize: "clamp(2.6rem,7vw,5.2rem)", lineHeight: 1.05, color: OFFWHITE, marginTop: 4, marginLeft: 4 }}>
+                  <span className="reveal reveal-delay-3" style={{ display: "block", fontFamily: SCRIPT, fontSize: "clamp(2.6rem,7vw,5.2rem)", lineHeight: 1.05, color: OFFWHITE, marginTop: 4, marginLeft: 4 }}>
                     more regulars.
                   </span>
                 </h1>
@@ -422,12 +422,12 @@ export default function AmericanaOutcomes() {
                 const o = OUTCOMES[0];
                 const c = panelColors(o.fill);
                 return (
-                  <div className="reveal" style={{
+                  <div className="reveal signboard" style={{
                     background: c.bg, border: c.border, boxShadow: `7px 7px 0 rgba(0,0,0,0.35)`,
                     padding: isMobile ? "30px 24px" : "44px 48px",
-                    transform: isMobile ? "none" : "rotate(-0.6deg)",
+                    "--rot": isMobile ? "0deg" : "-0.6deg",
                     outline: `2px solid ${c.bg}`, outlineOffset: 5,
-                  }}>
+                  } as React.CSSProperties}>
                     <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "0.85fr 1.15fr", gap: isMobile ? 18 : 44, alignItems: "center" }}>
                       <div>
                         <div style={{ fontFamily: SLAB, fontSize: isMobile ? "4.6rem" : "clamp(5.5rem,11vw,9rem)", lineHeight: 0.8, color: c.stat, textShadow: `3px 3px 0 ${INK}` }}>{o.stat}</div>
@@ -448,10 +448,10 @@ export default function AmericanaOutcomes() {
                 {[OUTCOMES[1], OUTCOMES[2]].map((o, idx) => {
                   const c = panelColors(o.fill);
                   return (
-                    <div key={o.title} className={`reveal reveal-delay-${idx + 1}`} style={{
+                    <div key={o.title} className={`reveal reveal-delay-${idx + 1} signboard`} style={{
                       background: c.bg, border: c.border, boxShadow: `6px 6px 0 rgba(0,0,0,0.35)`,
                       padding: isMobile ? "28px 24px" : "36px 34px",
-                      transform: isMobile ? "none" : `rotate(${idx === 0 ? 1.2 : -1.1}deg)`,
+                      "--rot": isMobile ? "0deg" : `${idx === 0 ? 1.2 : -1.1}deg`,
                       display: "flex", flexDirection: "column",
                     }}>
                       <div style={{ fontFamily: SLAB, fontSize: isMobile ? "3.6rem" : "clamp(3.6rem,6vw,5.2rem)", lineHeight: 0.8, color: c.stat, textShadow: `2px 2px 0 ${INK}` }}>{o.stat}</div>
@@ -469,12 +469,12 @@ export default function AmericanaOutcomes() {
                 const o = OUTCOMES[3];
                 const c = panelColors(o.fill);
                 return (
-                  <div className="reveal" style={{
+                  <div className="reveal signboard" style={{
                     background: c.bg, border: c.border, boxShadow: `6px 6px 0 rgba(0,0,0,0.35)`,
                     padding: isMobile ? "28px 24px" : "38px 44px",
-                    transform: isMobile ? "none" : "rotate(0.5deg)",
+                    "--rot": isMobile ? "0deg" : "0.5deg",
                     outline: `2px solid ${c.keyline}`, outlineOffset: -10,
-                  }}>
+                  } as React.CSSProperties}>
                     <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "auto 1fr", gap: isMobile ? 16 : 40, alignItems: "center" }}>
                       <div style={{ fontFamily: SLAB, fontSize: isMobile ? "5rem" : "clamp(5rem,10vw,8rem)", lineHeight: 0.8, color: c.stat, textShadow: `2px 2px 0 ${INK}` }}>{o.stat}</div>
                       <div>
@@ -652,7 +652,7 @@ export default function AmericanaOutcomes() {
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 22 : 26, alignItems: "start" }}>
 
               {/* Starter ticket */}
-              <div className="reveal" style={{ background: CREAM, border: `3px solid ${INK}`, boxShadow: `6px 6px 0 rgba(0,0,0,0.35)`, padding: isMobile ? "26px 22px" : "34px 30px", transform: isMobile ? "none" : "rotate(-1deg)" }}>
+              <div className="reveal signboard" style={{ background: CREAM, border: `3px solid ${INK}`, boxShadow: `6px 6px 0 rgba(0,0,0,0.35)`, padding: isMobile ? "26px 22px" : "34px 30px", "--rot": isMobile ? "0deg" : "-1deg" } as React.CSSProperties}>
                 <div style={{ fontFamily: SIGN, fontSize: 14, letterSpacing: 4, textTransform: "uppercase", color: OXBLOOD }}>Starter</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6, margin: "6px 0 4px" }}>
                   <span style={{ fontFamily: SLAB, fontSize: "clamp(2.6rem,6vw,3.6rem)", color: FOREST, lineHeight: 1 }}>$200</span>
@@ -674,7 +674,7 @@ export default function AmericanaOutcomes() {
               </div>
 
               {/* Growth ticket — most popular */}
-              <div className="reveal reveal-delay-1" style={{ position: "relative", background: OXBLOOD, border: `3px solid ${INK}`, boxShadow: `6px 6px 0 rgba(0,0,0,0.35)`, padding: isMobile ? "26px 22px" : "34px 30px", transform: isMobile ? "none" : "rotate(1.2deg)" }}>
+              <div className="reveal reveal-delay-1 signboard" style={{ position: "relative", background: OXBLOOD, border: `3px solid ${INK}`, boxShadow: `6px 6px 0 rgba(0,0,0,0.35)`, padding: isMobile ? "26px 22px" : "34px 30px", "--rot": isMobile ? "0deg" : "1.2deg" } as React.CSSProperties}>
                 <div style={{ position: "absolute", top: -16, left: "50%", transform: "translateX(-50%) rotate(-2deg)", background: GOLD, color: INK, fontFamily: SIGN, fontSize: 12, letterSpacing: 2, textTransform: "uppercase", padding: "6px 16px", border: `2px solid ${INK}`, whiteSpace: "nowrap" }}>&#9733; Most Popular</div>
                 <div style={{ fontFamily: SIGN, fontSize: 14, letterSpacing: 4, textTransform: "uppercase", color: GOLD }}>Growth</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6, margin: "6px 0 4px" }}>
