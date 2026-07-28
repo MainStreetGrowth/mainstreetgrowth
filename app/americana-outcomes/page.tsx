@@ -453,7 +453,7 @@ export default function AmericanaOutcomes() {
                       padding: isMobile ? "28px 24px" : "36px 34px",
                       "--rot": isMobile ? "0deg" : `${idx === 0 ? 1.2 : -1.1}deg`,
                       display: "flex", flexDirection: "column",
-                    }}>
+                    } as React.CSSProperties}>
                       <div style={{ fontFamily: SLAB, fontSize: isMobile ? "3.6rem" : "clamp(3.6rem,6vw,5.2rem)", lineHeight: 0.8, color: c.stat, textShadow: `2px 2px 0 ${INK}` }}>{o.stat}</div>
                       <div style={{ fontFamily: SIGN, fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: c.sub, marginTop: 12, lineHeight: 1.3 }}>{o.statLabel}</div>
                       <div style={{ margin: "18px 0 14px", borderTop: `2px solid ${c.keyline}`, borderBottom: `1px solid ${c.keyline}`, height: 4 }} />
