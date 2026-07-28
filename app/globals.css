@@ -104,9 +104,9 @@ select:focus-visible {
 /* Hide + animate only once the inline script marks <html class="js">. */
 html.js .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(34px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 html.js .reveal.visible {
   opacity: 1;
@@ -179,11 +179,13 @@ a { text-decoration: none; }
   .clip-bottom { clip-path: none !important; }
 }
 
-/* ── Signboard hover (physical lift; gated, GPU-only, rotation preserved) ── */
+/* ── Signboard: reveal-aware rise (composed with rotation) + gated hover ── */
 .signboard { transform: rotate(var(--rot, 0deg)); }
+html.js .signboard.reveal { transform: rotate(var(--rot, 0deg)) translateY(34px); }
+html.js .signboard.reveal.visible { transform: rotate(var(--rot, 0deg)); }
 @media (hover: hover) and (pointer: fine) {
-  .signboard { transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
-  .signboard:hover { transform: rotate(var(--rot, 0deg)) translateY(-5px); }
+  html.js .signboard.reveal:hover { transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+  .signboard:hover { transform: rotate(var(--rot, 0deg)) translateY(-5px) !important; }
 }
 
 /* ── Reduced motion ────────────────────────────────────────── */
