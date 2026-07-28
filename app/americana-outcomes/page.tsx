@@ -5,6 +5,8 @@ import CompassMark from "../_components/CompassMark";
 /* ─── Scroll reveal hook ───────────────────────────────────── */
 function useScrollReveal() {
   useEffect(() => {
+    // Activate the design system's CSS reveal (globals.css gates it on html.js).
+    document.documentElement.classList.add("js");
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
@@ -13,10 +15,51 @@ function useScrollReveal() {
             observer.unobserve(e.target);
           }
         }),
-      { threshold: 0.08 }
+      { threshold: 0.08, rootMargin: "0px 0px -8% 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
+  }, []);
+}
+
+/* ─── Count-up on the ROI figure (register-tally flourish) ──── */
+function useCountUp() {
+  useEffect(() => {
+    const el = document.querySelector<HTMLElement>("[data-countup]");
+    if (!el) return;
+    const target = parseInt(el.getAttribute("data-countup") || "0", 10);
+    const fmt = (v: number) => "~$" + Math.round(v).toLocaleString();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = fmt(target);
+      return;
+    }
+    let raf = 0;
+    let started = false;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !started) {
+            started = true;
+            io.disconnect();
+            const dur = 1400;
+            const t0 = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min(1, (now - t0) / dur);
+              const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+              el.textContent = fmt(target * eased);
+              if (p < 1) raf = requestAnimationFrame(tick);
+            };
+            raf = requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    io.observe(el);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+    };
   }, []);
 }
 
@@ -234,6 +277,7 @@ function panelColors(fill: Outcome["fill"]) {
 /* ─── Main component ───────────────────────────────────────── */
 export default function AmericanaOutcomes() {
   useScrollReveal();
+  useCountUp();
   const isMobile = useIsMobile();
 
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "" });
@@ -484,7 +528,7 @@ export default function AmericanaOutcomes() {
                   ))}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 16, background: FOREST, color: CREAM, padding: "12px 16px" }}>
                     <span style={{ fontFamily: SIGN, fontSize: 15, letterSpacing: 2, textTransform: "uppercase" }}>In Your Pocket</span>
-                    <span style={{ fontFamily: SLAB, fontSize: "clamp(1.8rem,4vw,2.6rem)", color: GOLD }}>~$3,100<span style={{ fontFamily: MONO, fontSize: 12 }}>/mo</span></span>
+                    <span style={{ fontFamily: SLAB, fontSize: "clamp(1.8rem,4vw,2.6rem)", color: GOLD }}><span data-countup="3100">~$3,100</span><span style={{ fontFamily: MONO, fontSize: 12 }}>/mo</span></span>
                   </div>
                 </div>
                 <div style={{ textAlign: "center", marginTop: 14, fontFamily: MONO, fontSize: 10, letterSpacing: 1, opacity: 0.5 }}>* * * THANK YOU &middot; ILLUSTRATIVE ESTIMATE * * *</div>
