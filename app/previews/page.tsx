@@ -21,6 +21,16 @@ const DIRECTIONS: {
     serif: true,
   },
   {
+    href: "/refined",
+    name: "Refined",
+    tag: "Research-driven",
+    desc: "Fresh, calm, modern layout rebuilt around the competitor research: leads with acquisition vs. ordering (we get you found; ordering apps just take orders), a transparent flat-fee + ad-spend explainer, and a comparison against a generic ordering platform. The positioning finalist.",
+    bg: "#14342A",
+    fg: "#FBFAF7",
+    accent: "#D4703E",
+    serif: false,
+  },
+  {
     href: "/americana",
     name: "Americana",
     tag: "Hand-painted",
