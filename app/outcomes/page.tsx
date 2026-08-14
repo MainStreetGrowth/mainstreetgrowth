@@ -440,7 +440,7 @@ export default function Outcomes() {
               </div>
               <div style={{ background: "rgba(255,248,244,0.05)", border: "1px solid rgba(255,248,244,0.14)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Catering &amp; events won</div>
-                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: C.gold, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
+                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
                 <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>2 bookings/month × $750 avg</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
