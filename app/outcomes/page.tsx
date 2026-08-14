@@ -34,14 +34,14 @@ function useIsMobile() {
 
 /* ─── Local palette (warm, appetite-driven — NOT the brand tokens) ─ */
 const C = {
-  cream: "#FAF4E8",
-  ink: "#1F1B16",
-  coral: "#E2553A",
-  gold: "#E9A93C",
-  blush: "#F4E4D6",
-  muted: "rgba(31,27,22,0.62)",
-  onInk: "#FBF3E4",
-  onInkMuted: "rgba(251,243,228,0.66)",
+  cream: "#fff8f4",   /* ivory base (brand) */
+  ink: "#1e3a2f",     /* forest-mid: dark surfaces + text */
+  coral: "#3b6933",   /* green: primary accent (buttons, badges) */
+  gold: "#df8752",    /* terracotta/amber: secondary accent */
+  blush: "#fcebdc",   /* linen tint */
+  muted: "rgba(34,26,17,0.6)",
+  onInk: "#fff8f4",
+  onInkMuted: "rgba(255,248,244,0.66)",
 };
 
 /* ─── SVG icons (stroke only, no emoji) ────────────────────── */
@@ -193,14 +193,14 @@ const Stars = ({ color = C.gold }: { color?: string }) => (
 function tileColors(fill: Outcome["fill"]) {
   switch (fill) {
     case "ink":
-      return { bg: C.ink, text: C.onInk, sub: C.onInkMuted, stat: C.gold, border: "none", iconBg: "rgba(233,169,60,0.16)", iconColor: C.gold };
+      return { bg: C.ink, text: C.onInk, sub: C.onInkMuted, stat: C.gold, border: "none", iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "coral":
-      return { bg: C.coral, text: "#FFF3EC", sub: "rgba(255,243,236,0.82)", stat: "#FFFFFF", border: "none", iconBg: "rgba(255,255,255,0.18)", iconColor: "#FFF3EC" };
+      return { bg: C.coral, text: "#fff8f4", sub: "rgba(255,248,244,0.82)", stat: "#FFFFFF", border: "none", iconBg: "rgba(255,255,255,0.18)", iconColor: "#fff8f4" };
     case "gold":
-      return { bg: C.gold, text: C.ink, sub: "rgba(31,27,22,0.72)", stat: C.ink, border: "none", iconBg: "rgba(31,27,22,0.12)", iconColor: C.ink };
+      return { bg: C.gold, text: C.ink, sub: "rgba(34,26,17,0.72)", stat: C.ink, border: "none", iconBg: "rgba(34,26,17,0.12)", iconColor: C.ink };
     case "cream":
     default:
-      return { bg: C.cream, text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(31,27,22,0.14)`, iconBg: "rgba(226,85,58,0.1)", iconColor: C.coral };
+      return { bg: C.cream, text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.14)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
   }
 }
 
@@ -217,7 +217,7 @@ export default function Outcomes() {
 
   const inp: React.CSSProperties = {
     width: "100%", padding: "13px 16px", borderRadius: 8,
-    border: "1.5px solid rgba(31,27,22,0.16)", fontSize: 14,
+    border: "1.5px solid rgba(34,26,17,0.16)", fontSize: 14,
     color: C.ink, background: "#FFFFFF",
     outline: "none", boxSizing: "border-box",
     fontFamily: "var(--font-body,system-ui)", transition: "border-color 0.2s",
@@ -234,7 +234,7 @@ export default function Outcomes() {
     return (
       <div key={o.title} className={`lift reveal reveal-delay-${i}`} style={{
         background: t.bg, color: t.text, border: t.border,
-        borderRadius: 20, padding: isMobile ? "28px 24px" : "34px 32px",
+        borderRadius: 8, padding: isMobile ? "28px 24px" : "34px 32px",
         minHeight: isMobile ? "auto" : 300,
         display: "flex", flexDirection: "column",
       }}>
@@ -267,7 +267,7 @@ export default function Outcomes() {
     <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: C.cream, color: C.ink }}>
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 24px", background: "rgba(250,244,232,0.9)", backdropFilter: "blur(10px)", borderBottom: `1px solid rgba(31,27,22,0.08)` }}>
+      <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 24px", background: "rgba(255,248,244,0.9)", backdropFilter: "blur(10px)", borderBottom: `1px solid rgba(34,26,17,0.08)` }}>
         <div style={{
           maxWidth: 1160, margin: "0 auto",
           display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -279,7 +279,7 @@ export default function Outcomes() {
           </a>
           <a href="#contact" style={{
             background: C.ink, color: C.onInk,
-            padding: "9px 20px", borderRadius: 999, fontSize: 13, fontWeight: 700,
+            padding: "9px 20px", borderRadius: 4, fontSize: 13, fontWeight: 700,
             display: "inline-flex", alignItems: "center", gap: 7,
             textDecoration: "none",
           }}>
@@ -320,8 +320,8 @@ export default function Outcomes() {
               </p>
               <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                 <a href="#contact" style={{
-                  background: C.coral, color: "#FFF3EC",
-                  padding: "16px 30px", borderRadius: 999, fontSize: 16, fontWeight: 800,
+                  background: C.coral, color: "#fff8f4",
+                  padding: "16px 30px", borderRadius: 4, fontSize: 16, fontWeight: 800,
                   display: "inline-flex", alignItems: "center", gap: 9, textDecoration: "none",
                 }}>
                   Get a free revenue audit <IcoArrow />
@@ -329,7 +329,7 @@ export default function Outcomes() {
                 <a href="#outcomes" style={{
                   color: C.ink, fontSize: 15, fontWeight: 700, textDecoration: "none",
                   display: "inline-flex", alignItems: "center", gap: 7,
-                  borderBottom: `2px solid rgba(31,27,22,0.2)`, paddingBottom: 3,
+                  borderBottom: `2px solid rgba(34,26,17,0.2)`, paddingBottom: 3,
                 }}>
                   See what you get
                 </a>
@@ -345,7 +345,7 @@ export default function Outcomes() {
 
             {/* Right — oversized stat cluster */}
             <div className="reveal reveal-delay-2" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{ background: C.ink, borderRadius: 20, padding: isMobile ? "28px 26px" : "34px 32px" }}>
+              <div style={{ background: C.ink, borderRadius: 8, padding: isMobile ? "28px 26px" : "34px 32px" }}>
                 <div className="font-display" style={{ fontSize: isMobile ? "4rem" : "clamp(4rem,7vw,5.6rem)", fontWeight: 800, color: C.gold, lineHeight: 0.9, letterSpacing: "-0.04em", marginBottom: 12 }}>
                   ~$3,100
                 </div>
@@ -354,11 +354,11 @@ export default function Outcomes() {
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                <div style={{ background: C.coral, borderRadius: 20, padding: "24px 22px" }}>
+                <div style={{ background: C.coral, borderRadius: 8, padding: "24px 22px" }}>
                   <div className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,3.2rem)", fontWeight: 800, color: "#FFFFFF", lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 8 }}>80%</div>
-                  <div style={{ fontSize: 12.5, color: "rgba(255,243,236,0.85)", lineHeight: 1.45 }}>search online before picking a place to eat</div>
+                  <div style={{ fontSize: 12.5, color: "rgba(255,248,244,0.85)", lineHeight: 1.45 }}>search online before picking a place to eat</div>
                 </div>
-                <div style={{ background: C.blush, borderRadius: 20, padding: "24px 22px", border: `1.5px solid rgba(31,27,22,0.1)` }}>
+                <div style={{ background: C.blush, borderRadius: 8, padding: "24px 22px", border: `1.5px solid rgba(34,26,17,0.1)` }}>
                   <div className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,3.2rem)", fontWeight: 800, color: C.coral, lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 8 }}>5–20×</div>
                   <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.45 }}>more per catering &amp; event booking</div>
                 </div>
@@ -367,7 +367,7 @@ export default function Outcomes() {
           </div>
 
           {/* Marquee */}
-          <div style={{ maxWidth: 1160, margin: isMobile ? "48px auto 0" : "64px auto 0", borderTop: `1px solid rgba(31,27,22,0.1)`, paddingTop: 22 }}>
+          <div style={{ maxWidth: 1160, margin: isMobile ? "48px auto 0" : "64px auto 0", borderTop: `1px solid rgba(34,26,17,0.1)`, paddingTop: 22 }}>
             <p style={{ textAlign: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: C.muted, marginBottom: 16 }}>
               Trusted by local restaurants across the region
             </p>
@@ -430,33 +430,33 @@ export default function Outcomes() {
               gridTemplateColumns: isMobile ? "1fr" : "1fr 40px 1fr 40px 1.15fr",
               gap: isMobile ? 12 : 0, alignItems: "stretch", marginBottom: 18,
             }}>
-              <div style={{ background: "rgba(251,243,228,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
+              <div style={{ background: "rgba(255,248,244,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>More tables filled</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: C.coral, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
-                <div style={{ fontSize: 12, color: "rgba(251,243,228,0.42)", lineHeight: 1.6 }}>5 tables/week × $80 avg × 4 weeks</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.42)", lineHeight: 1.6 }}>5 tables/week × $80 avg × 4 weeks</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(251,243,228,0.22)" }}>+</span>
+                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.22)" }}>+</span>
               </div>
-              <div style={{ background: "rgba(251,243,228,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
+              <div style={{ background: "rgba(255,248,244,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Catering &amp; events won</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: C.gold, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
-                <div style={{ fontSize: 12, color: "rgba(251,243,228,0.42)", lineHeight: 1.6 }}>2 bookings/month × $750 avg</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.42)", lineHeight: 1.6 }}>2 bookings/month × $750 avg</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(251,243,228,0.22)" }}>=</span>
+                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.22)" }}>=</span>
               </div>
               <div style={{ background: C.gold, borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(31,27,22,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(34,26,17,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 800, color: C.ink, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
-                <div style={{ fontSize: 12, color: "rgba(31,27,22,0.62)", lineHeight: 1.6 }}>every month</div>
+                <div style={{ fontSize: 12, color: "rgba(34,26,17,0.62)", lineHeight: 1.6 }}>every month</div>
               </div>
             </div>
 
             {/* Investment aside */}
             <div className="reveal" style={{
-              background: "rgba(251,243,228,0.05)", borderRadius: 18, padding: isMobile ? "22px 24px" : "24px 34px",
-              border: "1px solid rgba(251,243,228,0.1)", marginBottom: isMobile ? 44 : 60,
+              background: "rgba(255,248,244,0.05)", borderRadius: 18, padding: isMobile ? "22px 24px" : "24px 34px",
+              border: "1px solid rgba(255,248,244,0.1)", marginBottom: isMobile ? 44 : 60,
               display: "flex", flexDirection: isMobile ? "column" : "row",
               alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: 14,
             }}>
@@ -464,7 +464,7 @@ export default function Outcomes() {
                 Your investment is just <strong style={{ color: C.onInk, fontWeight: 700 }}>$200–$300/month</strong>, all done for you.
                 One catering booking pays for months of service.
               </p>
-              <span style={{ fontSize: 12, color: "rgba(251,243,228,0.4)", lineHeight: 1.5, flexShrink: 0, maxWidth: 220 }}>
+              <span style={{ fontSize: 12, color: "rgba(255,248,244,0.4)", lineHeight: 1.5, flexShrink: 0, maxWidth: 220 }}>
                 Illustrative estimates. Results vary by market and execution.
               </span>
             </div>
@@ -476,22 +476,22 @@ export default function Outcomes() {
               </h3>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "7fr 5fr", gap: 16 }}>
-              <div className="lift reveal" style={{ background: C.coral, borderRadius: 20, padding: isMobile ? 28 : 44, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 280 }}>
+              <div className="lift reveal" style={{ background: C.coral, borderRadius: 8, padding: isMobile ? 28 : 44, display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 280 }}>
                 <div>
-                  <div className="font-display" style={{ fontSize: 76, color: "rgba(255,243,236,0.55)", lineHeight: 0.75, marginBottom: 20, fontWeight: 800 }}>&ldquo;</div>
-                  <p className="font-display" style={{ fontSize: 22, color: "#FFF3EC", lineHeight: 1.5, fontWeight: 600, fontStyle: "italic", margin: 0 }}>{TESTIMONIALS[0].quote}</p>
+                  <div className="font-display" style={{ fontSize: 76, color: "rgba(255,248,244,0.55)", lineHeight: 0.75, marginBottom: 20, fontWeight: 800 }}>&ldquo;</div>
+                  <p className="font-display" style={{ fontSize: 22, color: "#fff8f4", lineHeight: 1.5, fontWeight: 600, fontStyle: "italic", margin: 0 }}>{TESTIMONIALS[0].quote}</p>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginTop: 32 }}>
                   <div>
-                    <div style={{ fontWeight: 700, color: "#FFF3EC", fontSize: 15 }}>{TESTIMONIALS[0].name}</div>
-                    <div style={{ color: "rgba(255,243,236,0.7)", fontSize: 13, marginTop: 3 }}>{TESTIMONIALS[0].restaurant} · {TESTIMONIALS[0].location}</div>
+                    <div style={{ fontWeight: 700, color: "#fff8f4", fontSize: 15 }}>{TESTIMONIALS[0].name}</div>
+                    <div style={{ color: "rgba(255,248,244,0.7)", fontSize: 13, marginTop: 3 }}>{TESTIMONIALS[0].restaurant} · {TESTIMONIALS[0].location}</div>
                   </div>
-                  <Stars color="#FFF3EC" />
+                  <Stars color="#fff8f4" />
                 </div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {TESTIMONIALS.slice(1).map((t, i) => (
-                  <div key={t.name} className={`lift reveal reveal-delay-${i + 1}`} style={{ background: C.cream, borderRadius: 20, padding: 26, flex: 1 }}>
+                  <div key={t.name} className={`lift reveal reveal-delay-${i + 1}`} style={{ background: C.cream, borderRadius: 8, padding: 26, flex: 1 }}>
                     <Stars />
                     <p className="font-display" style={{ fontSize: 16, color: C.ink, lineHeight: 1.6, fontWeight: 600, fontStyle: "italic", margin: "12px 0 16px" }}>&ldquo;{t.quote}&rdquo;</p>
                     <div style={{ fontWeight: 700, color: C.ink, fontSize: 14 }}>{t.name}</div>
@@ -512,11 +512,11 @@ export default function Outcomes() {
             </div>
             <div style={{
               display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
-              gap: isMobile ? 12 : 24, borderTop: `1px solid rgba(31,27,22,0.14)`, paddingTop: 26,
+              gap: isMobile ? 12 : 24, borderTop: `1px solid rgba(34,26,17,0.14)`, paddingTop: 26,
             }}>
               {STEPS.map(({ num, title, body }) => (
                 <div key={num} className="reveal" style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                  <span className="font-display" style={{ fontSize: 20, fontWeight: 800, color: "rgba(31,27,22,0.28)", lineHeight: 1.1, flexShrink: 0 }}>{num}</span>
+                  <span className="font-display" style={{ fontSize: 20, fontWeight: 800, color: "rgba(34,26,17,0.28)", lineHeight: 1.1, flexShrink: 0 }}>{num}</span>
                   <div>
                     <h3 style={{ fontSize: 15, fontWeight: 700, color: C.ink, margin: "0 0 6px", lineHeight: 1.3 }}>{title}</h3>
                     <p style={{ fontSize: 13.5, color: C.muted, lineHeight: 1.6, margin: 0 }}>{body}</p>
@@ -531,7 +531,7 @@ export default function Outcomes() {
         <section style={{ background: C.cream, padding: isMobile ? "40px 20px 60px" : "48px 24px 84px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div className="reveal" style={{
-              background: C.blush, borderRadius: 20,
+              background: C.blush, borderRadius: 8,
               padding: isMobile ? "30px 24px" : "38px 44px",
             }}>
               <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "baseline", gap: isMobile ? 6 : 14, marginBottom: 22 }}>
@@ -545,11 +545,11 @@ export default function Outcomes() {
                 display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "12px 40px",
               }}>
                 {SERVICES.map(item => (
-                  <li key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "rgba(31,27,22,0.78)" }}>
+                  <li key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "rgba(34,26,17,0.78)" }}>
                     <span style={{
                       width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      background: "rgba(226,85,58,0.14)", color: C.coral,
+                      background: "rgba(59,105,51,0.14)", color: C.coral,
                     }}>
                       <IcoCheck />
                     </span>
@@ -576,48 +576,48 @@ export default function Outcomes() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 20, maxWidth: isMobile ? "100%" : 840, margin: "0 auto" }}>
               {/* Starter */}
-              <div className="lift reveal" style={{ background: "#FFFFFF", borderRadius: 20, padding: 36, border: `1.5px solid rgba(31,27,22,0.12)` }}>
+              <div className="lift reveal" style={{ background: "#FFFFFF", borderRadius: 8, padding: 36, border: `1.5px solid rgba(34,26,17,0.12)` }}>
                 <div style={{ fontSize: 12, fontWeight: 700, color: C.muted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Starter</div>
                 <div style={{ marginBottom: 4 }}>
                   <span className="font-display" style={{ fontSize: 58, fontWeight: 800, color: C.ink, letterSpacing: "-0.04em" }}>$200</span>
                   <span style={{ fontSize: 16, color: C.muted, marginLeft: 4 }}>/month</span>
                 </div>
                 <p style={{ fontSize: 14, color: C.muted, marginBottom: 26 }}>Get found online</p>
-                <div style={{ height: 1, background: "rgba(31,27,22,0.1)", marginBottom: 22 }} />
+                <div style={{ height: 1, background: "rgba(34,26,17,0.1)", marginBottom: 22 }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 30px", display: "flex", flexDirection: "column", gap: 12 }}>
                   {["Professional website", "Domain & hosting", "Google Business Profile", "Local SEO", "Monthly report", "2 content updates/month"].map(item => (
                     <li key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: C.ink }}>
-                      <span style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(226,85,58,0.14)", color: C.coral }}>
+                      <span style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(59,105,51,0.14)", color: C.coral }}>
                         <IcoCheck />
                       </span>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" style={{ display: "block", textAlign: "center", border: `2px solid ${C.ink}`, color: C.ink, borderRadius: 999, padding: "13px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>Get started</a>
+                <a href="#contact" style={{ display: "block", textAlign: "center", border: `2px solid ${C.ink}`, color: C.ink, borderRadius: 4, padding: "13px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>Get started</a>
               </div>
 
               {/* Growth */}
-              <div className="lift reveal reveal-delay-1" style={{ background: C.ink, borderRadius: 20, padding: 36, position: "relative" }}>
-                <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: C.coral, color: "#FFF3EC", fontSize: 12, fontWeight: 700, padding: "5px 16px", borderRadius: 999, whiteSpace: "nowrap" }}>Most popular</div>
+              <div className="lift reveal reveal-delay-1" style={{ background: C.ink, borderRadius: 8, padding: 36, position: "relative" }}>
+                <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: C.coral, color: "#fff8f4", fontSize: 12, fontWeight: 700, padding: "5px 16px", borderRadius: 4, whiteSpace: "nowrap" }}>Most popular</div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Growth</div>
                 <div style={{ marginBottom: 4 }}>
                   <span className="font-display" style={{ fontSize: 58, fontWeight: 800, color: C.onInk, letterSpacing: "-0.04em" }}>$300</span>
                   <span style={{ fontSize: 16, color: C.onInkMuted, marginLeft: 4 }}>/month</span>
                 </div>
                 <p style={{ fontSize: 14, color: C.onInkMuted, marginBottom: 26 }}>Full revenue capture system</p>
-                <div style={{ height: 1, background: "rgba(251,243,228,0.12)", marginBottom: 22 }} />
+                <div style={{ height: 1, background: "rgba(255,248,244,0.12)", marginBottom: 22 }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 30px", display: "flex", flexDirection: "column", gap: 12 }}>
                   {["Everything in Starter", "Google Ads management", "Keyword targeting", "Call & lead tracking", "Catering landing page", "Unlimited content updates"].map(item => (
                     <li key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: C.onInkMuted }}>
-                      <span style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(233,169,60,0.22)", color: C.gold }}>
+                      <span style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(223,135,82,0.22)", color: C.gold }}>
                         <IcoCheck />
                       </span>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: C.coral, color: "#FFF3EC", borderRadius: 999, padding: "13px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
+                <a href="#contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: C.coral, color: "#fff8f4", borderRadius: 4, padding: "13px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
                   Get started <IcoArrow />
                 </a>
               </div>
@@ -651,7 +651,7 @@ export default function Outcomes() {
                     { n: "02", heading: "Live in ~2 weeks", body: "Your website, Google listing, and ads are all live within two weeks. No long drawn-out process." },
                     { n: "03", heading: "No setup fees", body: "One flat monthly fee. No contracts. Cancel any time. We earn your business every single month." },
                   ].map(({ n, heading, body }) => (
-                    <div key={n} style={{ padding: "22px 0", borderTop: "1px solid rgba(251,243,228,0.1)" }}>
+                    <div key={n} style={{ padding: "22px 0", borderTop: "1px solid rgba(255,248,244,0.1)" }}>
                       <div style={{ fontSize: 11, color: C.onInkMuted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>
                         <span style={{ color: C.gold }}>{n} —</span> What to expect
                       </div>
@@ -659,7 +659,7 @@ export default function Outcomes() {
                       <p style={{ fontSize: 14, color: C.onInkMuted, lineHeight: 1.65, margin: 0 }}>{body}</p>
                     </div>
                   ))}
-                  <div style={{ borderTop: "1px solid rgba(251,243,228,0.1)", paddingTop: 20 }}>
+                  <div style={{ borderTop: "1px solid rgba(255,248,244,0.1)", paddingTop: 20 }}>
                     <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 10 : 18, fontSize: 13, color: C.onInkMuted }}>
                       {["Starting at $200/mo", "Mississippi & the Southeast"].map(t => (
                         <span key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -671,10 +671,10 @@ export default function Outcomes() {
                 </div>
               </div>
 
-              <div className="reveal reveal-delay-1" style={{ background: C.cream, borderRadius: 20, padding: isMobile ? "28px 22px" : "40px clamp(24px,4vw,44px)" }}>
+              <div className="reveal reveal-delay-1" style={{ background: C.cream, borderRadius: 8, padding: isMobile ? "28px 22px" : "40px clamp(24px,4vw,44px)" }}>
                 {submitted ? (
                   <div style={{ textAlign: "center", padding: "40px 0" }}>
-                    <div style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(226,85,58,0.12)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", color: C.coral }}>
+                    <div style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(59,105,51,0.12)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", color: C.coral }}>
                       <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <h3 className="font-display" style={{ fontSize: 26, fontWeight: 800, color: C.ink, marginBottom: 8, letterSpacing: "-0.015em" }}>We&apos;ll be in touch soon!</h3>
@@ -710,7 +710,7 @@ export default function Outcomes() {
                       <label style={labelStyle}>ABOUT YOUR RESTAURANT</label>
                       <textarea rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS — rely on word of mouth and want to grow..." style={{ ...inp, resize: "none" } as React.CSSProperties} />
                     </div>
-                    <button type="submit" style={{ background: C.coral, color: "#FFF3EC", padding: "15px 24px", borderRadius: 999, fontSize: 15, fontWeight: 800, border: "none", cursor: "pointer", fontFamily: "var(--font-body,system-ui)", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                    <button type="submit" style={{ background: C.coral, color: "#fff8f4", padding: "15px 24px", borderRadius: 4, fontSize: 15, fontWeight: 800, border: "none", cursor: "pointer", fontFamily: "var(--font-body,system-ui)", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                       Get my free revenue audit <IcoArrow />
                     </button>
                     <p style={{ textAlign: "center", fontSize: 12, color: C.muted, margin: 0 }}>No spam. No sales pressure. Just a conversation.</p>
@@ -724,7 +724,7 @@ export default function Outcomes() {
       </main>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer style={{ background: C.ink, padding: "24px", borderTop: "1px solid rgba(251,243,228,0.08)" }}>
+      <footer style={{ background: C.ink, padding: "24px", borderTop: "1px solid rgba(255,248,244,0.08)" }}>
         <div style={{ maxWidth: 1160, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 8 : 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <CompassMark size={26} ring={C.cream} north={C.coral} south={C.cream} hub={C.ink} />
