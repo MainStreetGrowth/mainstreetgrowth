@@ -267,18 +267,18 @@ export default function Outcomes() {
     <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: C.cream, color: C.ink }}>
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 24px", background: "rgba(255,248,244,0.9)", backdropFilter: "blur(10px)", borderBottom: `1px solid rgba(34,26,17,0.08)` }}>
+      <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 24px", background: C.ink, borderBottom: `1px solid rgba(255,255,255,0.08)` }}>
         <div style={{
           maxWidth: 1160, margin: "0 auto",
           display: "flex", alignItems: "center", justifyContent: "space-between",
           height: 62,
         }}>
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <CompassMark size={28} ring={C.ink} north={C.coral} south={C.ink} hub={C.cream} />
-            <span style={{ fontWeight: 800, fontSize: 15, color: C.ink, letterSpacing: "-0.02em" }}>Main Street Compass</span>
+            <CompassMark size={28} ring={C.onInk} north={C.gold} south={C.onInk} hub={C.ink} />
+            <span style={{ fontWeight: 800, fontSize: 15, color: C.onInk, letterSpacing: "-0.02em" }}>Main Street Compass</span>
           </a>
           <a href="#contact" style={{
-            background: C.ink, color: C.onInk,
+            background: C.onInk, color: C.ink,
             padding: "9px 20px", borderRadius: 4, fontSize: 13, fontWeight: 700,
             display: "inline-flex", alignItems: "center", gap: 7,
             textDecoration: "none",
@@ -291,7 +291,7 @@ export default function Outcomes() {
       <main>
 
         {/* ── HERO — asymmetric, outcome-first ─────────────────── */}
-        <section style={{ background: C.cream, padding: isMobile ? "56px 20px 64px" : "88px 24px 96px" }}>
+        <section className="grain" style={{ background: C.ink, padding: isMobile ? "56px 20px 64px" : "88px 24px 96px" }}>
           <div style={{
             maxWidth: 1160, margin: "0 auto",
             display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.15fr 0.85fr",
@@ -300,44 +300,44 @@ export default function Outcomes() {
             {/* Left — headline */}
             <div>
               <div className="reveal">
-                <Kicker>For independent restaurants · MS &amp; the Southeast</Kicker>
+                <Kicker color="#86a496">For independent restaurants · MS &amp; the Southeast</Kicker>
               </div>
               <h1 className="reveal reveal-delay-1" style={{
                 fontSize: isMobile ? "3rem" : "clamp(3.2rem,6vw,5.4rem)",
                 fontWeight: 800, lineHeight: 0.98, letterSpacing: "-0.045em",
-                color: C.ink, margin: "0 0 26px",
+                color: C.onInk, margin: "0 0 26px",
               }}>
                 More full tables.<br />
                 More catering.<br />
-                <span style={{ color: C.coral }}>More </span>
-                <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: C.coral }}>regulars.</span>
+                <span style={{ color: "#86a496" }}>More </span>
+                <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: "#86a496" }}>regulars.</span>
               </h1>
               <p className="reveal reveal-delay-2" style={{
-                fontSize: isMobile ? 17 : 19, color: C.muted, lineHeight: 1.65,
+                fontSize: isMobile ? 17 : 19, color: C.onInkMuted, lineHeight: 1.65,
                 margin: "0 0 34px", maxWidth: 480,
               }}>
                 Your next customer is already searching. We make sure they find you first, book the table, and come back again. You just cook.
               </p>
               <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                 <a href="#contact" style={{
-                  background: C.coral, color: "#fff8f4",
+                  background: C.onInk, color: C.ink,
                   padding: "16px 30px", borderRadius: 4, fontSize: 16, fontWeight: 800,
                   display: "inline-flex", alignItems: "center", gap: 9, textDecoration: "none",
                 }}>
                   Get a free revenue audit <IcoArrow />
                 </a>
                 <a href="#outcomes" style={{
-                  color: C.ink, fontSize: 15, fontWeight: 700, textDecoration: "none",
+                  color: C.onInk, fontSize: 15, fontWeight: 700, textDecoration: "none",
                   display: "inline-flex", alignItems: "center", gap: 7,
-                  borderBottom: `2px solid rgba(34,26,17,0.2)`, paddingBottom: 3,
+                  borderBottom: `2px solid rgba(255,248,244,0.3)`, paddingBottom: 3,
                 }}>
                   See what you get
                 </a>
               </div>
-              <div className="reveal reveal-delay-4" style={{ display: "flex", gap: 18, marginTop: 26, flexWrap: "wrap", fontSize: 13, color: C.muted }}>
+              <div className="reveal reveal-delay-4" style={{ display: "flex", gap: 18, marginTop: 26, flexWrap: "wrap", fontSize: 13, color: C.onInkMuted }}>
                 {["No setup fees", "No contracts", "Live in ~2 weeks"].map(t => (
                   <span key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ color: C.coral, display: "inline-flex" }}><IcoCheck /></span>{t}
+                    <span style={{ color: "#86a496", display: "inline-flex" }}><IcoCheck /></span>{t}
                   </span>
                 ))}
               </div>
@@ -345,7 +345,7 @@ export default function Outcomes() {
 
             {/* Right — oversized stat cluster */}
             <div className="reveal reveal-delay-2" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{ background: C.ink, borderRadius: 8, padding: isMobile ? "28px 26px" : "34px 32px" }}>
+              <div style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, padding: isMobile ? "28px 26px" : "34px 32px" }}>
                 <div className="font-display" style={{ fontSize: isMobile ? "4rem" : "clamp(4rem,7vw,5.6rem)", fontWeight: 800, color: C.gold, lineHeight: 0.9, letterSpacing: "-0.04em", marginBottom: 12 }}>
                   ~$3,100
                 </div>
@@ -354,27 +354,27 @@ export default function Outcomes() {
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                <div style={{ background: C.coral, borderRadius: 8, padding: "24px 22px" }}>
-                  <div className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,3.2rem)", fontWeight: 800, color: "#FFFFFF", lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 8 }}>80%</div>
-                  <div style={{ fontSize: 12.5, color: "rgba(255,248,244,0.85)", lineHeight: 1.45 }}>search online before picking a place to eat</div>
+                <div style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, padding: "24px 22px" }}>
+                  <div className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,3.2rem)", fontWeight: 800, color: "#86a496", lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 8 }}>80%</div>
+                  <div style={{ fontSize: 12.5, color: C.onInkMuted, lineHeight: 1.45 }}>search online before picking a place to eat</div>
                 </div>
-                <div style={{ background: C.blush, borderRadius: 8, padding: "24px 22px", border: `1.5px solid rgba(34,26,17,0.1)` }}>
-                  <div className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,3.2rem)", fontWeight: 800, color: C.coral, lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 8 }}>5–20×</div>
-                  <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.45 }}>more per catering &amp; event booking</div>
+                <div style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, padding: "24px 22px" }}>
+                  <div className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,3.2rem)", fontWeight: 800, color: C.onInk, lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 8 }}>5–20×</div>
+                  <div style={{ fontSize: 12.5, color: C.onInkMuted, lineHeight: 1.45 }}>more per catering &amp; event booking</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Marquee */}
-          <div style={{ maxWidth: 1160, margin: isMobile ? "48px auto 0" : "64px auto 0", borderTop: `1px solid rgba(34,26,17,0.1)`, paddingTop: 22 }}>
-            <p style={{ textAlign: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: C.muted, marginBottom: 16 }}>
+          <div style={{ maxWidth: 1160, margin: isMobile ? "48px auto 0" : "64px auto 0", borderTop: `1px solid rgba(255,255,255,0.1)`, paddingTop: 22 }}>
+            <p style={{ textAlign: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: C.onInkMuted, marginBottom: 16 }}>
               Trusted by local restaurants across the region
             </p>
             <div style={{ overflow: "hidden", WebkitMaskImage: "linear-gradient(to right,transparent,rgba(0,0,0,0.8) 12%,rgba(0,0,0,0.8) 88%,transparent)" }}>
               <div className="marquee-track" style={{ gap: 60 }}>
                 {[...MARQUEE, ...MARQUEE].map((n, i) => (
-                  <span key={i} className="font-display" style={{ fontSize: 15, fontWeight: 700, color: C.ink, opacity: 0.4, whiteSpace: "nowrap" }}>{n}</span>
+                  <span key={i} className="font-display" style={{ fontSize: 15, fontWeight: 700, color: C.onInk, opacity: 0.4, whiteSpace: "nowrap" }}>{n}</span>
                 ))}
               </div>
             </div>
