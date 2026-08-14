@@ -200,7 +200,7 @@ function tileColors(fill: Outcome["fill"]) {
       return { bg: C.blush, text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "cream":
     default:
-      return { bg: C.cream, text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.14)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
+      return { bg: "#FFFFFF", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.14)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
   }
 }
 
@@ -382,7 +382,7 @@ export default function Outcomes() {
         </section>
 
         {/* ── THE OUTCOMES — BENTO GRID centerpiece ────────────── */}
-        <section id="outcomes" style={{ background: C.blush, padding: isMobile ? "68px 20px" : "108px 24px" }}>
+        <section id="outcomes" style={{ background: C.cream, padding: isMobile ? "68px 20px" : "108px 24px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div className="reveal" style={{ maxWidth: 680, marginBottom: isMobile ? 40 : 60 }}>
               <Kicker>What you get</Kicker>
