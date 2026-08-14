@@ -430,26 +430,26 @@ export default function Outcomes() {
               gridTemplateColumns: isMobile ? "1fr" : "1fr 40px 1fr 40px 1.15fr",
               gap: isMobile ? 12 : 0, alignItems: "stretch", marginBottom: 18,
             }}>
-              <div style={{ background: "rgba(255,248,244,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
+              <div style={{ background: "rgba(255,248,244,0.05)", border: "1px solid rgba(255,248,244,0.14)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>More tables filled</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
-                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.42)", lineHeight: 1.6 }}>5 tables/week × $80 avg × 4 weeks</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>5 tables/week × $80 avg × 4 weeks</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.22)" }}>+</span>
+                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.28)" }}>+</span>
               </div>
-              <div style={{ background: "rgba(255,248,244,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
+              <div style={{ background: "rgba(255,248,244,0.05)", border: "1px solid rgba(255,248,244,0.14)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Catering &amp; events won</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: C.gold, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
-                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.42)", lineHeight: 1.6 }}>2 bookings/month × $750 avg</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>2 bookings/month × $750 avg</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.22)" }}>=</span>
+                <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.28)" }}>=</span>
               </div>
-              <div style={{ background: C.gold, borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(34,26,17,0.72)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
-                <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 800, color: C.ink, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
-                <div style={{ fontSize: 12, color: "rgba(34,26,17,0.72)", lineHeight: 1.6 }}>every month</div>
+              <div style={{ background: "rgba(134,164,150,0.14)", border: "1px solid rgba(134,164,150,0.35)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
+                <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 800, color: C.onInk, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
+                <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>every month</div>
               </div>
             </div>
 
