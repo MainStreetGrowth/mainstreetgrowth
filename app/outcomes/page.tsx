@@ -455,8 +455,8 @@ export default function Outcomes() {
 
             {/* Investment aside */}
             <div className="reveal" style={{
-              background: "rgba(255,248,244,0.05)", borderRadius: 18, padding: isMobile ? "22px 24px" : "24px 34px",
-              border: "1px solid rgba(255,248,244,0.1)", marginBottom: isMobile ? 44 : 60,
+              background: "rgba(255,248,244,0.05)", borderRadius: 8, padding: isMobile ? "22px 24px" : "24px 34px",
+              border: "1px solid rgba(255,248,244,0.1)",
               display: "flex", flexDirection: isMobile ? "column" : "row",
               alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: 14,
             }}>
@@ -468,10 +468,15 @@ export default function Outcomes() {
                 Illustrative estimates. Results vary by market and execution.
               </span>
             </div>
+          </div>
+        </section>
 
-            {/* Testimonials */}
-            <div className="reveal" style={{ marginBottom: 26 }}>
-              <h3 style={{ fontSize: "clamp(1.4rem,2.4vw,2rem)", fontWeight: 800, color: C.onInk, letterSpacing: "-0.025em", margin: 0 }}>
+        {/* ── TESTIMONIALS (its own section) ───────────────────── */}
+        <section style={{ background: C.cream, padding: isMobile ? "68px 20px" : "96px 24px" }}>
+          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
+            <div className="reveal" style={{ marginBottom: 30 }}>
+              <Kicker>What restaurants say</Kicker>
+              <h3 style={{ fontSize: "clamp(1.7rem,3vw,2.6rem)", fontWeight: 800, color: C.ink, letterSpacing: "-0.03em", margin: 0 }}>
                 And these outcomes are real.
               </h3>
             </div>
@@ -491,7 +496,7 @@ export default function Outcomes() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {TESTIMONIALS.slice(1).map((t, i) => (
-                  <div key={t.name} className={`lift reveal reveal-delay-${i + 1}`} style={{ background: C.cream, borderRadius: 8, padding: 26, flex: 1 }}>
+                  <div key={t.name} className={`lift reveal reveal-delay-${i + 1}`} style={{ background: "#FFFFFF", borderRadius: 8, padding: 26, flex: 1, border: `1px solid rgba(34,26,17,0.1)` }}>
                     <Stars />
                     <p className="font-display" style={{ fontSize: 16, color: C.ink, lineHeight: 1.6, fontWeight: 600, fontStyle: "italic", margin: "12px 0 16px" }}>&ldquo;{t.quote}&rdquo;</p>
                     <div style={{ fontWeight: 700, color: C.ink, fontSize: 14 }}>{t.name}</div>
@@ -504,7 +509,7 @@ export default function Outcomes() {
         </section>
 
         {/* ── SECONDARY: How it works (quiet) ──────────────────── */}
-        <section style={{ background: C.cream, padding: isMobile ? "56px 20px 20px" : "76px 24px 24px" }}>
+        <section style={{ background: C.blush, padding: isMobile ? "56px 20px 20px" : "76px 24px 24px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div className="reveal" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "baseline", gap: isMobile ? 6 : 16, marginBottom: 26 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral }}>How it works</span>
@@ -528,10 +533,10 @@ export default function Outcomes() {
         </section>
 
         {/* ── SECONDARY: What's included (quiet) ───────────────── */}
-        <section style={{ background: C.cream, padding: isMobile ? "40px 20px 60px" : "48px 24px 84px" }}>
+        <section style={{ background: C.blush, padding: isMobile ? "40px 20px 60px" : "48px 24px 84px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div className="reveal" style={{
-              background: C.blush, borderRadius: 8,
+              background: "#FFFFFF", borderRadius: 8,
               padding: isMobile ? "30px 24px" : "38px 44px",
             }}>
               <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "baseline", gap: isMobile ? 6 : 14, marginBottom: 22 }}>
