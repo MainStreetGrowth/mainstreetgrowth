@@ -197,7 +197,7 @@ function tileColors(fill: Outcome["fill"]) {
     case "coral":
       return { bg: C.coral, text: "#fff8f4", sub: "rgba(255,248,244,0.82)", stat: "#FFFFFF", border: "none", iconBg: "rgba(255,255,255,0.18)", iconColor: "#fff8f4" };
     case "gold":
-      return { bg: C.gold, text: C.ink, sub: "rgba(34,26,17,0.72)", stat: C.ink, border: "none", iconBg: "rgba(34,26,17,0.12)", iconColor: C.ink };
+      return { bg: C.blush, text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "cream":
     default:
       return { bg: C.cream, text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.14)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
@@ -432,7 +432,7 @@ export default function Outcomes() {
             }}>
               <div style={{ background: "rgba(255,248,244,0.06)", borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>More tables filled</div>
-                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: C.coral, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
+                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
                 <div style={{ fontSize: 12, color: "rgba(255,248,244,0.42)", lineHeight: 1.6 }}>5 tables/week × $80 avg × 4 weeks</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
@@ -447,9 +447,9 @@ export default function Outcomes() {
                 <span className="font-display" style={{ fontSize: 30, fontWeight: 800, color: "rgba(255,248,244,0.22)" }}>=</span>
               </div>
               <div style={{ background: C.gold, borderRadius: 18, padding: isMobile ? "26px 24px" : "32px 34px" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(34,26,17,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(34,26,17,0.72)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
                 <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 800, color: C.ink, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
-                <div style={{ fontSize: 12, color: "rgba(34,26,17,0.62)", lineHeight: 1.6 }}>every month</div>
+                <div style={{ fontSize: 12, color: "rgba(34,26,17,0.72)", lineHeight: 1.6 }}>every month</div>
               </div>
             </div>
 
