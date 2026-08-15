@@ -255,7 +255,7 @@ function tileColors(fill: Outcome["fill"]) {
     case "ink":
       return { bg: C.ink, text: C.onInk, sub: C.onInkMuted, stat: C.gold, border: "none", iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "coral":
-      return { bg: C.coral, text: "#fff8f4", sub: "rgba(255,248,244,0.82)", stat: "#FFFFFF", border: "none", iconBg: "rgba(255,255,255,0.18)", iconColor: "#fff8f4" };
+      return { bg: C.ink, text: C.onInk, sub: C.onInkMuted, stat: "#86a496", border: "none", iconBg: "rgba(134,164,150,0.18)", iconColor: "#86a496" };
     case "gold":
       return { bg: C.blush, text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "cream":
