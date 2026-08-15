@@ -85,7 +85,7 @@ export default function ContactForm() {
 
       <div>
         <label style={label} htmlFor="cf-message">About your restaurant</label>
-        <textarea id="cf-message" rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS — we rely on word of mouth and want to grow." style={{ ...inp, resize: "vertical" }} />
+        <textarea id="cf-message" rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS. We rely on word of mouth and want to grow." style={{ ...inp, resize: "vertical" }} />
       </div>
 
       {/* Honeypot — hidden from humans */}

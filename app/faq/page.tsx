@@ -54,8 +54,8 @@ const FAQS: QA[] = [
     q: "What does the monthly price include?",
     a: (
       <>
-        Two simple plans. <strong>Starter is $200/month</strong> — a professional website, domain and hosting, your
-        Google Business Profile, local SEO, and a monthly report. <strong>Growth is $300/month</strong> — everything
+        Two simple plans. <strong>Starter is $200/month</strong>: a professional website, domain and hosting, your
+        Google Business Profile, local SEO, and a monthly report. <strong>Growth is $300/month</strong>: everything
         in Starter plus managed Google Ads, keyword targeting, call and lead tracking, and a catering landing page.
         Both are fully done for you.
       </>
@@ -63,15 +63,15 @@ const FAQS: QA[] = [
   },
   {
     q: "Is the Google Ads budget included in the price?",
-    a: "No — and this is an important one. Your ad budget is separate and it is entirely yours. It goes straight to Google, and we never mark it up or take a cut of it. The monthly fee covers building, running, and optimizing everything; you decide how much you want to spend on ads on top of that.",
+    a: "No, and this is an important one. Your ad budget is separate and it is entirely yours. It goes straight to Google, and we never mark it up or take a cut of it. The monthly fee covers building, running, and optimizing everything; you decide how much you want to spend on ads on top of that.",
   },
   {
     q: "How fast can we go live?",
-    a: "Usually about two weeks. Once we have your details and photos, we build your website, set up your Google profile, and get your local SEO and ads in place — no drawn-out process.",
+    a: "Usually about two weeks. Once we have your details and photos, we build your website, set up your Google profile, and get your local SEO and ads in place, with no drawn-out process.",
   },
   {
     q: "Do I need to switch my POS or register?",
-    a: "No. We are POS-agnostic — keep whatever system you already use. We work around your setup rather than asking you to change how you run the front of house.",
+    a: "No. We are POS-agnostic, so keep whatever system you already use. We work around your setup rather than asking you to change how you run the front of house.",
   },
   {
     q: "Do you do online ordering?",
@@ -79,7 +79,7 @@ const FAQS: QA[] = [
   },
   {
     q: "When will I see results?",
-    a: "We will be honest with you: some things improve within the first few weeks — a stronger Google listing and more calls, for example — while fuller results from SEO and ads build over a few months. Your monthly report shows the progress the whole way, in plain English.",
+    a: "We will be honest with you: some things improve within the first few weeks, like a stronger Google listing and more calls, while fuller results from SEO and ads build over a few months. Your monthly report shows the progress the whole way, in plain English.",
   },
   {
     q: "Can I cancel anytime?",
@@ -125,7 +125,7 @@ export default function FaqPage() {
                 </span>
               </h1>
               <p style={{ fontSize: "clamp(17px,2vw,20px)", color: T.onInkMuted, lineHeight: 1.65, margin: 0, maxWidth: 580 }}>
-                No fine print, no runaround. Here is exactly how the pricing, timeline, and service work — the way we
+                No fine print, no runaround. Here is exactly how the pricing, timeline, and service work, the way we
                 would explain it to a neighbor across the counter.
               </p>
             </div>
@@ -208,8 +208,8 @@ export default function FaqPage() {
               or{" "}
               <a href="/contact" style={{ color: T.green, fontWeight: 700, textDecoration: "none" }}>
                 get in touch
-              </a>{" "}
-              — we are happy to talk it through, no pressure.
+              </a>
+              . We are happy to talk it through, no pressure.
             </p>
           </div>
         </section>
@@ -229,7 +229,7 @@ export default function FaqPage() {
                   margin: "0 auto 20px",
                 }}
               >
-                Let us fill your tables —{" "}
+                Let us fill your tables,{" "}
                 <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>
                   starting with a free audit.
                 </span>

@@ -30,7 +30,7 @@ export default function SiteNav() {
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100, background: T.ink, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 24px", height: 62, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <a href="/" aria-label="Main Street Compass — home" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+        <a href="/" aria-label="Main Street Compass home" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
           <CompassMark size={28} ring={T.onInk} north={T.terracotta} south={T.onInk} hub={T.ink} />
           <span style={{ fontWeight: 800, fontSize: 15, color: T.onInk, letterSpacing: "-0.02em" }}>Main Street Compass</span>
         </a>

@@ -39,7 +39,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "hidden-cost-of-delivery-apps",
-    title: "The hidden cost of delivery-app fees — and how to win back direct customers",
+    title: "The hidden cost of delivery-app fees, and how to win back direct customers",
     excerpt:
       "Delivery apps feel free because you don't write a check, but they quietly take a third of every order and rent you your own customers. Here's the real math, and how to build direct ordering that you actually own.",
     category: "Growth",
@@ -50,7 +50,7 @@ export const POSTS: Post[] = [
       "## The math nobody puts in front of you",
       "The typical commission on a marketplace delivery order runs between 15 and 30 percent, and once you stack delivery fees, service fees, and the promoted-placement fees you pay to not get buried, the effective take on many orders lands near a third of the ticket. On a $40 order, that can be $12 or more gone before you've paid for the food, the labor, or the packaging. Restaurants routinely run 3 to 6 percent net margins in a good month. A 25 percent commission doesn't shave your profit on that order; it erases it, and then some. You can genuinely lose money on delivery volume while feeling busier than ever.",
       "There's a subtler cost that's easier to miss. When an order comes through a marketplace app, the customer isn't yours. You often don't get their name, their email, or their phone number. The app does. So the next time that person is hungry, the app shows them your competitor's promoted listing right next to yours, and you pay again to win back someone who already loved your food. You're not buying a customer. You're renting one, over and over, from a landlord who also rents to everyone on your street.",
-      "## Delivery apps aren't the enemy — dependence is",
+      "## Delivery apps aren't the enemy. Dependence is",
       "This isn't an argument to delete every app tomorrow. For a lot of restaurants, the apps genuinely do reach new people, and that discovery has real value, especially early on. The mistake is treating them as your ordering system instead of as one marketing channel among several. An app that brings you a brand-new customer once has done its job. An app that skims 25 percent off your most loyal regular, who would happily have called you directly, is quietly bleeding you. The goal is to keep the discovery and stop the bleed.",
       "The way you do that is by giving people an easy, obvious way to order directly from you, and then a reason to choose it. Direct online ordering on your own website, with a flat, low monthly cost instead of a per-order cut, means a $40 order stays a $40 order. Across a month of steady takeout, the difference between paying a percentage on every ticket and paying nothing per order adds up to real money, often more than a part-time employee's wages.",
       "## How to win the direct customer back",

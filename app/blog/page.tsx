@@ -5,7 +5,7 @@ import { theme as T } from "../_lib/theme";
 import { POSTS } from "../_lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog — Ideas for filling more tables | Main Street Compass",
+  title: "Blog: Ideas for filling more tables | Main Street Compass",
   description:
     "Practical, no-jargon restaurant-marketing advice for small-town independent restaurants: local SEO, getting found on Google, direct ordering, and websites that fill tables.",
 };

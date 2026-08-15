@@ -6,7 +6,7 @@ import { theme as T, SITE } from "../_lib/theme";
 export const metadata = {
   title: "Contact | Main Street Compass",
   description:
-    "Get a free revenue audit for your restaurant. We'll show you exactly what's costing you customers online — no cost, no obligation. Serving Mississippi & the Southeast.",
+    "Get a free revenue audit for your restaurant. We'll show you exactly what's costing you customers online. No cost, no obligation. Serving Mississippi & the Southeast.",
 };
 
 const Eyebrow = ({ children, color = T.sage }: { children: React.ReactNode; color?: string }) => (
@@ -18,7 +18,7 @@ const Eyebrow = ({ children, color = T.sage }: { children: React.ReactNode; colo
 
 const EXPECT = [
   { n: "01", h: "Free revenue audit", b: "We review your search rankings, Google listing, website, and local competitors before we even get on the phone." },
-  { n: "02", h: "Live in ~2 weeks", b: "Your website, Google profile, and ads are set up and running fast — no long, drawn-out process." },
+  { n: "02", h: "Live in ~2 weeks", b: "Your website, Google profile, and ads are set up and running fast. No long, drawn-out process." },
   { n: "03", h: "No setup fees, no contract", b: "One flat monthly fee. Cancel any time. We earn your business every month." },
 ];
 
@@ -37,7 +37,7 @@ export default function ContactPage() {
                 <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>Starting with a free audit.</span>
               </h1>
               <p style={{ fontSize: 18, color: T.onInkMuted, lineHeight: 1.7, marginTop: 20, maxWidth: 540 }}>
-                Tell us about your restaurant and we&apos;ll audit your current online presence for free — and show you exactly what&apos;s costing you customers.
+                Tell us about your restaurant and we&apos;ll audit your current online presence for free, and show you exactly what&apos;s costing you customers.
               </p>
             </div>
           </div>

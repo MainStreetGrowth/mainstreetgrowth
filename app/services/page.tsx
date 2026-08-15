@@ -6,7 +6,7 @@ import { theme as T } from "../_lib/theme";
 export const metadata = {
   title: "Services | Main Street Compass",
   description:
-    "Everything that gets your restaurant found and chosen — done for you. Professional website, Google Business Profile, local SEO, managed Google Ads, call tracking, and monthly reporting for small-town restaurants.",
+    "Everything that gets your restaurant found and chosen, done for you. Professional website, Google Business Profile, local SEO, managed Google Ads, call tracking, and monthly reporting for small-town restaurants.",
 };
 
 /* ─── Stroke-only line icons (no emoji) ─────────────────────── */
@@ -94,13 +94,13 @@ const SERVICES: { icon: ReactNode; name: string; what: string; why: string; note
   {
     icon: <IcoGlobe />,
     name: "Professional Website",
-    what: "A fast, mobile-first site — hosted and maintained for you.",
-    why: "Most of your customers meet you on a phone first. We build a site that loads fast, looks the part, and makes it effortless to see your menu, book a table, or place a catering request. You never touch hosting, updates, or security — it just works.",
+    what: "A fast, mobile-first site, hosted and maintained for you.",
+    why: "Most of your customers meet you on a phone first. We build a site that loads fast, looks the part, and makes it effortless to see your menu, book a table, or place a catering request. You never touch hosting, updates, or security. It just works.",
   },
   {
     icon: <IcoPin />,
     name: "Google Business Profile",
-    what: "The #1 place locals find restaurants — set up and optimized.",
+    what: "The #1 place locals find restaurants, set up and optimized.",
     why: "When someone nearby searches for a place to eat, your Google profile is what they see first. We claim it, fill it out completely, keep your hours and photos current, and help you stay on top of reviews so you look open, active, and worth a visit.",
   },
   {
@@ -112,9 +112,9 @@ const SERVICES: { icon: ReactNode; name: string; what: string; why: string; note
   {
     icon: <IcoTarget />,
     name: "Managed Google Ads",
-    what: "Reach people searching for a meal right now — we run the whole campaign.",
+    what: "Reach people searching for a meal right now. We run the whole campaign.",
     why: "Ads put you in front of hungry customers at the exact moment they are deciding where to go. We build, run, and tune the campaigns so the money goes to searches that turn into visits, not wasted clicks.",
-    note: "Your ad budget is separate and stays yours — it goes straight to Google and we never mark it up.",
+    note: "Your ad budget is separate and stays yours. It goes straight to Google, and we never mark it up.",
   },
   {
     icon: <IcoChart />,
@@ -125,14 +125,14 @@ const SERVICES: { icon: ReactNode; name: string; what: string; why: string; note
   {
     icon: <IcoWrench />,
     name: "Ongoing Maintenance",
-    what: "Menu updates, seasonal content, and review responses — handled.",
+    what: "Menu updates, seasonal content, and review responses, all handled.",
     why: "Menus change, seasons turn, reviews come in. We keep everything current so your online presence never goes stale. You stay focused on the food and the room; we keep the rest running.",
   },
 ];
 
 const STEPS = [
   { num: "01", title: "We audit your funnel", body: "We map exactly where new customers are slipping away before we build anything." },
-  { num: "02", title: "We build your capture system", body: "Website, Google profile, local SEO, and ads — all live within about two weeks." },
+  { num: "02", title: "We build your capture system", body: "Website, Google profile, local SEO, and ads, all live within about two weeks." },
   { num: "03", title: "You see results every month", body: "A clear monthly report: calls, visits, reservations, and leads. No jargon." },
 ];
 
@@ -161,7 +161,7 @@ export default function ServicesPage() {
                 margin: "0 0 24px",
               }}
             >
-              Everything that gets you found and chosen —{" "}
+              Everything that gets you found and chosen,{" "}
               <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>
                 done for you.
               </span>
@@ -170,7 +170,7 @@ export default function ServicesPage() {
               className="reveal reveal-delay-2"
               style={{ fontSize: 19, color: T.onInkMuted, lineHeight: 1.65, margin: "0 0 32px", maxWidth: 560 }}
             >
-              We handle the whole system that brings new local customers through your door — the website, the
+              We handle the whole system that brings new local customers through your door: the website, the
               Google listing, the search rankings, the ads, and the reporting. One flat monthly fee. You just cook.
             </p>
             <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
@@ -308,7 +308,7 @@ export default function ServicesPage() {
                   Ordering platforms
                 </div>
                 <p style={{ fontSize: 16, color: T.ink, lineHeight: 1.65, margin: 0 }}>
-                  They help you take orders from people who <strong>already know you</strong> — then stack per-order
+                  They help you take orders from people who <strong>already know you</strong>, then stack per-order
                   fees, commissions, and guest charges on top. Useful once someone has found you, but they do nothing
                   to bring a new face through your door.
                 </p>
@@ -321,7 +321,7 @@ export default function ServicesPage() {
                   Main Street Compass
                 </div>
                 <p style={{ fontSize: 16, color: T.onInk, lineHeight: 1.65, margin: 0 }}>
-                  We are built for <strong style={{ color: T.sage }}>acquisition</strong> — getting new local customers to
+                  We are built for <strong style={{ color: T.sage }}>acquisition</strong>: getting new local customers to
                   find you, choose you, and walk in. One flat monthly fee, no per-order cut, no commission. When you grow,
                   we don&apos;t take a bigger slice.
                 </p>
@@ -337,7 +337,7 @@ export default function ServicesPage() {
               <Eyebrow dark>Get started</Eyebrow>
               <Heading dark lead="Let’s fill your tables." accent="Starting with a free audit." />
               <p style={{ fontSize: 18, color: T.onInkMuted, lineHeight: 1.7, margin: "20px 0 32px", maxWidth: 560 }}>
-                We&apos;ll review your search rankings, Google listing, website, and local competitors for free — and show
+                We&apos;ll review your search rankings, Google listing, website, and local competitors for free, and show
                 you exactly what&apos;s costing you customers. No pressure, just a clear picture.
               </p>
               <a

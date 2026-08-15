@@ -6,7 +6,7 @@ import { theme as T } from "../_lib/theme";
 export const metadata = {
   title: "Pricing | Main Street Compass",
   description:
-    "Simple, transparent pricing for restaurant marketing. A flat $200–$300/month management fee — no setup fees, no contracts, no per-order fees, no commission, no guest fees. Keep your POS.",
+    "Simple, transparent pricing for restaurant marketing. A flat $200–$300/month management fee. No setup fees, no contracts, no per-order fees, no commission, no guest fees. Keep your POS.",
 };
 
 /* ─── Stroke-only line icons (no emoji) ─────────────────────── */
@@ -73,7 +73,7 @@ const GROWTH = ["Everything in Starter", "Google Ads management", "Keyword targe
 
 const COMPARE: { label: string; us: string; them: string }[] = [
   { label: "What you pay", us: "One flat monthly fee", them: "Monthly fee + per-order + guest fees" },
-  { label: "Commitment", us: "No contract — cancel any time", them: "Often locked into an annual contract" },
+  { label: "Commitment", us: "No contract, cancel any time", them: "Often locked into an annual contract" },
   { label: "Your POS", us: "Keep the system you already use", them: "Push you onto their platform" },
   { label: "What it’s built to do", us: "Get you found by new customers", them: "Help you take orders" },
 ];
@@ -81,7 +81,7 @@ const COMPARE: { label: string; us: string; them: string }[] = [
 const FAQ: { q: string; a: string }[] = [
   { q: "Are there setup fees?", a: "None. You pay the flat monthly fee and nothing else to get started. We build your website, listings, and campaigns as part of the service." },
   { q: "Am I locked into a contract?", a: "No. Everything is month to month. We earn your business every single month, and you can cancel any time." },
-  { q: "Is the ad budget included?", a: "No — and that is on purpose. Your Google Ads budget is separate, you set it, and it goes straight to Google. We never mark it up or take a cut of it." },
+  { q: "Is the ad budget included?", a: "No, and that is on purpose. Your Google Ads budget is separate, you set it, and it goes straight to Google. We never mark it up or take a cut of it." },
   { q: "Can I cancel?", a: "Yes, any time, no penalty. Give us a heads-up and we will wrap things up cleanly." },
 ];
 
@@ -152,7 +152,7 @@ export default function PricingPage() {
           <div style={SECTION}>
             <div className="reveal" style={{ maxWidth: 680, marginBottom: "clamp(36px,5vw,48px)" }}>
               <Eyebrow>What you actually pay</Eyebrow>
-              <Heading lead="A flat fee —" accent="and your own ad budget." />
+              <Heading lead="A flat fee." accent="And your own ad budget." />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 28 }}>
               <div
@@ -167,7 +167,7 @@ export default function PricingPage() {
                   <span style={{ fontSize: 16, color: T.muted, marginLeft: 6 }}>/month</span>
                 </div>
                 <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.65, margin: 0 }}>
-                  One flat fee covers the whole system — website, Google profile, local SEO, reporting, and (on Growth)
+                  One flat fee covers the whole system: website, Google profile, local SEO, reporting, and (on Growth)
                   managed ads. Done for you, month to month.
                 </p>
               </div>
@@ -182,7 +182,7 @@ export default function PricingPage() {
                   <span className="font-display" style={{ fontSize: 48, fontWeight: 800, color: T.ink, letterSpacing: "-0.04em" }}>You set it</span>
                 </div>
                 <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.65, margin: 0 }}>
-                  If you run Google Ads, your budget is separate and stays yours. It goes straight to Google — we never
+                  If you run Google Ads, your budget is separate and stays yours. It goes straight to Google, and we never
                   mark it up or take a cut. Start small, scale when it works.
                 </p>
               </div>
@@ -317,7 +317,7 @@ export default function PricingPage() {
               ))}
             </div>
             <p style={{ fontSize: 13, color: T.muted, marginTop: 22, maxWidth: 640, lineHeight: 1.6 }}>
-              A fair, general comparison — every platform is different, and this is meant to show the difference in
+              A fair, general comparison. Every platform is different, and this is meant to show the difference in
               approach, not to call anyone out.
             </p>
           </div>
@@ -354,10 +354,10 @@ export default function PricingPage() {
           <div style={{ ...SECTION, maxWidth: 820 }}>
             <div className="reveal">
               <Eyebrow dark>Get started</Eyebrow>
-              <Heading dark lead="See what you’re missing —" accent="free, before you pay a cent." />
+              <Heading dark lead="See what you’re missing." accent="Free, before you pay a cent." />
               <p style={{ fontSize: 18, color: T.onInkMuted, lineHeight: 1.7, margin: "20px 0 32px", maxWidth: 560 }}>
                 We&apos;ll audit your current online presence for free and show you exactly where new customers are
-                slipping away. No contract, no pressure — just a clear picture of what a flat monthly fee could do.
+                slipping away. No contract, no pressure, just a clear picture of what a flat monthly fee could do.
               </p>
               <a
                 href="/contact"

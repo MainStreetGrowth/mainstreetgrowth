@@ -587,7 +587,7 @@ export default function Outcomes() {
                   ].map(({ n, heading, body }) => (
                     <div key={n} style={{ padding: "22px 0", borderTop: "1px solid rgba(255,248,244,0.1)" }}>
                       <div style={{ fontSize: 11, color: C.onInkMuted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>
-                        <span style={{ color: C.gold }}>{n} —</span> What to expect
+                        <span style={{ color: C.gold }}>{n} ·</span> What to expect
                       </div>
                       <div style={{ fontSize: 16, fontWeight: 700, color: C.onInk, marginBottom: 6 }}>{heading}</div>
                       <p style={{ fontSize: 14, color: C.onInkMuted, lineHeight: 1.65, margin: 0 }}>{body}</p>
@@ -642,7 +642,7 @@ export default function Outcomes() {
                     </div>
                     <div>
                       <label style={labelStyle}>ABOUT YOUR RESTAURANT</label>
-                      <textarea rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS — rely on word of mouth and want to grow..." style={{ ...inp, resize: "none" } as React.CSSProperties} />
+                      <textarea rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS. We rely on word of mouth and want to grow..." style={{ ...inp, resize: "none" } as React.CSSProperties} />
                     </div>
                     {/* Honeypot — hidden from humans */}
                     <input type="text" name="company" value={form.company} onChange={up("company")} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />

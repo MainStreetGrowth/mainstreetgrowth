@@ -5,7 +5,7 @@ import { theme as T } from "../_lib/theme";
 export const metadata = {
   title: "About | Main Street Compass",
   description:
-    "We help small-town independent restaurants get found by new local customers and fill more tables — done-for-you websites, Google, and local SEO at a price a family restaurant can afford.",
+    "We help small-town independent restaurants get found by new local customers and fill more tables. We handle done-for-you websites, Google, and local SEO at a price a family restaurant can afford.",
 };
 
 /* ── stroke-only icons (no emoji) ─────────────────────────────── */
@@ -107,7 +107,7 @@ const DIFFERENCES = [
   {
     icon: IcoSearch,
     title: "We get you found, not just orders taken",
-    body: "The big platforms help take an order once someone already knows you. We do the harder, more valuable part — putting you in front of new local customers who are searching right now for a place to eat.",
+    body: "The big platforms help take an order once someone already knows you. We do the harder, more valuable part. We put you in front of new local customers who are searching right now for a place to eat.",
   },
   {
     icon: IcoTag,
@@ -117,7 +117,7 @@ const DIFFERENCES = [
   {
     icon: IcoPin,
     title: "Local and personal",
-    body: "We are rooted in Mississippi and the Southeast. We know small-town main streets, and you talk to a real person who knows your restaurant — not a ticket queue.",
+    body: "We are rooted in Mississippi and the Southeast. We know small-town main streets, and you talk to a real person who knows your restaurant, not a ticket queue.",
   },
   {
     icon: IcoHands,
@@ -130,7 +130,7 @@ const APPROACH = [
   {
     num: "01",
     title: "Audit",
-    body: "We look at how you show up today — search rankings, your Google listing, your website, and the competitors down the street. You get a clear, plain-English picture of where customers are slipping away.",
+    body: "We look at how you show up today: search rankings, your Google listing, your website, and the competitors down the street. You get a clear, plain-English picture of where customers are slipping away.",
   },
   {
     num: "02",
@@ -140,14 +140,14 @@ const APPROACH = [
   {
     num: "03",
     title: "Report",
-    body: "Every month you get a simple report showing what is working — calls, visits, and new customers — with no jargon and no dashboards you need a manual to read.",
+    body: "Every month you get a simple report showing what is working, like calls, visits, and new customers, with no jargon and no dashboards you need a manual to read.",
   },
 ];
 
 const VALUES = [
   { title: "Honesty", body: "We set real expectations and tell you what we would do if it were our own restaurant." },
   { title: "No jargon", body: "Plain English, always. If you cannot understand your report, we have not done our job." },
-  { title: "No long contracts", body: "Month to month. We earn your business every single month, or you walk away — no penalty." },
+  { title: "No long contracts", body: "Month to month. We earn your business every single month, or you walk away with no penalty." },
 ];
 
 export default function AboutPage() {
@@ -202,7 +202,7 @@ export default function AboutPage() {
                 <p style={{ fontSize: 17, lineHeight: 1.8, color: T.ink, margin: "0 0 18px" }}>
                   Most small-town restaurants do not lose customers because of the food. They lose them because,
                   online, they are hard to find. When someone new searches for a place to eat, a stronger listing
-                  down the street shows up first — and that table is gone before anyone tasted a thing.
+                  down the street shows up first, and that table is gone before anyone tasted a thing.
                 </p>
                 <p style={{ fontSize: 17, lineHeight: 1.8, color: T.muted, margin: 0 }}>
                   Meanwhile the big ordering platforms were built for national chains and franchises. They stack a fee
@@ -211,8 +211,8 @@ export default function AboutPage() {
               </div>
               <div className="reveal reveal-delay-1">
                 <p style={{ fontSize: 17, lineHeight: 1.8, color: T.ink, margin: "0 0 18px" }}>
-                  We think that is backwards. The same tools those chains use — a professional website, a well-tended
-                  Google profile, local SEO, and smart, managed ads — work just as well for a single great restaurant.
+                  We think that is backwards. The same tools those chains use work just as well for a single great
+                  restaurant: a professional website, a well-tended Google profile, local SEO, and smart, managed ads.
                   They have simply never been packaged and priced for one.
                 </p>
                 <p style={{ fontSize: 17, lineHeight: 1.8, color: T.muted, margin: 0 }}>
@@ -364,7 +364,7 @@ export default function AboutPage() {
               </p>
               <p style={{ fontSize: 18, lineHeight: 1.8, color: T.muted, margin: 0 }}>
                 When you work with us you get a real person who learns your restaurant, answers the phone, and treats
-                your marketing budget like it is their own. No account-manager roulette, no jargon, no pressure — just
+                your marketing budget like it is their own. No account-manager roulette, no jargon, no pressure. Just
                 steady work that puts more people in your seats.
               </p>
               <p style={{ fontSize: 15, lineHeight: 1.7, color: T.muted, margin: "26px 0 0" }}>
@@ -389,13 +389,13 @@ export default function AboutPage() {
                   margin: "0 auto 20px",
                 }}
               >
-                See exactly what is costing you customers —{" "}
+                See exactly what is costing you customers,{" "}
                 <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>
                   for free.
                 </span>
               </h2>
               <p style={{ fontSize: 17, color: T.onInkMuted, lineHeight: 1.7, margin: "0 auto 32px", maxWidth: 560 }}>
-                We will audit your online presence and show you where new customers are slipping away — before you
+                We will audit your online presence and show you where new customers are slipping away, before you
                 spend a dollar.
               </p>
               <a

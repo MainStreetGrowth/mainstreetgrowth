@@ -5,7 +5,7 @@ import { theme as T } from "../_lib/theme";
 export const metadata = {
   title: "Terms of Service | Main Street Compass",
   description:
-    "The terms that govern your use of Main Street Compass services — fees, cancellation, responsibilities, and more, in plain English.",
+    "The terms that govern your use of Main Street Compass services: fees, cancellation, responsibilities, and more, in plain English.",
 };
 
 /* ── Shared presentational pieces (server-safe, no hooks) ───────── */

@@ -22,11 +22,11 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Main Street Compass — Get Found. Get Customers. Grow.",
+    default: "Main Street Compass: Get Found. Get Customers. Grow.",
     template: "%s | Main Street Compass",
   },
   description:
-    "Affordable digital marketing for small-town independent restaurants. Website, Google Ads, and local search — all done for you, starting at $200/month.",
+    "Affordable digital marketing for small-town independent restaurants. Website, Google Ads, and local search, all done for you, starting at $200/month.",
   applicationName: SITE.name,
   keywords: [
     "restaurant marketing",
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE.name,
     url: SITE.url,
-    title: "Main Street Compass — Get Found. Get Customers. Grow.",
+    title: "Main Street Compass: Get Found. Get Customers. Grow.",
     description:
-      "Done-for-you digital marketing for small-town restaurants. Website, Google Ads, and local search — from $200/month.",
+      "Done-for-you digital marketing for small-town restaurants. Website, Google Ads, and local search, from $200/month.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Main Street Compass — Get Found. Get Customers. Grow.",
+    title: "Main Street Compass: Get Found. Get Customers. Grow.",
     description:
       "Done-for-you digital marketing for small-town restaurants. From $200/month.",
   },
