@@ -309,8 +309,7 @@ export default function Outcomes() {
               }}>
                 More full tables.<br />
                 More catering.<br />
-                <span style={{ color: "#86a496" }}>More </span>
-                <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: "#86a496" }}>regulars.</span>
+                <span style={{ color: "#86a496" }}>More regulars.</span>
               </h1>
               <p className="reveal reveal-delay-2" style={{
                 fontSize: isMobile ? 17 : 19, color: C.onInkMuted, lineHeight: 1.65,
