@@ -1,25 +1,7 @@
 "use client";
-import CompassMark from "./_components/CompassMark";
+import SiteNav from "./_components/SiteNav";
+import SiteFooter from "./_components/SiteFooter";
 import { useState, useEffect } from "react";
-
-/* ─── Scroll reveal hook ───────────────────────────────────── */
-function useScrollReveal() {
-  useEffect(() => {
-    document.documentElement.classList.add("js");
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            observer.unobserve(e.target);
-          }
-        }),
-      { threshold: 0.15, rootMargin: "0px 0px -15% 0px" }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-}
 
 /* ─── Mobile detection hook ────────────────────────────────── */
 function useIsMobile() {
@@ -31,78 +13,6 @@ function useIsMobile() {
     return () => window.removeEventListener("resize", check);
   }, []);
   return isMobile;
-}
-
-/* ─── Lenis smooth scroll (momentum feel, reduced-motion safe) ─ */
-function useLenis() {
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const w = window as unknown as { Lenis?: new (o: object) => { raf: (t: number) => void; destroy: () => void } };
-    let lenis: { raf: (t: number) => void; destroy: () => void } | null = null;
-    let rafId = 0;
-    let killed = false;
-    const add = (src: string) =>
-      new Promise<void>((res, rej) => {
-        const el = document.createElement("script");
-        el.src = src; el.async = true;
-        el.onload = () => res();
-        el.onerror = () => rej(new Error("load"));
-        document.head.appendChild(el);
-      });
-    (async () => {
-      try {
-        if (!w.Lenis) await add("https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js");
-        if (killed || !w.Lenis) return;
-        if (!document.getElementById("lenis-css")) {
-          const st = document.createElement("style");
-          st.id = "lenis-css";
-          st.textContent = "html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}";
-          document.head.appendChild(st);
-        }
-        lenis = new w.Lenis({ lerp: 0.1, smoothWheel: true, autoRaf: false });
-        const raf = (t: number) => { lenis && lenis.raf(t); rafId = requestAnimationFrame(raf); };
-        rafId = requestAnimationFrame(raf);
-      } catch { /* CDN blocked: native scrolling still works */ }
-    })();
-    return () => { killed = true; cancelAnimationFrame(rafId); if (lenis) lenis.destroy(); };
-  }, []);
-}
-
-/* ─── Count-up on [data-count] figures (register-tally) ──────── */
-function useCountUp() {
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-count]"));
-    if (!els.length) return;
-    const fmt = (el: HTMLElement, v: number) =>
-      (el.getAttribute("data-prefix") || "") + Math.round(v).toLocaleString() + (el.getAttribute("data-suffix") || "");
-    if (reduce) {
-      els.forEach((el) => { el.textContent = fmt(el, parseFloat(el.getAttribute("data-count") || "0")); });
-      return;
-    }
-    const rafs: number[] = [];
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          const el = e.target as HTMLElement;
-          io.unobserve(el);
-          const target = parseFloat(el.getAttribute("data-count") || "0");
-          const t0 = performance.now();
-          const dur = 1400;
-          const tick = (now: number) => {
-            const p = Math.min(1, (now - t0) / dur);
-            el.textContent = fmt(el, target * (1 - Math.pow(1 - p, 3)));
-            if (p < 1) rafs.push(requestAnimationFrame(tick));
-          };
-          rafs.push(requestAnimationFrame(tick));
-        });
-      },
-      { threshold: 0.5 }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => { rafs.forEach(cancelAnimationFrame); io.disconnect(); };
-  }, []);
 }
 
 /* ─── Local palette (warm, appetite-driven — NOT the brand tokens) ─ */
@@ -266,9 +176,6 @@ function tileColors(fill: Outcome["fill"]) {
 
 /* ─── Main component ───────────────────────────────────────── */
 export default function Outcomes() {
-  useScrollReveal();
-  useLenis();
-  useCountUp();
   const isMobile = useIsMobile();
 
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "" });
@@ -329,26 +236,7 @@ export default function Outcomes() {
     <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: C.cream, color: C.ink }}>
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{ position: "sticky", top: 0, zIndex: 50, padding: "0 24px", background: C.ink, borderBottom: `1px solid rgba(255,255,255,0.08)` }}>
-        <div style={{
-          maxWidth: 1160, margin: "0 auto",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          height: 62,
-        }}>
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <CompassMark size={28} ring={C.onInk} north={C.gold} south={C.onInk} hub={C.ink} />
-            <span style={{ fontWeight: 800, fontSize: 15, color: C.onInk, letterSpacing: "-0.02em" }}>Main Street Compass</span>
-          </a>
-          <a href="#contact" style={{
-            background: C.onInk, color: C.ink,
-            padding: "9px 20px", borderRadius: 4, fontSize: 13, fontWeight: 700,
-            display: "inline-flex", alignItems: "center", gap: 7,
-            textDecoration: "none",
-          }}>
-            Free revenue audit <IcoArrow />
-          </a>
-        </div>
-      </header>
+      <SiteNav />
 
       <main>
 
@@ -748,17 +636,7 @@ export default function Outcomes() {
       </main>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer style={{ background: C.ink, padding: "24px", borderTop: "1px solid rgba(255,248,244,0.08)" }}>
-        <div style={{ maxWidth: 1160, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 8 : 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <CompassMark size={26} ring={C.cream} north={C.coral} south={C.cream} hub={C.ink} />
-            <span style={{ fontWeight: 800, color: C.onInk, fontSize: 15, letterSpacing: "-0.02em" }}>Main Street Compass</span>
-          </div>
-          <p style={{ fontSize: 12, color: C.onInkMuted, margin: 0, textAlign: isMobile ? "center" : "left" }}>
-            © 2026 Main Street Compass · Serving Mississippi &amp; the Southeast
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
 
     </div>
   );
