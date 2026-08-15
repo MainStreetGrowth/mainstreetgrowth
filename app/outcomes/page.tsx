@@ -159,15 +159,6 @@ const STEPS = [
   },
 ];
 
-const SERVICES = [
-  "Professional website, hosted & maintained",
-  "Google Business Profile management",
-  "Local search (SEO) to rank #1 nearby",
-  "Google Ads to reach ready-to-eat searchers",
-  "Lead & call tracking with monthly reports",
-  "Ongoing menu & content updates",
-];
-
 const TESTIMONIALS = [
   { quote: "We went from invisible to showing up first in Google for our area. Our Friday nights are now fully booked weeks in advance.", name: "Tommy R.", restaurant: "Red River Smokehouse", location: "Natchez, MS" },
   { quote: "I've wasted money on marketing before, so I was skeptical. Within 6 weeks we were getting 30 to 40 extra calls a month.", name: "Maria L.", restaurant: "Delta Blues Café", location: "Greenville, MS" },
@@ -184,10 +175,6 @@ const Kicker = ({ children, color = C.coral }: { children: React.ReactNode; colo
     <span style={{ width: 22, height: 2, background: color, display: "inline-block" }} />
     {children}
   </div>
-);
-
-const Stars = ({ color = C.gold }: { color?: string }) => (
-  <span style={{ color, fontSize: 15, letterSpacing: 1 }}>★★★★★</span>
 );
 
 /* ─── Bento fill helpers ───────────────────────────────────── */
@@ -522,42 +509,8 @@ export default function Outcomes() {
           </div>
         </section>
 
-        {/* ── SECONDARY: What's included (quiet) ───────────────── */}
-        <section style={{ background: C.cream, padding: isMobile ? "60px 20px" : "80px 24px" }}>
-          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
-            <div className="reveal" style={{
-              background: C.blush, borderRadius: 8,
-              padding: isMobile ? "30px 24px" : "38px 44px",
-            }}>
-              <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "baseline", gap: isMobile ? 6 : 14, marginBottom: 22 }}>
-                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.coral }}>What&apos;s included</span>
-                <span className="font-display" style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", fontWeight: 700, color: C.ink, letterSpacing: "-0.015em" }}>
-                  And yes, we handle all of it.
-                </span>
-              </div>
-              <ul style={{
-                listStyle: "none", padding: 0, margin: 0,
-                display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "12px 40px",
-              }}>
-                {SERVICES.map(item => (
-                  <li key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "rgba(34,26,17,0.78)" }}>
-                    <span style={{
-                      width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      background: "rgba(59,105,51,0.14)", color: C.coral,
-                    }}>
-                      <IcoCheck />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
         {/* ── PRICING ─────────────────────────────────────────── */}
-        <section id="pricing" style={{ background: C.blush, padding: isMobile ? "64px 20px" : "96px 24px" }}>
+        <section id="pricing" style={{ background: C.cream, padding: isMobile ? "64px 20px" : "96px 24px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div className="reveal" style={{ textAlign: "center", maxWidth: 560, margin: "0 auto 52px" }}>
               <div style={{ display: "inline-block", background: "#FFFFFF", color: C.ink, padding: "5px 14px", borderRadius: 100, fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 18 }}>Pricing</div>
