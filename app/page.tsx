@@ -178,11 +178,33 @@ function tileColors(fill: Outcome["fill"]) {
 export default function Outcomes() {
   const isMobile = useIsMobile();
 
-  const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "", company: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState("");
 
   const up = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(f => ({ ...f, [k]: e.target.value }));
+
+  const submitForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    setFormError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong.");
+      setSubmitted(true);
+    } catch (err) {
+      setFormError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   const inp: React.CSSProperties = {
     width: "100%", padding: "13px 16px", borderRadius: 8,
@@ -593,7 +615,7 @@ export default function Outcomes() {
                     <p style={{ fontSize: 15, color: C.muted, lineHeight: 1.65 }}>Expect a call or email within one business day.</p>
                   </div>
                 ) : (
-                  <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                  <form onSubmit={submitForm} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                     <div style={{ marginBottom: 4 }}>
                       <h3 className="font-display" style={{ fontSize: 20, fontWeight: 800, color: C.ink, marginBottom: 4, letterSpacing: "-0.015em" }}>Tell us about your restaurant</h3>
                       <p style={{ fontSize: 13, color: C.muted }}>We&apos;ll audit your online presence before we call.</p>
@@ -622,8 +644,13 @@ export default function Outcomes() {
                       <label style={labelStyle}>ABOUT YOUR RESTAURANT</label>
                       <textarea rows={4} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS — rely on word of mouth and want to grow..." style={{ ...inp, resize: "none" } as React.CSSProperties} />
                     </div>
-                    <button type="submit" style={{ background: C.coral, color: "#fff8f4", padding: "15px 24px", borderRadius: 4, fontSize: 15, fontWeight: 800, border: "none", cursor: "pointer", fontFamily: "var(--font-body,system-ui)", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                      Get my free revenue audit <IcoArrow />
+                    {/* Honeypot — hidden from humans */}
+                    <input type="text" name="company" value={form.company} onChange={up("company")} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
+                    {formError && (
+                      <p role="alert" style={{ fontSize: 13, color: "#a3271f", background: "rgba(163,39,31,0.08)", border: "1px solid rgba(163,39,31,0.2)", borderRadius: 4, padding: "10px 12px", margin: 0 }}>{formError}</p>
+                    )}
+                    <button type="submit" disabled={sending} style={{ background: C.coral, color: "#fff8f4", padding: "15px 24px", borderRadius: 4, fontSize: 15, fontWeight: 800, border: "none", cursor: sending ? "default" : "pointer", opacity: sending ? 0.7 : 1, fontFamily: "var(--font-body,system-ui)", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                      {sending ? "Sending…" : <>Get my free revenue audit <IcoArrow /></>}
                     </button>
                     <p style={{ textAlign: "center", fontSize: 12, color: C.muted, margin: 0 }}>No spam. No sales pressure. Just a conversation.</p>
                   </form>
