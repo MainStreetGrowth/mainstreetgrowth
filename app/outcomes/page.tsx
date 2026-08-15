@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 /* ─── Scroll reveal hook ───────────────────────────────────── */
 function useScrollReveal() {
   useEffect(() => {
+    document.documentElement.classList.add("js");
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
@@ -30,6 +31,78 @@ function useIsMobile() {
     return () => window.removeEventListener("resize", check);
   }, []);
   return isMobile;
+}
+
+/* ─── Lenis smooth scroll (momentum feel, reduced-motion safe) ─ */
+function useLenis() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const w = window as unknown as { Lenis?: new (o: object) => { raf: (t: number) => void; destroy: () => void } };
+    let lenis: { raf: (t: number) => void; destroy: () => void } | null = null;
+    let rafId = 0;
+    let killed = false;
+    const add = (src: string) =>
+      new Promise<void>((res, rej) => {
+        const el = document.createElement("script");
+        el.src = src; el.async = true;
+        el.onload = () => res();
+        el.onerror = () => rej(new Error("load"));
+        document.head.appendChild(el);
+      });
+    (async () => {
+      try {
+        if (!w.Lenis) await add("https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js");
+        if (killed || !w.Lenis) return;
+        if (!document.getElementById("lenis-css")) {
+          const st = document.createElement("style");
+          st.id = "lenis-css";
+          st.textContent = "html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}";
+          document.head.appendChild(st);
+        }
+        lenis = new w.Lenis({ lerp: 0.1, smoothWheel: true, autoRaf: false });
+        const raf = (t: number) => { lenis && lenis.raf(t); rafId = requestAnimationFrame(raf); };
+        rafId = requestAnimationFrame(raf);
+      } catch { /* CDN blocked: native scrolling still works */ }
+    })();
+    return () => { killed = true; cancelAnimationFrame(rafId); if (lenis) lenis.destroy(); };
+  }, []);
+}
+
+/* ─── Count-up on [data-count] figures (register-tally) ──────── */
+function useCountUp() {
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-count]"));
+    if (!els.length) return;
+    const fmt = (el: HTMLElement, v: number) =>
+      (el.getAttribute("data-prefix") || "") + Math.round(v).toLocaleString() + (el.getAttribute("data-suffix") || "");
+    if (reduce) {
+      els.forEach((el) => { el.textContent = fmt(el, parseFloat(el.getAttribute("data-count") || "0")); });
+      return;
+    }
+    const rafs: number[] = [];
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          io.unobserve(el);
+          const target = parseFloat(el.getAttribute("data-count") || "0");
+          const t0 = performance.now();
+          const dur = 1400;
+          const tick = (now: number) => {
+            const p = Math.min(1, (now - t0) / dur);
+            el.textContent = fmt(el, target * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) rafs.push(requestAnimationFrame(tick));
+          };
+          rafs.push(requestAnimationFrame(tick));
+        });
+      },
+      { threshold: 0.5 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => { rafs.forEach(cancelAnimationFrame); io.disconnect(); };
+  }, []);
 }
 
 /* ─── Local palette (warm, appetite-driven — NOT the brand tokens) ─ */
@@ -194,6 +267,8 @@ function tileColors(fill: Outcome["fill"]) {
 /* ─── Main component ───────────────────────────────────────── */
 export default function Outcomes() {
   useScrollReveal();
+  useLenis();
+  useCountUp();
   const isMobile = useIsMobile();
 
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "" });
@@ -418,7 +493,7 @@ export default function Outcomes() {
             }}>
               <div style={{ background: "rgba(255,248,244,0.05)", border: "1px solid rgba(255,248,244,0.14)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>More tables filled</div>
-                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
+                <div className="font-display" data-count="1600" data-prefix="$" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,600</div>
                 <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>5 tables/week × $80 avg × 4 weeks</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
@@ -426,7 +501,7 @@ export default function Outcomes() {
               </div>
               <div style={{ background: "rgba(255,248,244,0.05)", border: "1px solid rgba(255,248,244,0.14)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Catering &amp; events won</div>
-                <div className="font-display" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
+                <div className="font-display" data-count="1500" data-prefix="$" style={{ fontSize: "clamp(2.2rem,4vw,3.2rem)", fontWeight: 800, color: "#86a496", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>$1,500</div>
                 <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>2 bookings/month × $750 avg</div>
               </div>
               <div style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
@@ -434,7 +509,7 @@ export default function Outcomes() {
               </div>
               <div style={{ background: "rgba(134,164,150,0.14)", border: "1px solid rgba(134,164,150,0.35)", borderRadius: 8, padding: isMobile ? "26px 24px" : "32px 34px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: C.onInkMuted, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>In your pocket</div>
-                <div className="font-display" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 800, color: C.onInk, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
+                <div className="font-display" data-count="3100" data-prefix="~$" style={{ fontSize: "clamp(2.6rem,5vw,4rem)", fontWeight: 800, color: C.onInk, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 10 }}>~$3,100</div>
                 <div style={{ fontSize: 12, color: "rgba(255,248,244,0.5)", lineHeight: 1.6 }}>every month</div>
               </div>
             </div>
