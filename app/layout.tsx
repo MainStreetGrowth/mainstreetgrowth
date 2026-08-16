@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Source_Serif_4, Work_Sans } from "next/font/google";
 import "./globals.css";
 import SiteMotion from "./_components/SiteMotion";
+import VariantToggle from "./_components/VariantToggle";
 import { SITE } from "./_lib/theme";
 
 const sourceSerif = Source_Serif_4({
@@ -79,6 +80,7 @@ export default function RootLayout({
         />
         {children}
         <SiteMotion />
+        <VariantToggle />
       </body>
     </html>
   );
