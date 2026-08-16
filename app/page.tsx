@@ -163,9 +163,9 @@ const Kicker = ({ children, color = C.coral }: { children: React.ReactNode; colo
 function tileColors(fill: Outcome["fill"]) {
   switch (fill) {
     case "ink":
-      return { bg: C.ink, text: C.onInk, sub: C.onInkMuted, stat: C.gold, border: "none", iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
+      return { bg: "#e7efe8", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(59,105,51,0.12)", iconColor: C.coral };
     case "coral":
-      return { bg: "#c4713e", text: "#fff8f4", sub: "rgba(255,248,244,0.9)", stat: "#FFFFFF", border: "none", iconBg: "rgba(255,255,255,0.2)", iconColor: "#fff8f4" };
+      return { bg: "#f6ddc9", text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(223,135,82,0.2)", iconColor: C.gold };
     case "gold":
       return { bg: C.blush, text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "cream":
