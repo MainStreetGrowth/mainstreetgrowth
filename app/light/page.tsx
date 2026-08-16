@@ -15,75 +15,55 @@ function useIsMobile() {
   return isMobile;
 }
 
-/* ─── Clean / editorial palette (restrained, light) ────────── */
-const L = {
-  paper: "#ffffff",
+/* ─── Palette (warm, friendly, rounded — kukie-inspired) ───── */
+const K = {
+  paper: "#fbfaf7",
+  card: "#ffffff",
+  nested: "#f6f5f0",
   ink: "#1e3a2f",
   green: "#3b6933",
+  greenText: "#2b5226",
   terra: "#df8752",
   terraDeep: "#c4713e",
+  terraText: "#9c5220",
   sage: "#86a496",
+  sageText: "#3f574c",
   linen: "#fcebdc",
-  muted: "rgba(34,26,17,0.58)",
+  muted: "rgba(34,26,17,0.6)",
   faint: "rgba(34,26,17,0.42)",
-  hair: "rgba(34,26,17,0.12)",
-  hairSoft: "rgba(34,26,17,0.08)",
+  line: "rgba(34,26,17,0.09)",
+  shadow: "0 1px 3px rgba(34,26,17,0.05), 0 14px 40px -18px rgba(34,26,17,0.16)",
+  shadowSoft: "0 1px 2px rgba(34,26,17,0.04), 0 8px 24px -14px rgba(34,26,17,0.14)",
 };
 
-/* ─── SVG icons ────────────────────────────────────────────── */
+/* ─── Icons ────────────────────────────────────────────────── */
 const IcoArrow = () => (
-  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.25}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-  </svg>
+  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.25}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
 );
 const IcoCheck = () => (
-  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.75}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-  </svg>
+  <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
 );
 const IcoSearch = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-    <circle cx="11" cy="11" r="8" /><path strokeLinecap="round" d="M21 21l-4.35-4.35" />
-  </svg>
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><circle cx="11" cy="11" r="8" /><path strokeLinecap="round" d="M21 21l-4.35-4.35" /></svg>
 );
 const IcoTable = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4 10h16M4 10l1-4h14l1 4M4 10v2m16-2v2M6 12v6m12-6v6" />
-  </svg>
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><path strokeLinecap="round" strokeLinejoin="round" d="M4 10h16M4 10l1-4h14l1 4M4 10v2m16-2v2M6 12v6m12-6v6" /></svg>
 );
 const IcoCalendar = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-    <rect x="3" y="5" width="18" height="16" rx="2" /><path strokeLinecap="round" d="M3 9h18M8 3v4m8-4v4" />
-  </svg>
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><rect x="3" y="5" width="18" height="16" rx="2" /><path strokeLinecap="round" d="M3 9h18M8 3v4m8-4v4" /></svg>
 );
 const IcoHeart = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M20.8 6.6a5.5 5.5 0 00-7.8 0L12 7.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1 7.8 7.8 7.8-7.8 1-1a5.5 5.5 0 000-7.8z" />
-  </svg>
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><path strokeLinecap="round" strokeLinejoin="round" d="M20.8 6.6a5.5 5.5 0 00-7.8 0L12 7.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1 7.8 7.8 7.8-7.8 1-1a5.5 5.5 0 000-7.8z" /></svg>
+);
+const IcoStar = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z" /></svg>
+);
+const IcoPin = () => (
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></svg>
 );
 
 /* ─── Data ─────────────────────────────────────────────────── */
-const MARQUEE = [
-  "The Magnolia Café", "River Bend BBQ", "Cotton Row Diner",
-  "Delta Blues Kitchen", "Porch & Table", "Red River Smokehouse",
-  "Southern Roots Kitchen", "Main Street Diner",
-];
-
-type Outcome = {
-  icon: () => React.ReactElement;
-  stat: string;
-  statLabel: string;
-  title: string;
-  body: string;
-  accent: "green" | "terra";
-};
-
-const OUTCOMES: Outcome[] = [
-  { icon: IcoSearch, stat: "80%", statLabel: "of diners search online before choosing where to eat", title: "Show up first when locals search", body: "When someone nearby searches for a place to eat, you are the one they find, not your competitor down the street. First page of Google, first pin on the map, first choice for dinner.", accent: "green" },
-  { icon: IcoTable, stat: "$1,600", statLabel: "in extra table bookings a month", title: "Fill your slow nights", body: "Turn empty Tuesday tables into booked ones. Five extra tables a week at an $80 average adds up to about $1,600 more every month.", accent: "terra" },
-  { icon: IcoCalendar, stat: "5–20×", statLabel: "more revenue per catering and event booking", title: "Win catering and private events", body: "Private events, catering jobs, and rehearsal dinners spend 5 to 20 times more than a regular table. Two bookings a month at $750 is another $1,500 in your inbox.", accent: "green" },
-  { icon: IcoHeart, stat: "∞", statLabel: "reasons for your regulars to come back", title: "Turn first-timers into regulars", body: "With your own email list, text list, and loyalty program, you bring your best customers back on your terms instead of hoping they remember you.", accent: "terra" },
-];
+const MARQUEE = ["The Magnolia Café", "River Bend BBQ", "Cotton Row Diner", "Delta Blues Kitchen", "Porch & Table", "Red River Smokehouse", "Southern Roots Kitchen", "Main Street Diner"];
 
 const STEPS = [
   { num: "01", title: "We audit your revenue funnel", body: "We map exactly where customers are slipping away before we build anything." },
@@ -97,20 +77,62 @@ const TESTIMONIALS = [
   { quote: "They built everything in two weeks and handled every detail. I didn't have to think about it once.", name: "James P.", restaurant: "Porch & Table", location: "Tupelo, MS" },
 ];
 
-/* ─── Reusable pieces ──────────────────────────────────────── */
-const Eyebrow = ({ children, color = L.green }: { children: React.ReactNode; color?: string }) => (
-  <div style={{ display: "inline-flex", alignItems: "center", gap: 9, fontSize: 11.5, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color, marginBottom: 22 }}>
-    <span style={{ width: 20, height: 1.5, background: color, display: "inline-block" }} />
-    {children}
+/* ─── Small building blocks ────────────────────────────────── */
+const Pill = ({ children, tone = "green", dot = false }: { children: React.ReactNode; tone?: "green" | "terra" | "sage"; dot?: boolean }) => {
+  const map = {
+    green: { bg: "rgba(59,105,51,0.12)", fg: K.greenText, dot: K.green },
+    terra: { bg: "rgba(223,135,82,0.16)", fg: K.terraText, dot: K.terra },
+    sage: { bg: "rgba(134,164,150,0.2)", fg: K.sageText, dot: K.sage },
+  }[tone];
+  return (
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 6, background: map.bg, color: map.fg, fontSize: 11.5, fontWeight: 700, padding: "4px 10px", borderRadius: 999, whiteSpace: "nowrap" }}>
+      {dot && <span style={{ width: 6, height: 6, borderRadius: 999, background: map.dot }} />}
+      {children}
+    </span>
+  );
+};
+
+const Eyebrow = ({ children, color = K.green }: { children: React.ReactNode; color?: string }) => (
+  <span style={{ display: "inline-block", fontSize: 12, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color }}>{children}</span>
+);
+
+const wrap = (isMobile: boolean): React.CSSProperties => ({ maxWidth: 1120, margin: "0 auto", padding: isMobile ? "0 20px" : "0 32px" });
+
+const cardBase = (radius = 24): React.CSSProperties => ({
+  background: K.card, borderRadius: radius, border: `1px solid ${K.line}`, boxShadow: K.shadowSoft,
+});
+
+/* Feature card w/ labelled header + nested mockup */
+function FeatureCard({ label, icon, tone, title, body, mock, isMobile, span }: {
+  label: string; icon: React.ReactNode; tone: "green" | "terra" | "sage"; title: string; body: string; mock: React.ReactNode; isMobile: boolean; span?: boolean;
+}) {
+  const chipBg = { green: "rgba(59,105,51,0.1)", terra: "rgba(223,135,82,0.14)", sage: "rgba(134,164,150,0.18)" }[tone];
+  const chipFg = { green: K.green, terra: K.terraDeep, sage: K.sageText }[tone];
+  return (
+    <div className="lift" style={{ ...cardBase(24), padding: isMobile ? 20 : 26, gridColumn: span && !isMobile ? "span 2" : "auto", display: "flex", flexDirection: span && !isMobile ? "row" : "column", gap: span && !isMobile ? 40 : 20 }}>
+      <div style={{ flex: span ? "1 1 0" : "none" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 11, marginBottom: 18 }}>
+          <span style={{ width: 38, height: 38, borderRadius: 11, background: chipBg, color: chipFg, display: "flex", alignItems: "center", justifyContent: "center" }}>{icon}</span>
+          <span style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: K.faint }}>{label}</span>
+        </div>
+        <h3 style={{ fontSize: isMobile ? 19 : 21, fontWeight: 800, color: K.ink, letterSpacing: "-0.02em", margin: "0 0 8px", lineHeight: 1.2 }}>{title}</h3>
+        <p style={{ fontSize: 14.5, color: K.muted, lineHeight: 1.6, margin: 0 }}>{body}</p>
+      </div>
+      <div style={{ flex: span ? "1 1 0" : "none", background: K.nested, borderRadius: 16, border: `1px solid ${K.line}`, padding: 16, marginTop: span ? 0 : 4 }}>{mock}</div>
+    </div>
+  );
+}
+
+/* Row used inside mockups */
+const MockRow = ({ left, right, strong = false, mono = false }: { left: React.ReactNode; right?: React.ReactNode; strong?: boolean; mono?: boolean }) => (
+  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "9px 12px", background: strong ? K.card : "transparent", borderRadius: 10, border: strong ? `1px solid ${K.line}` : "1px solid transparent", boxShadow: strong ? K.shadowSoft : "none" }}>
+    <span style={{ fontSize: 13, fontWeight: strong ? 700 : 500, color: strong ? K.ink : K.muted, fontFamily: mono ? "var(--font-mono,ui-monospace,monospace)" : "inherit", display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>{left}</span>
+    {right}
   </div>
 );
 
-const wrap = (isMobile: boolean): React.CSSProperties => ({
-  maxWidth: 1080, margin: "0 auto", padding: isMobile ? "0 22px" : "0 32px",
-});
-
-/* ─── Main component ───────────────────────────────────────── */
-export default function HomeClean() {
+/* ─── Main ─────────────────────────────────────────────────── */
+export default function HomeFresh() {
   const isMobile = useIsMobile();
 
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", message: "", company: "" });
@@ -118,157 +140,227 @@ export default function HomeClean() {
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState("");
 
-  const up = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm(f => ({ ...f, [k]: e.target.value }));
+  const up = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm(f => ({ ...f, [k]: e.target.value }));
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
-    setFormError("");
+    setSending(true); setFormError("");
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong.");
       setSubmitted(true);
     } catch (err) {
       setFormError(err instanceof Error ? err.message : "Something went wrong.");
-    } finally {
-      setSending(false);
-    }
+    } finally { setSending(false); }
   };
 
   const inp: React.CSSProperties = {
-    width: "100%", padding: "12px 0", borderRadius: 0,
-    border: "none", borderBottom: `1.5px solid ${L.hair}`, fontSize: 15,
-    color: L.ink, background: "transparent", outline: "none", boxSizing: "border-box",
-    fontFamily: "var(--font-body,system-ui)", transition: "border-color 0.2s",
+    width: "100%", padding: "13px 15px", borderRadius: 12, border: `1px solid ${K.line}`, fontSize: 14.5,
+    color: K.ink, background: K.paper, outline: "none", boxSizing: "border-box", fontFamily: "var(--font-body,system-ui)",
   };
-  const labelStyle: React.CSSProperties = {
-    display: "block", fontSize: 11, fontWeight: 700, color: L.faint,
-    marginBottom: 6, letterSpacing: "0.1em", textTransform: "uppercase",
-  };
+  const labelStyle: React.CSSProperties = { display: "block", fontSize: 11.5, fontWeight: 700, color: K.faint, marginBottom: 6, letterSpacing: "0.04em" };
 
-  const sectionHead = (kicker: React.ReactNode, lead: string, accentWord: string, accentColor = L.green) => (
-    <div className="reveal" style={{ maxWidth: 680, marginBottom: isMobile ? 44 : 64 }}>
-      <Eyebrow>{kicker}</Eyebrow>
-      <h2 className="font-display" style={{ fontSize: "clamp(2.1rem,4.4vw,3.4rem)", fontWeight: 700, color: L.ink, lineHeight: 1.08, letterSpacing: "-0.02em", margin: 0 }}>
-        {lead}{" "}
-        <span style={{ fontStyle: "italic", color: accentColor }}>{accentWord}</span>
-      </h2>
+  const pillBtn = (filled: boolean): React.CSSProperties => ({
+    display: "inline-flex", alignItems: "center", gap: 9, padding: "14px 26px", borderRadius: 999, fontSize: 15, fontWeight: 700, textDecoration: "none",
+    background: filled ? K.green : K.card, color: filled ? "#fff8f4" : K.ink,
+    border: filled ? "1px solid transparent" : `1px solid ${K.line}`, boxShadow: filled ? "none" : K.shadowSoft,
+  });
+
+  const sectionHead = (kicker: string, lead: React.ReactNode, sub?: string, color = K.green) => (
+    <div className="reveal" style={{ textAlign: "center", maxWidth: 640, margin: "0 auto", marginBottom: isMobile ? 40 : 60 }}>
+      <div style={{ marginBottom: 14 }}><Eyebrow color={color}>{kicker}</Eyebrow></div>
+      <h2 style={{ fontSize: "clamp(2rem,4.2vw,3.1rem)", fontWeight: 800, color: K.ink, lineHeight: 1.08, letterSpacing: "-0.03em", margin: 0 }}>{lead}</h2>
+      {sub && <p style={{ fontSize: 16.5, color: K.muted, lineHeight: 1.6, margin: "16px auto 0", maxWidth: 520 }}>{sub}</p>}
     </div>
   );
 
   return (
-    <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: L.paper, color: L.ink }}>
-
+    <div style={{ fontFamily: "var(--font-body,system-ui)", backgroundColor: K.paper, color: K.ink }}>
       <SiteNav />
-
       <main>
 
-        {/* ── HERO — editorial, centered, airy ─────────────────── */}
-        <section style={{ background: L.paper, padding: isMobile ? "60px 0 56px" : "104px 0 88px" }}>
+        {/* ── HERO — pastel gradient + product mockup ──────────── */}
+        <section style={{
+          background: `radial-gradient(1100px 520px at 78% -8%, rgba(134,164,150,0.28), transparent 60%), radial-gradient(820px 460px at 8% 4%, rgba(223,135,82,0.13), transparent 55%), ${K.paper}`,
+          padding: isMobile ? "48px 0 60px" : "76px 0 92px",
+        }}>
           <div style={{ ...wrap(isMobile), textAlign: "center" }}>
-            <div className="reveal" style={{ display: "flex", justifyContent: "center" }}>
-              <Eyebrow color={L.green}>For independent restaurants · MS &amp; the Southeast</Eyebrow>
+            <div className="reveal" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: K.card, border: `1px solid ${K.line}`, boxShadow: K.shadowSoft, padding: "7px 14px", borderRadius: 999, marginBottom: 26 }}>
+              <span style={{ width: 7, height: 7, borderRadius: 999, background: K.green }} />
+              <span style={{ fontSize: 12.5, fontWeight: 700, color: K.muted }}>For independent restaurants · MS &amp; the Southeast</span>
             </div>
-            <h1 className="reveal reveal-delay-1 font-display" style={{
-              fontSize: isMobile ? "2.9rem" : "clamp(3.4rem,6.6vw,5.8rem)",
-              fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.035em",
-              color: L.ink, margin: "0 auto 26px", maxWidth: 900,
-            }}>
+            <h1 className="reveal reveal-delay-1" style={{ fontSize: isMobile ? "2.8rem" : "clamp(3.2rem,6.2vw,5.2rem)", fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.04em", color: K.ink, margin: "0 auto 22px", maxWidth: 880 }}>
               More full tables. More catering.{" "}
-              <span style={{ fontStyle: "italic", color: L.green }}>More regulars.</span>
+              <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.green }}>More regulars.</span>
             </h1>
-            <p className="reveal reveal-delay-2" style={{
-              fontSize: isMobile ? 17 : 20, color: L.muted, lineHeight: 1.6,
-              margin: "0 auto 36px", maxWidth: 560,
-            }}>
+            <p className="reveal reveal-delay-2" style={{ fontSize: isMobile ? 17 : 19.5, color: K.muted, lineHeight: 1.6, margin: "0 auto 32px", maxWidth: 560 }}>
               Your next customer is already searching. We make sure they find you first, book the table, and come back again. You just cook.
             </p>
-            <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center", justifyContent: "center" }}>
-              <a href="#contact" style={{ background: L.ink, color: "#fff8f4", padding: "15px 30px", borderRadius: 4, fontSize: 15, fontWeight: 700, display: "inline-flex", alignItems: "center", gap: 9, textDecoration: "none" }}>
-                Get a free revenue audit <IcoArrow />
-              </a>
-              <a href="#outcomes" style={{ color: L.ink, fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 7, borderBottom: `1.5px solid ${L.hair}`, paddingBottom: 3 }}>
-                See what you get
-              </a>
+            <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
+              <a href="#contact" style={pillBtn(true)}>Get a free revenue audit <IcoArrow /></a>
+              <a href="#outcomes" style={pillBtn(false)}>See what you get</a>
             </div>
-          </div>
-
-          {/* Stat strip — hairline separated, no boxes */}
-          <div className="reveal reveal-delay-3" style={{ ...wrap(isMobile), marginTop: isMobile ? 52 : 76 }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)",
-              borderTop: `1px solid ${L.hair}`, borderBottom: `1px solid ${L.hair}`,
-            }}>
-              {[
-                { big: "~$3,100", label: "in extra revenue a typical restaurant can capture every month online", color: L.terraDeep },
-                { big: "80%", label: "of diners search online before picking a place to eat", color: L.green },
-                { big: "5–20×", label: "more revenue per catering and event booking", color: L.ink },
-              ].map((s, i) => (
-                <div key={s.big} style={{
-                  padding: isMobile ? "26px 0" : "34px 32px",
-                  borderLeft: !isMobile && i > 0 ? `1px solid ${L.hairSoft}` : "none",
-                  borderTop: isMobile && i > 0 ? `1px solid ${L.hairSoft}` : "none",
-                  textAlign: "center",
-                }}>
-                  <div className="font-display" style={{ fontSize: "clamp(2.4rem,4vw,3.1rem)", fontWeight: 700, color: s.color, letterSpacing: "-0.03em", lineHeight: 1, marginBottom: 10 }}>{s.big}</div>
-                  <div style={{ fontSize: 13, color: L.muted, lineHeight: 1.5, maxWidth: 260, margin: "0 auto" }}>{s.label}</div>
-                </div>
+            <div className="reveal reveal-delay-4" style={{ display: "flex", gap: 18, marginTop: 22, flexWrap: "wrap", justifyContent: "center", fontSize: 13, color: K.muted }}>
+              {["No setup fees", "No contracts", "Live in ~2 weeks"].map(t => (
+                <span key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}><span style={{ color: K.green, display: "inline-flex" }}><IcoCheck /></span>{t}</span>
               ))}
             </div>
           </div>
 
-          {/* Marquee */}
-          <div style={{ ...wrap(isMobile), marginTop: isMobile ? 44 : 60 }}>
-            <p style={{ textAlign: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.16em", color: L.faint, marginBottom: 18 }}>
-              Trusted by local restaurants across the region
-            </p>
+          {/* Product mockup: "you're #1 on Google" search card + toast */}
+          <div className="reveal reveal-delay-3" style={{ ...wrap(isMobile), marginTop: isMobile ? 44 : 60, position: "relative" }}>
+            <div style={{ maxWidth: 620, margin: "0 auto", ...cardBase(20), boxShadow: K.shadow, padding: isMobile ? 16 : 20, position: "relative" }}>
+              {/* search bar */}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, background: K.nested, borderRadius: 12, border: `1px solid ${K.line}`, padding: "11px 14px", marginBottom: 14 }}>
+                <span style={{ color: K.faint }}><IcoSearch /></span>
+                <span style={{ fontSize: 14, color: K.ink, fontFamily: "var(--font-mono,ui-monospace,monospace)" }}>bbq near me</span>
+              </div>
+              {/* results */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                <MockRow left={<><span style={{ width: 8, height: 8, borderRadius: 999, background: K.line }} />County Line BBQ</>} right={<span style={{ fontSize: 12, color: K.faint }}>3.9 ★</span>} />
+                <MockRow strong left={<><span style={{ color: K.terra, display: "inline-flex" }}><IcoStar /></span><span style={{ color: K.ink }}>Red River Smokehouse</span></>} right={<div style={{ display: "flex", gap: 6 }}><Pill tone="green">#1 · You</Pill><Pill tone="terra">4.8 ★</Pill></div>} />
+                <MockRow left={<><span style={{ width: 8, height: 8, borderRadius: 999, background: K.line }} />Smokestack Grill</>} right={<span style={{ fontSize: 12, color: K.faint }}>4.1 ★</span>} />
+              </div>
+              {/* floating toast */}
+              <div style={{ position: "absolute", right: isMobile ? 10 : -26, top: isMobile ? -14 : -22, ...cardBase(14), boxShadow: K.shadow, padding: "11px 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ width: 30, height: 30, borderRadius: 999, background: "rgba(59,105,51,0.12)", color: K.green, display: "flex", alignItems: "center", justifyContent: "center" }}><IcoCheck /></span>
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: K.ink }}>New reservation</div>
+                  <div style={{ fontSize: 11.5, color: K.faint }}>Table for 4 · just now</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* marquee */}
+          <div style={{ ...wrap(isMobile), marginTop: isMobile ? 40 : 56 }}>
+            <p style={{ textAlign: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: K.faint, marginBottom: 16 }}>Trusted by local restaurants across the region</p>
             <div style={{ overflow: "hidden", WebkitMaskImage: "linear-gradient(to right,transparent,rgba(0,0,0,0.8) 12%,rgba(0,0,0,0.8) 88%,transparent)" }}>
-              <div className="marquee-track" style={{ gap: 56 }}>
+              <div className="marquee-track" style={{ gap: 54 }}>
                 {[...MARQUEE, ...MARQUEE].map((n, i) => (
-                  <span key={i} className="font-display" style={{ fontSize: 16, fontWeight: 600, fontStyle: "italic", color: L.ink, opacity: 0.32, whiteSpace: "nowrap" }}>{n}</span>
+                  <span key={i} className="font-display" style={{ fontSize: 16, fontWeight: 600, fontStyle: "italic", color: K.ink, opacity: 0.32, whiteSpace: "nowrap" }}>{n}</span>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── OUTCOMES — editorial index rows ──────────────────── */}
-        <section id="outcomes" style={{ background: L.paper, padding: isMobile ? "56px 0" : "96px 0", borderTop: `1px solid ${L.hair}` }}>
+        {/* ── STATS ────────────────────────────────────────────── */}
+        <section style={{ padding: isMobile ? "8px 0 8px" : "12px 0" }}>
           <div style={wrap(isMobile)}>
-            {sectionHead("What you get", "Four outcomes.", "One system working for you.")}
-            <div style={{ borderTop: `1px solid ${L.hair}` }}>
-              {OUTCOMES.map((o, i) => {
-                const Icon = o.icon;
-                const accent = o.accent === "green" ? L.green : L.terraDeep;
-                return (
-                  <div key={o.title} className={`reveal reveal-delay-${i}`} style={{
-                    display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "80px 200px 1fr",
-                    gap: isMobile ? 12 : 40,
-                    alignItems: "start",
-                    padding: isMobile ? "28px 0" : "38px 0",
-                    borderBottom: `1px solid ${L.hair}`,
-                  }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <span style={{ color: accent }}><Icon /></span>
-                      {isMobile && <span className="font-display" style={{ fontSize: "2.4rem", fontWeight: 700, color: accent, letterSpacing: "-0.03em", lineHeight: 1 }}>{o.stat}</span>}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: 16 }}>
+              {[
+                { big: "~$3,100", label: "in extra revenue a typical restaurant can capture every month online", color: K.terraDeep, count: "3100", prefix: "~$" },
+                { big: "80%", label: "of diners search online before picking a place to eat", color: K.green, count: "80", suffix: "%" },
+                { big: "5–20×", label: "more revenue per catering and event booking", color: K.ink },
+              ].map(s => (
+                <div key={s.big} className="reveal" style={{ ...cardBase(20), padding: isMobile ? "24px 22px" : "28px 26px" }}>
+                  <div className="font-display" data-count={s.count} data-prefix={s.prefix} data-suffix={s.suffix} style={{ fontSize: "clamp(2.2rem,3.6vw,2.9rem)", fontWeight: 800, color: s.color, letterSpacing: "-0.03em", lineHeight: 1, marginBottom: 10 }}>{s.big}</div>
+                  <div style={{ fontSize: 13.5, color: K.muted, lineHeight: 1.5 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURES — bento with nested mockups ─────────────── */}
+        <section id="outcomes" style={{ padding: isMobile ? "56px 0" : "92px 0" }}>
+          <div style={wrap(isMobile)}>
+            {sectionHead("What you get", <>Four outcomes.{" "}<span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.green }}>One system working for you.</span></>, "Everything that gets your restaurant found and booked, built and managed for you.")}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 18 }}>
+              <FeatureCard isMobile={isMobile} span label="Search" tone="green" icon={<IcoSearch />}
+                title="Show up first when locals search"
+                body="When someone nearby searches for a place to eat, you are the one they find. First page of Google, first pin on the map, first choice for dinner."
+                mock={
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, color: K.faint, fontSize: 12, fontFamily: "var(--font-mono,ui-monospace,monospace)" }}><IcoPin /> best restaurant near me</div>
+                    <MockRow strong left={<><span style={{ color: K.terra, display: "inline-flex" }}><IcoStar /></span>Your restaurant</>} right={<Pill tone="green" dot>Ranked #1</Pill>} />
+                    <MockRow left="Competitor down the street" right={<span style={{ fontSize: 12, color: K.faint }}>▼ page 2</span>} />
+                  </div>
+                }
+              />
+              <FeatureCard isMobile={isMobile} label="Tables" tone="terra" icon={<IcoTable />}
+                title="Fill your slow nights"
+                body="Turn empty Tuesday tables into booked ones. Five extra tables a week at an $80 average is about $1,600 more every month."
+                mock={
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <MockRow strong left="Fri · 7:00pm · Party of 4" right={<Pill tone="green" dot>Booked</Pill>} />
+                    <MockRow strong left="Sat · 6:30pm · Party of 6" right={<Pill tone="green" dot>Booked</Pill>} />
+                    <MockRow left="+$1,600 / month" right={<Pill tone="terra">avg</Pill>} />
+                  </div>
+                }
+              />
+              <FeatureCard isMobile={isMobile} label="Catering" tone="sage" icon={<IcoCalendar />}
+                title="Win catering and private events"
+                body="Private events and catering spend 5 to 20 times more than a table. Two bookings a month at $750 is another $1,500 in your inbox."
+                mock={
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <MockRow strong left="Rehearsal dinner · 30 pax" right={<Pill tone="sage" dot>Lead</Pill>} />
+                    <MockRow strong left="Office lunch · catering" right={<Pill tone="sage" dot>Lead</Pill>} />
+                    <MockRow left="Est. value" right={<span style={{ fontSize: 12.5, fontWeight: 700, color: K.terraDeep }}>$1,500+</span>} />
+                  </div>
+                }
+              />
+              <FeatureCard isMobile={isMobile} span label="Regulars" tone="green" icon={<IcoHeart />}
+                title="Turn first-timers into regulars"
+                body="With your own email list, text list, and loyalty program, you bring your best customers back on your terms instead of hoping they remember you."
+                mock={
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: -6 }}>
+                      {[{ i: "TR", c: K.green }, { i: "ML", c: K.terra }, { i: "JP", c: K.sage }, { i: "+", c: K.ink }].map((a, idx) => (
+                        <span key={idx} style={{ width: 34, height: 34, borderRadius: 999, background: a.c, color: "#fff8f4", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, marginLeft: idx ? -8 : 0, border: `2px solid ${K.nested}` }}>{a.i}</span>
+                      ))}
                     </div>
-                    {!isMobile && (
+                    <MockRow strong left="Loyalty · repeat visits" right={<Pill tone="green" dot>+38%</Pill>} />
+                  </div>
+                }
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ── ROI band ─────────────────────────────────────────── */}
+        <section style={{ padding: isMobile ? "56px 0" : "92px 0", background: `radial-gradient(900px 440px at 50% 0%, rgba(134,164,150,0.16), transparent 60%), ${K.paper}` }}>
+          <div style={wrap(isMobile)}>
+            {sectionHead("What it's worth", <>About{" "}<span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.terraDeep }}>$3,100 more</span>{" "}in your pocket, every month.</>, "A conservative picture of what stronger digital capture is worth to a typical small-town restaurant.", K.terraDeep)}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1.1fr", gap: 16, alignItems: "stretch" }}>
+              {[
+                { label: "More tables filled", big: "$1,600", note: "5 tables/week × $80 × 4 weeks", count: "1600", prefix: "$", tone: "green" as const },
+                { label: "Catering and events", big: "$1,500", note: "2 bookings/month × $750 avg", count: "1500", prefix: "$", tone: "green" as const },
+                { label: "In your pocket", big: "~$3,100", note: "every month", count: "3100", prefix: "~$", tone: "terra" as const, strong: true },
+              ].map(c => (
+                <div key={c.label} className="reveal" style={{ ...cardBase(20), padding: isMobile ? "24px 22px" : "30px 28px", background: c.strong ? "rgba(59,105,51,0.06)" : K.card, borderColor: c.strong ? "rgba(59,105,51,0.28)" : K.line }}>
+                  <div style={{ marginBottom: 12 }}><Pill tone={c.tone}>{c.label}</Pill></div>
+                  <div className="font-display" data-count={c.count} data-prefix={c.prefix} style={{ fontSize: c.strong ? "clamp(2.6rem,5vw,3.6rem)" : "clamp(2.2rem,4vw,3rem)", fontWeight: 800, color: c.strong ? K.terraDeep : K.green, letterSpacing: "-0.035em", lineHeight: 1, marginBottom: 8 }}>{c.big}</div>
+                  <div style={{ fontSize: 12.5, color: K.muted }}>{c.note}</div>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ ...cardBase(18), padding: isMobile ? "20px 22px" : "22px 28px", marginTop: 16, display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", justifyContent: "space-between", gap: 12 }}>
+              <p style={{ margin: 0, fontSize: 15, color: K.ink, lineHeight: 1.6, maxWidth: 640 }}>Your investment is just <strong style={{ fontWeight: 800 }}>$200–$300/month</strong>, all done for you. One catering booking pays for months of service.</p>
+              <span style={{ fontSize: 12, color: K.faint, flexShrink: 0, maxWidth: 220 }}>Illustrative estimates. Results vary by market and execution.</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ─────────────────────────────────────── */}
+        <section style={{ padding: isMobile ? "56px 0" : "92px 0" }}>
+          <div style={wrap(isMobile)}>
+            {sectionHead("What restaurants say", <>Real results.{" "}<span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.green }}>Real restaurants.</span></>)}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: 18 }}>
+              {TESTIMONIALS.map((t, i) => {
+                const c = [K.green, K.terra, K.sage][i];
+                return (
+                  <div key={t.name} className={`lift reveal reveal-delay-${i + 1}`} style={{ ...cardBase(20), padding: 26, display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: "flex", gap: 3, color: K.terra, marginBottom: 16 }}>{Array.from({ length: 5 }).map((_, s) => <IcoStar key={s} />)}</div>
+                    <p style={{ fontSize: 15.5, color: K.ink, lineHeight: 1.6, fontWeight: 500, margin: "0 0 22px", flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 11, paddingTop: 18, borderTop: `1px solid ${K.line}` }}>
+                      <span style={{ width: 40, height: 40, borderRadius: 999, background: c, color: "#fff8f4", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 14, flexShrink: 0 }}>{t.name.charAt(0)}</span>
                       <div>
-                        <div className="font-display" style={{ fontSize: "clamp(2.2rem,3.2vw,2.9rem)", fontWeight: 700, color: accent, letterSpacing: "-0.035em", lineHeight: 1, marginBottom: 8 }}>{o.stat}</div>
-                        <div style={{ fontSize: 13, color: L.muted, lineHeight: 1.45 }}>{o.statLabel}</div>
+                        <div style={{ fontWeight: 700, color: K.ink, fontSize: 14 }}>{t.name}</div>
+                        <div style={{ color: K.muted, fontSize: 13 }}>{t.restaurant} · {t.location}</div>
                       </div>
-                    )}
-                    <div>
-                      <h3 className="font-display" style={{ fontSize: "clamp(1.3rem,2vw,1.7rem)", fontWeight: 700, color: L.ink, letterSpacing: "-0.02em", lineHeight: 1.2, margin: "0 0 10px" }}>{o.title}</h3>
-                      <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: L.muted, maxWidth: 560 }}>{o.body}</p>
-                      {isMobile && <div style={{ fontSize: 13, color: L.faint, marginTop: 10 }}>{o.statLabel}</div>}
                     </div>
                   </div>
                 );
@@ -277,229 +369,119 @@ export default function HomeClean() {
           </div>
         </section>
 
-        {/* ── PROOF band — ROI, clean single line ──────────────── */}
-        <section style={{ background: L.paper, padding: isMobile ? "56px 0" : "96px 0", borderTop: `1px solid ${L.hair}` }}>
+        {/* ── HOW IT WORKS ─────────────────────────────────────── */}
+        <section id="how-it-works" style={{ padding: isMobile ? "56px 0" : "92px 0", background: K.paper }}>
           <div style={wrap(isMobile)}>
-            {sectionHead(<>What it&apos;s worth to you</>, "About $3,100 more", "every month.", L.terraDeep)}
-            <div className="reveal" style={{
-              display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "1fr 44px 1fr 44px 1.1fr",
-              gap: isMobile ? 0 : 0, alignItems: "stretch",
-              borderTop: `1px solid ${L.hair}`, borderBottom: `1px solid ${L.hair}`,
-            }}>
-              {[
-                { label: "More tables filled", big: "$1,600", note: "5 tables/week × $80 avg × 4 weeks", count: "1600", prefix: "$", color: L.green },
-                { op: "+" },
-                { label: "Catering and events won", big: "$1,500", note: "2 bookings/month × $750 avg", count: "1500", prefix: "$", color: L.green },
-                { op: "=" },
-                { label: "In your pocket", big: "~$3,100", note: "every month", count: "3100", prefix: "~$", color: L.terraDeep, strong: true },
-              ].map((c, i) =>
-                c.op ? (
-                  <div key={i} style={{ display: isMobile ? "none" : "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span className="font-display" style={{ fontSize: 26, fontWeight: 700, color: L.faint }}>{c.op}</span>
-                  </div>
-                ) : (
-                  <div key={i} style={{
-                    padding: isMobile ? "26px 0" : "34px 30px",
-                    borderTop: isMobile && i > 0 ? `1px solid ${L.hairSoft}` : "none",
-                    background: c.strong ? "rgba(59,105,51,0.05)" : "transparent",
-                  }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: L.faint, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>{c.label}</div>
-                    <div className="font-display" data-count={c.count} data-prefix={c.prefix} style={{ fontSize: c.strong ? "clamp(2.6rem,5vw,3.8rem)" : "clamp(2.2rem,4vw,3rem)", fontWeight: 700, color: c.color, letterSpacing: "-0.035em", lineHeight: 1, marginBottom: 10 }}>{c.big}</div>
-                    <div style={{ fontSize: 12.5, color: L.muted, lineHeight: 1.5 }}>{c.note}</div>
-                  </div>
-                )
-              )}
-            </div>
-            <p className="reveal" style={{ marginTop: 24, fontSize: 15, color: L.muted, lineHeight: 1.65, maxWidth: 680 }}>
-              Your investment is just <strong style={{ color: L.ink, fontWeight: 700 }}>$200–$300/month</strong>, all done for you. One catering booking pays for months of service.
-              <span style={{ display: "block", marginTop: 8, fontSize: 12.5, color: L.faint }}>Illustrative estimates. Results vary by market and execution.</span>
-            </p>
-          </div>
-        </section>
-
-        {/* ── TESTIMONIALS — borderless, hairline ──────────────── */}
-        <section style={{ background: L.paper, padding: isMobile ? "56px 0" : "96px 0", borderTop: `1px solid ${L.hair}` }}>
-          <div style={wrap(isMobile)}>
-            {sectionHead("What restaurants say", "Real results.", "Real restaurants.")}
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 0 : 0 }}>
-              {TESTIMONIALS.map((t, i) => (
-                <div key={t.name} className={`reveal reveal-delay-${i + 1}`} style={{
-                  padding: isMobile ? "28px 0" : "0 32px",
-                  borderTop: isMobile && i > 0 ? `1px solid ${L.hairSoft}` : "none",
-                  borderLeft: !isMobile && i > 0 ? `1px solid ${L.hairSoft}` : "none",
-                  display: "flex", flexDirection: "column",
-                }}>
-                  <span style={{ color: L.terra, fontSize: 15, letterSpacing: 2, marginBottom: 18 }}>★★★★★</span>
-                  <p className="font-display" style={{ fontSize: 17, color: L.ink, lineHeight: 1.55, fontWeight: 500, fontStyle: "italic", margin: "0 0 22px", flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
-                  <div>
-                    <div style={{ fontWeight: 700, color: L.ink, fontSize: 14 }}>{t.name}</div>
-                    <div style={{ color: L.muted, fontSize: 13 }}>{t.restaurant} · {t.location}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── HOW IT WORKS — numbered, airy ────────────────────── */}
-        <section id="how-it-works" style={{ background: L.paper, padding: isMobile ? "56px 0" : "96px 0", borderTop: `1px solid ${L.hair}` }}>
-          <div style={wrap(isMobile)}>
-            {sectionHead("How it works", "Your revenue capture system,", "in three steps.")}
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 44 }}>
+            {sectionHead("How it works", <>Up and running{" "}<span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.green }}>in three steps.</span></>)}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: 18 }}>
               {STEPS.map(({ num, title, body }, i) => (
-                <div key={num} className={`reveal reveal-delay-${i + 1}`}>
-                  <div className="font-display" style={{ fontSize: "2.4rem", fontWeight: 700, color: L.sage, letterSpacing: "-0.02em", lineHeight: 1, marginBottom: 16 }}>{num}</div>
-                  <div style={{ height: 1, background: L.hair, marginBottom: 18 }} />
-                  <h3 className="font-display" style={{ fontSize: 20, fontWeight: 700, color: L.ink, margin: "0 0 10px", letterSpacing: "-0.015em", lineHeight: 1.25 }}>{title}</h3>
-                  <p style={{ fontSize: 14.5, color: L.muted, lineHeight: 1.7, margin: 0, maxWidth: 300 }}>{body}</p>
+                <div key={num} className={`reveal reveal-delay-${i + 1}`} style={{ ...cardBase(20), padding: isMobile ? 24 : 28 }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 42, height: 42, borderRadius: 12, background: "rgba(59,105,51,0.1)", color: K.green, fontWeight: 800, fontSize: 16, marginBottom: 18 }} className="font-display">{num}</span>
+                  <h3 style={{ fontSize: 19, fontWeight: 800, color: K.ink, margin: "0 0 9px", letterSpacing: "-0.015em", lineHeight: 1.25 }}>{title}</h3>
+                  <p style={{ fontSize: 14.5, color: K.muted, lineHeight: 1.65, margin: 0 }}>{body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── PRICING — clean, minimal ─────────────────────────── */}
-        <section id="pricing" style={{ background: L.paper, padding: isMobile ? "56px 0" : "96px 0", borderTop: `1px solid ${L.hair}` }}>
+        {/* ── PRICING ──────────────────────────────────────────── */}
+        <section id="pricing" style={{ padding: isMobile ? "56px 0" : "92px 0" }}>
           <div style={wrap(isMobile)}>
-            {sectionHead("Pricing", "Simple,", "transparent pricing.")}
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 0, borderTop: `1px solid ${L.hair}`, borderBottom: `1px solid ${L.hair}` }}>
+            {sectionHead("Pricing", <>Simple,{" "}<span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.green }}>transparent pricing.</span></>, "No setup fees. No long-term contracts. No surprises. Cancel any time.")}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 20, maxWidth: 860, margin: "0 auto" }}>
               {/* Starter */}
-              <div className="reveal" style={{ padding: isMobile ? "34px 0" : "44px 40px 44px 0", borderBottom: isMobile ? `1px solid ${L.hairSoft}` : "none" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: L.faint, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 16 }}>Starter</div>
-                <div style={{ marginBottom: 6 }}>
-                  <span className="font-display" style={{ fontSize: 52, fontWeight: 700, color: L.ink, letterSpacing: "-0.03em" }}>$200</span>
-                  <span style={{ fontSize: 16, color: L.muted, marginLeft: 4 }}>/month</span>
+              <div className="lift reveal" style={{ ...cardBase(22), padding: isMobile ? 28 : 34 }}>
+                <Pill tone="sage">Starter</Pill>
+                <div style={{ margin: "18px 0 4px" }}>
+                  <span className="font-display" style={{ fontSize: 52, fontWeight: 800, color: K.ink, letterSpacing: "-0.03em" }}>$200</span>
+                  <span style={{ fontSize: 16, color: K.muted, marginLeft: 4 }}>/month</span>
                 </div>
-                <p style={{ fontSize: 14, color: L.muted, margin: "0 0 26px" }}>Get found online</p>
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 30px", display: "flex", flexDirection: "column", gap: 13 }}>
+                <p style={{ fontSize: 14, color: K.muted, margin: "0 0 24px" }}>Get found online</p>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", display: "flex", flexDirection: "column", gap: 12 }}>
                   {["Professional website", "Domain and hosting", "Google Business Profile", "Local SEO", "Monthly report", "2 content updates / month"].map(item => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 14.5, color: L.ink }}>
-                      <span style={{ color: L.green, display: "inline-flex" }}><IcoCheck /></span>{item}
+                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 14.5, color: K.ink }}>
+                      <span style={{ width: 20, height: 20, borderRadius: 999, background: "rgba(59,105,51,0.12)", color: K.green, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><IcoCheck /></span>{item}
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: L.ink, borderBottom: `1.5px solid ${L.ink}`, paddingBottom: 3, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>Get started <IcoArrow /></a>
+                <a href="#contact" style={{ ...pillBtn(false), width: "100%", justifyContent: "center", boxSizing: "border-box" }}>Get started</a>
               </div>
 
               {/* Growth */}
-              <div className="reveal reveal-delay-1" style={{ padding: isMobile ? "34px 0" : "44px 0 44px 40px", borderLeft: !isMobile ? `1px solid ${L.hair}` : "none", position: "relative" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: L.green, textTransform: "uppercase", letterSpacing: "0.12em" }}>Growth</div>
-                  <span style={{ background: "rgba(223,135,82,0.16)", color: L.terraDeep, fontSize: 10.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 3 }}>Most popular</span>
+              <div className="lift reveal reveal-delay-1" style={{ ...cardBase(22), padding: isMobile ? 28 : 34, border: `2px solid ${K.green}`, position: "relative" }}>
+                <div style={{ position: "absolute", top: -13, left: 34 }}><Pill tone="terra" dot>Most popular</Pill></div>
+                <Pill tone="green">Growth</Pill>
+                <div style={{ margin: "18px 0 4px" }}>
+                  <span className="font-display" style={{ fontSize: 52, fontWeight: 800, color: K.ink, letterSpacing: "-0.03em" }}>$300</span>
+                  <span style={{ fontSize: 16, color: K.muted, marginLeft: 4 }}>/month</span>
                 </div>
-                <div style={{ marginBottom: 6 }}>
-                  <span className="font-display" style={{ fontSize: 52, fontWeight: 700, color: L.ink, letterSpacing: "-0.03em" }}>$300</span>
-                  <span style={{ fontSize: 16, color: L.muted, marginLeft: 4 }}>/month</span>
-                </div>
-                <p style={{ fontSize: 14, color: L.muted, margin: "0 0 26px" }}>Full revenue capture system</p>
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 30px", display: "flex", flexDirection: "column", gap: 13 }}>
+                <p style={{ fontSize: 14, color: K.muted, margin: "0 0 24px" }}>Full revenue capture system</p>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", display: "flex", flexDirection: "column", gap: 12 }}>
                   {["Everything in Starter", "Google Ads management", "Keyword targeting", "Call and lead tracking", "Catering landing page", "Unlimited content updates"].map(item => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 14.5, color: L.ink }}>
-                      <span style={{ color: L.green, display: "inline-flex" }}><IcoCheck /></span>{item}
+                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 14.5, color: K.ink }}>
+                      <span style={{ width: 20, height: 20, borderRadius: 999, background: "rgba(59,105,51,0.12)", color: K.green, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><IcoCheck /></span>{item}
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, background: L.green, color: "#fff8f4", borderRadius: 4, padding: "13px 26px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>Get started <IcoArrow /></a>
+                <a href="#contact" style={{ ...pillBtn(true), width: "100%", justifyContent: "center", boxSizing: "border-box" }}>Get started <IcoArrow /></a>
               </div>
             </div>
-            <p style={{ fontSize: 14.5, color: L.muted, marginTop: 24 }}>
-              Not sure which plan fits?{" "}
-              <a href="#contact" style={{ color: L.green, fontWeight: 700, textDecoration: "none" }}>Let&apos;s talk.</a> We&apos;ll help you figure it out.
-            </p>
+            <p style={{ textAlign: "center", fontSize: 14.5, color: K.muted, marginTop: 26 }}>Not sure which plan fits? <a href="#contact" style={{ color: K.green, fontWeight: 700, textDecoration: "none" }}>Let&apos;s talk.</a> We&apos;ll help you figure it out.</p>
           </div>
         </section>
 
-        {/* ── CONTACT — clean, underline inputs ────────────────── */}
-        <section id="contact" style={{ background: L.paper, padding: isMobile ? "56px 0 72px" : "96px 0 112px", borderTop: `1px solid ${L.hair}` }}>
+        {/* ── CTA + CONTACT ────────────────────────────────────── */}
+        <section id="contact" style={{ padding: isMobile ? "12px 0 72px" : "16px 0 104px" }}>
           <div style={wrap(isMobile)}>
-            <div className="reveal" style={{ marginBottom: isMobile ? 40 : 56, maxWidth: 720 }}>
-              <Eyebrow color={L.terraDeep}>Get started</Eyebrow>
-              <h2 className="font-display" style={{ fontSize: "clamp(2.4rem,5vw,4rem)", fontWeight: 700, color: L.ink, lineHeight: 1.04, letterSpacing: "-0.025em", margin: 0 }}>
-                Let&apos;s fill your tables.{" "}
-                <span style={{ fontStyle: "italic", color: L.terraDeep }}>Starting with a free audit.</span>
-              </h2>
-              <p style={{ fontSize: 17, color: L.muted, lineHeight: 1.65, marginTop: 18, maxWidth: 540 }}>
-                We&apos;ll audit your current online presence for free and show you exactly what&apos;s costing you customers. Before we even get on the phone.
-              </p>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "0.9fr 1.1fr", gap: "clamp(40px,6vw,80px)", alignItems: "start" }}>
-              <div className="reveal">
-                {[
-                  { n: "01", heading: "Free revenue audit", body: "We review your search rankings, Google listing, website, and local competitors before we even get on the phone." },
-                  { n: "02", heading: "Live in ~2 weeks", body: "Your website, Google listing, and ads are all live within two weeks. No long drawn-out process." },
-                  { n: "03", heading: "No setup fees", body: "One flat monthly fee. No contracts. Cancel any time. We earn your business every single month." },
-                ].map(({ n, heading, body }) => (
-                  <div key={n} style={{ padding: "20px 0", borderTop: `1px solid ${L.hair}`, display: "grid", gridTemplateColumns: "34px 1fr", gap: 14 }}>
-                    <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: L.terraDeep }}>{n}</span>
-                    <div>
-                      <div style={{ fontSize: 16, fontWeight: 700, color: L.ink, marginBottom: 5 }}>{heading}</div>
-                      <p style={{ fontSize: 14, color: L.muted, lineHeight: 1.6, margin: 0 }}>{body}</p>
-                    </div>
-                  </div>
-                ))}
-                <div style={{ borderTop: `1px solid ${L.hair}`, paddingTop: 18, marginTop: 2, display: "flex", flexWrap: "wrap", gap: 16, fontSize: 13, color: L.muted }}>
-                  {["Starting at $200/mo", "Mississippi and the Southeast"].map(t => (
-                    <span key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ color: L.green, display: "inline-flex" }}><IcoCheck /></span>{t}
-                    </span>
-                  ))}
+            <div style={{ ...cardBase(28), boxShadow: K.shadow, overflow: "hidden", background: `radial-gradient(700px 340px at 82% -10%, rgba(134,164,150,0.22), transparent 60%), radial-gradient(560px 300px at 4% 110%, rgba(223,135,82,0.12), transparent 60%), ${K.card}` }}>
+              <div style={{ padding: isMobile ? "36px 22px" : "56px clamp(28px,5vw,64px)" }}>
+                <div className="reveal" style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 40px" }}>
+                  <div style={{ marginBottom: 14 }}><Eyebrow color={K.terraDeep}>Get started</Eyebrow></div>
+                  <h2 style={{ fontSize: "clamp(2.1rem,4.6vw,3.4rem)", fontWeight: 800, color: K.ink, lineHeight: 1.05, letterSpacing: "-0.03em", margin: 0 }}>
+                    Let&apos;s fill your tables.{" "}
+                    <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: K.terraDeep }}>Starting with a free audit.</span>
+                  </h2>
+                  <p style={{ fontSize: 16.5, color: K.muted, lineHeight: 1.6, margin: "16px auto 0", maxWidth: 520 }}>
+                    We&apos;ll audit your current online presence for free and show you exactly what&apos;s costing you customers. Before we even get on the phone.
+                  </p>
                 </div>
-              </div>
 
-              <div className="reveal reveal-delay-1">
-                {submitted ? (
-                  <div style={{ padding: "48px 0", textAlign: "center" }}>
-                    <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(59,105,51,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 18px", color: L.green }}>
-                      <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    <h3 className="font-display" style={{ fontSize: 26, fontWeight: 700, color: L.ink, marginBottom: 8, letterSpacing: "-0.015em" }}>We&apos;ll be in touch soon.</h3>
-                    <p style={{ fontSize: 15, color: L.muted, lineHeight: 1.65 }}>Expect a call or email within one business day.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={submitForm} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 24 }}>
-                      <div>
-                        <label style={labelStyle}>Your name *</label>
-                        <input type="text" required value={form.name} onChange={up("name")} placeholder="Jane Smith" style={inp} />
+                <div className="reveal reveal-delay-1" style={{ maxWidth: 620, margin: "0 auto" }}>
+                  {submitted ? (
+                    <div style={{ textAlign: "center", padding: "36px 0" }}>
+                      <div style={{ width: 58, height: 58, borderRadius: 999, background: "rgba(59,105,51,0.12)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 18px", color: K.green }}>
+                        <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       </div>
-                      <div>
-                        <label style={labelStyle}>Restaurant name *</label>
-                        <input type="text" required value={form.business} onChange={up("business")} placeholder="Main Street Diner" style={inp} />
-                      </div>
+                      <h3 style={{ fontSize: 24, fontWeight: 800, color: K.ink, marginBottom: 8, letterSpacing: "-0.015em" }}>We&apos;ll be in touch soon.</h3>
+                      <p style={{ fontSize: 15, color: K.muted, lineHeight: 1.6 }}>Expect a call or email within one business day.</p>
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 24 }}>
-                      <div>
-                        <label style={labelStyle}>Email *</label>
-                        <input type="email" required value={form.email} onChange={up("email")} placeholder="you@example.com" style={inp} />
+                  ) : (
+                    <form onSubmit={submitForm} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14 }}>
+                        <div><label style={labelStyle}>Your name *</label><input type="text" required value={form.name} onChange={up("name")} placeholder="Jane Smith" style={inp} /></div>
+                        <div><label style={labelStyle}>Restaurant name *</label><input type="text" required value={form.business} onChange={up("business")} placeholder="Main Street Diner" style={inp} /></div>
                       </div>
-                      <div>
-                        <label style={labelStyle}>Phone</label>
-                        <input type="tel" value={form.phone} onChange={up("phone")} placeholder="(601) 555-0100" style={inp} />
+                      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14 }}>
+                        <div><label style={labelStyle}>Email *</label><input type="email" required value={form.email} onChange={up("email")} placeholder="you@example.com" style={inp} /></div>
+                        <div><label style={labelStyle}>Phone</label><input type="tel" value={form.phone} onChange={up("phone")} placeholder="(601) 555-0100" style={inp} /></div>
                       </div>
-                    </div>
-                    <div>
-                      <label style={labelStyle}>About your restaurant</label>
-                      <textarea rows={3} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS. We rely on word of mouth and want to grow." style={{ ...inp, resize: "none" } as React.CSSProperties} />
-                    </div>
-                    <input type="text" name="company" value={form.company} onChange={up("company")} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
-                    {formError && (
-                      <p role="alert" style={{ fontSize: 13, color: "#a3271f", margin: 0 }}>{formError}</p>
-                    )}
-                    <button type="submit" disabled={sending} style={{ alignSelf: "flex-start", background: L.ink, color: "#fff8f4", padding: "15px 30px", borderRadius: 4, fontSize: 15, fontWeight: 700, border: "none", cursor: sending ? "default" : "pointer", opacity: sending ? 0.7 : 1, fontFamily: "var(--font-body,system-ui)", display: "inline-flex", alignItems: "center", gap: 8, marginTop: 4 }}>
-                      {sending ? "Sending…" : <>Get my free revenue audit <IcoArrow /></>}
-                    </button>
-                    <p style={{ fontSize: 12.5, color: L.faint, margin: 0 }}>No spam. No sales pressure. Just a conversation.</p>
-                  </form>
-                )}
+                      <div><label style={labelStyle}>About your restaurant</label><textarea rows={3} value={form.message} onChange={up("message")} placeholder="e.g. Family BBQ in Hattiesburg, MS. We rely on word of mouth and want to grow." style={{ ...inp, resize: "none" } as React.CSSProperties} /></div>
+                      <input type="text" name="company" value={form.company} onChange={up("company")} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
+                      {formError && <p role="alert" style={{ fontSize: 13, color: "#a3271f", margin: 0 }}>{formError}</p>}
+                      <button type="submit" disabled={sending} style={{ ...pillBtn(true), justifyContent: "center", border: "none", cursor: sending ? "default" : "pointer", opacity: sending ? 0.7 : 1, marginTop: 4 }}>
+                        {sending ? "Sending…" : <>Get my free revenue audit <IcoArrow /></>}
+                      </button>
+                      <p style={{ textAlign: "center", fontSize: 12.5, color: K.faint, margin: 0 }}>No spam. No sales pressure. Just a conversation.</p>
+                    </form>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
       </main>
-
       <SiteFooter />
     </div>
   );
