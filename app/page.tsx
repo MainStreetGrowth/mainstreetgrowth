@@ -163,14 +163,18 @@ const Kicker = ({ children, color = C.coral }: { children: React.ReactNode; colo
 function tileColors(fill: Outcome["fill"]) {
   switch (fill) {
     case "ink":
-      return { bg: "#e7efe8", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(59,105,51,0.12)", iconColor: C.coral };
+      // Big tile — pale green with warm terracotta accents.
+      return { bg: "#e7efe8", text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "coral":
-      return { bg: "#f6ddc9", text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(223,135,82,0.2)", iconColor: C.gold };
+      // White with green accents.
+      return { bg: "#FFFFFF", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
     case "gold":
+      // Linen with terracotta accents.
       return { bg: C.blush, text: C.ink, sub: C.muted, stat: C.gold, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(223,135,82,0.16)", iconColor: C.gold };
     case "cream":
     default:
-      return { bg: "#FFFFFF", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.14)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
+      // Pale green with green accents.
+      return { bg: "#e7efe8", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
   }
 }
 
