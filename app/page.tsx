@@ -162,22 +162,17 @@ const Kicker = ({ children, color = C.coral }: { children: React.ReactNode; colo
 /* ─── Bento fill helpers ───────────────────────────────────── */
 function tileColors(fill: Outcome["fill"]) {
   switch (fill) {
-    // Four distinct, on-brand fills: pale green, linen, white, bold forest-green.
-    // Stat colors use terracotta-deep (#c4713e) on light tiles so the big number
-    // clears AA large-text contrast; body/title text is always ink or cream.
-    case "ink":
-      // Big tile — pale green with terracotta accents.
-      return { bg: "#e7efe8", text: C.ink, sub: C.muted, stat: "#c4713e", border: `1.5px solid rgba(34,26,17,0.1)`, iconBg: "rgba(196,113,62,0.14)", iconColor: "#c4713e" };
-    case "coral":
-      // Linen with green accents.
-      return { bg: C.blush, text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
-    case "gold":
-      // White with terracotta accents.
-      return { bg: "#FFFFFF", text: C.ink, sub: C.muted, stat: "#c4713e", border: `1.5px solid rgba(34,26,17,0.14)`, iconBg: "rgba(196,113,62,0.14)", iconColor: "#c4713e" };
-    case "cream":
+    // All tiles share one on-brand background (white cards on the cream section).
+    // Brand colour comes from the icon + stat accents, which alternate green /
+    // terracotta. Green (#3b6933) and terracotta-deep (#c4713e) both clear AA
+    // contrast on white; body/title text is always ink.
+    case "ink": // T1 big — green accent
+    case "gold": // T3 — green accent
+      return { bg: "#FFFFFF", text: C.ink, sub: C.muted, stat: C.coral, border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(59,105,51,0.1)", iconColor: C.coral };
+    case "coral": // T2 — terracotta accent
+    case "cream": // T4 — terracotta accent
     default:
-      // Bold forest-green anchor with cream text.
-      return { bg: C.coral, text: C.onInk, sub: "rgba(255,248,244,0.88)", stat: "#f6c9a3", border: "none", iconBg: "rgba(255,248,244,0.15)", iconColor: C.onInk };
+      return { bg: "#FFFFFF", text: C.ink, sub: C.muted, stat: "#c4713e", border: `1.5px solid rgba(34,26,17,0.12)`, iconBg: "rgba(196,113,62,0.14)", iconColor: "#c4713e" };
   }
 }
 
