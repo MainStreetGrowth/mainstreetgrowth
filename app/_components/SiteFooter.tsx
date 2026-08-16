@@ -34,20 +34,20 @@ export default function SiteFooter() {
   const link: React.CSSProperties = {
     color: "rgba(255,248,244,0.68)",
     textDecoration: "none",
-    fontSize: 14.5,
-    lineHeight: 2.2,
+    fontSize: 14,
+    lineHeight: 1.9,
   };
   const colTitle: React.CSSProperties = {
     fontSize: 11,
     fontWeight: 700,
-    letterSpacing: "0.14em",
+    letterSpacing: "0.13em",
     textTransform: "uppercase",
     color: T.sage,
-    marginBottom: 14,
+    marginBottom: 10,
   };
   const social: React.CSSProperties = {
-    width: 36,
-    height: 36,
+    width: 32,
+    height: 32,
     borderRadius: "50%",
     border: "1px solid rgba(255,248,244,0.18)",
     display: "flex",
@@ -62,30 +62,26 @@ export default function SiteFooter() {
       {/* thin warm accent to separate from the section above */}
       <div style={{ height: 3, background: `linear-gradient(90deg, ${T.terracotta} 0%, ${T.terracotta} 120px, transparent 120px)` }} />
 
-      <div style={{ maxWidth: 1160, margin: "0 auto", padding: "clamp(56px,7vw,84px) 24px 0" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "clamp(36px,4vw,48px) 24px 0" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "minmax(280px, 1.4fr) repeat(2, minmax(150px, 0.8fr))",
-            gap: "clamp(36px,5vw,64px)",
+            gridTemplateColumns: "minmax(240px, 1fr) auto auto",
+            columnGap: "clamp(40px,6vw,88px)",
+            rowGap: 32,
+            alignItems: "start",
           }}
         >
-          {/* Brand statement */}
-          <div style={{ maxWidth: 380 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 11, marginBottom: 22 }}>
-              <CompassMark size={32} ring={T.cream} north={T.terracotta} south={T.cream} hub={footerBg} />
-              <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: "-0.02em" }}>{SITE.name}</span>
+          {/* Brand */}
+          <div style={{ maxWidth: 340 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+              <CompassMark size={28} ring={T.cream} north={T.terracotta} south={T.cream} hub={footerBg} />
+              <span style={{ fontWeight: 800, fontSize: 16, letterSpacing: "-0.02em" }}>{SITE.name}</span>
             </div>
-            <p
-              className="font-display"
-              style={{ fontSize: "clamp(1.5rem,2.2vw,1.9rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", margin: "0 0 20px", color: T.cream }}
-            >
-              Get found. Get customers. Grow.
-            </p>
-            <p style={{ fontSize: 14.5, color: "rgba(255,248,244,0.6)", lineHeight: 1.7, margin: "0 0 26px", maxWidth: 320 }}>
+            <p style={{ fontSize: 14, color: "rgba(255,248,244,0.6)", lineHeight: 1.65, margin: "0 0 16px", maxWidth: 300 }}>
               {SITE.tagline} Serving {SITE.area}.
             </p>
-            <div style={{ display: "flex", gap: 10 }}>
+            <div style={{ display: "flex", gap: 9 }}>
               <a href={SITE.social.facebook} aria-label="Facebook" style={social}><IcoFacebook /></a>
               <a href={SITE.social.instagram} aria-label="Instagram" style={social}><IcoInstagram /></a>
             </div>
@@ -105,34 +101,13 @@ export default function SiteFooter() {
             <a href={SITE.phoneHref} style={{ ...link, display: "block" }}>{SITE.phone}</a>
             <a href={`mailto:${SITE.email}`} style={{ ...link, display: "block", wordBreak: "break-word" }}>{SITE.email}</a>
             <div style={{ ...link }}>{SITE.area}</div>
-            <a
-              href="/contact"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                marginTop: 18,
-                background: T.terracotta,
-                color: "#3a1e0e",
-                padding: "11px 18px",
-                borderRadius: 4,
-                fontSize: 13,
-                fontWeight: 800,
-                textDecoration: "none",
-              }}
-            >
-              Free revenue audit
-              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
           </div>
         </div>
 
         <div
           style={{
-            marginTop: "clamp(44px,5vw,60px)",
-            padding: "22px 0",
+            marginTop: "clamp(28px,3.5vw,40px)",
+            padding: "18px 0",
             borderTop: "1px solid rgba(255,248,244,0.1)",
             display: "flex",
             flexWrap: "wrap",
