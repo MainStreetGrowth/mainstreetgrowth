@@ -66,8 +66,10 @@ export default function SiteFooter() {
     textDecoration: "none",
   };
 
+  // Deeper shade of the brand forest — same hue family, reads as depth (not a foreign block).
+  const footerBg = "#16291f";
   return (
-    <footer style={{ background: T.charcoal, color: T.onInk, borderTop: "1px solid rgba(255,248,244,0.08)" }}>
+    <footer style={{ background: footerBg, color: T.onInk, borderTop: "1px solid rgba(255,248,244,0.1)" }}>
       {/* thin warm accent to separate from the section above */}
       <div style={{ height: 3, background: `linear-gradient(90deg, ${T.terracotta} 0%, ${T.terracotta} 120px, transparent 120px)` }} />
 
@@ -76,7 +78,7 @@ export default function SiteFooter() {
           {/* Brand */}
           <div style={{ flex: "1 1 300px", maxWidth: 360 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <CompassMark size={30} ring={T.cream} north={T.terracotta} south={T.cream} hub={T.charcoal} />
+              <CompassMark size={30} ring={T.cream} north={T.terracotta} south={T.cream} hub={footerBg} />
               <span style={{ fontWeight: 800, fontSize: 16, letterSpacing: "-0.02em" }}>{SITE.name}</span>
             </div>
             <p style={{ fontSize: 14.5, color: "rgba(255,248,244,0.62)", lineHeight: 1.75, margin: "0 0 22px", maxWidth: 300 }}>
