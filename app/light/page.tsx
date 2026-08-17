@@ -1,6 +1,6 @@
 "use client";
-import SiteNav from "../_components/SiteNav";
-import SiteFooter from "../_components/SiteFooter";
+import SiteNav from "../_components/SiteNavLight";
+import SiteFooter from "../_components/SiteFooterLight";
 import { useState, useEffect } from "react";
 
 /* ─── Mobile detection hook ────────────────────────────────── */
@@ -27,7 +27,8 @@ const K = {
   sageText: "#3f574c",
   linen: "#fcebdc",
   card: "#ffffff",
-  page: "#fcfbf8",
+  page: "#ffffff",
+  panel: "#f7f8f6",
   muted: "rgba(22,38,29,0.62)",
   faint: "rgba(22,38,29,0.42)",
   line: "rgba(22,38,29,0.08)",
