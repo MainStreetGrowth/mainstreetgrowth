@@ -139,7 +139,7 @@ const CSS = `
 .kk .float.res{top:-20px;right:-18px}
 .kk .float.rev{bottom:-20px;left:-22px}
 /* Hero stat panel (replaces the photo) — clean "by the numbers" card */
-.kk .statpanel{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,.05), 0 34px 64px -30px rgba(0,0,0,.24);padding:clamp(26px,2.8vw,40px)}
+.kk .statpanel{background:linear-gradient(160deg, rgba(255,255,255,.66), rgba(255,255,255,.40));backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border:1px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,.04), 0 34px 64px -30px rgba(22,38,29,.28), inset 0 1px 0 rgba(255,255,255,.7);padding:clamp(26px,2.8vw,40px)}
 .kk .stat-hero{padding-bottom:clamp(20px,2.2vw,28px);border-bottom:1px solid var(--line)}
 .kk .sh-num{font-weight:800;font-size:clamp(3rem,5.4vw,4.4rem);letter-spacing:-.045em;line-height:.95;color:var(--accent);margin-bottom:12px}
 .kk .sh-lab{font-size:15px;color:var(--body);line-height:1.5;max-width:360px}
