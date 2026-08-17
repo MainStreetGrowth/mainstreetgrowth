@@ -365,7 +365,6 @@ const BODY = `
           <div class="bignum"><b style="color:var(--p-pink-fg)">+38%</b><span>more repeat visits</span></div>
           <div class="mrow strong"><span class="l"><span class="av-sm" style="background:var(--accent)">TR</span>Tommy R.</span><span class="pill pink"><span class="dot"></span>Regular · 12</span></div>
           <div class="mrow strong"><span class="l"><span class="av-sm" style="background:var(--p-green-fg)">ML</span>Maria L.</span><span class="pill pink"><span class="dot"></span>Regular · 9</span></div>
-          <div class="mrow"><span class="l"><span class="av-sm" style="background:var(--p-purple-fg)">JP</span>James P.</span><span style="font-size:12px;color:var(--faint)">7 visits</span></div>
         </div>
       </div>
     </div>
