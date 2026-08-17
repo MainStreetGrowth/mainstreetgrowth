@@ -399,7 +399,7 @@ const BODY = `
   </div>
 </section>
 
-<section class="block" style="padding-top:0" id="pricing">
+<section class="block" id="pricing">
   <div class="inner">
     <div class="sec-head rv"><span class="eyebrow">PRICING</span><h2>Simple, <span class="accent">transparent pricing.</span></h2><p>No setup fees. No long-term contracts. No surprises. Cancel any time.</p></div>
     <div class="price-grid">
