@@ -44,10 +44,10 @@ export default function SiteNavLight() {
   return (
     <header style={{
       position: "sticky", top: 0, zIndex: 100,
-      background: scrolled ? "rgba(255,255,255,0.82)" : "transparent",
-      backdropFilter: scrolled ? "saturate(1.1) blur(10px)" : "none",
-      borderBottom: scrolled ? "1px solid rgba(22,38,29,0.06)" : "1px solid transparent",
-      transition: "background 0.2s, border-color 0.2s",
+      background: "rgba(255,255,255,0.9)",
+      backdropFilter: "saturate(1.1) blur(10px)",
+      borderBottom: scrolled ? "1px solid rgba(22,38,29,0.07)" : "1px solid transparent",
+      transition: "border-color 0.2s",
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 74, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <a href="/light" aria-label="Main Street Compass home" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
@@ -60,6 +60,7 @@ export default function SiteNavLight() {
             {NAV_LINKS.map(({ href, label }) => (
               <a key={href} href={href} style={{ fontSize: 14.5, fontWeight: 600, textDecoration: "none", color: MUTED }}>{label}</a>
             ))}
+            <a href="tel:+16015550100" style={{ fontSize: 14.5, fontWeight: 700, textDecoration: "none", color: INK }}>Call us</a>
             <a href="/contact" style={cta}>Get a free audit <Arrow /></a>
           </nav>
         )}

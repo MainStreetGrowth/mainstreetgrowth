@@ -169,7 +169,7 @@ export default function HomeFresh() {
                     <span style={{ width: 7, height: 7, borderRadius: 999, background: K.green }} />
                     <span style={{ fontSize: 12.5, fontWeight: 700, color: K.muted }}>Independent restaurants · MS &amp; the Southeast</span>
                   </div>
-                  <h1 className="reveal reveal-delay-1" style={{ fontSize: isMobile ? "2.9rem" : "clamp(3.2rem,5.2vw,4.9rem)", fontWeight: 800, lineHeight: 0.98, letterSpacing: "-0.045em", color: K.ink, margin: "0 0 22px" }}>
+                  <h1 className="reveal reveal-delay-1" style={{ fontSize: isMobile ? "3.1rem" : "clamp(3.6rem,5.8vw,5.4rem)", fontWeight: 800, lineHeight: 0.96, letterSpacing: "-0.05em", color: K.ink, margin: "0 0 22px" }}>
                     More full tables.<br />
                     More catering.<br />
                     <span style={{ color: K.green }}>More regulars.</span>
@@ -188,32 +188,15 @@ export default function HomeFresh() {
                   </div>
                 </div>
 
-                {/* Right — product visual + floating chips */}
-                <div className="reveal reveal-delay-2" style={{ position: "relative", marginTop: isMobile ? 14 : 0 }}>
-                  <div style={{ ...cardBase(22), boxShadow: K.shadow, padding: isMobile ? 16 : 20 }}>
-                    {/* search bar */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, background: K.page, borderRadius: 12, border: `1px solid ${K.line}`, padding: "11px 14px", marginBottom: 14 }}>
-                      <span style={{ color: K.faint }}><IcoSearch /></span>
-                      <span style={{ fontSize: 14.5, color: K.ink }}>restaurants near me</span>
-                    </div>
-                    {/* listing */}
-                    <div style={{ padding: "4px 4px 2px" }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 6 }}>
-                        <div style={{ fontSize: 17, fontWeight: 800, color: K.ink }}>Red River Smokehouse</div>
-                        <Pill tone="green" dot>#1 nearby</Pill>
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14, fontSize: 13, color: K.muted }}>
-                        <span style={{ display: "inline-flex", gap: 1, color: K.terra }}>{Array.from({ length: 5 }).map((_, s) => <IcoStar key={s} />)}</span>
-                        <strong style={{ color: K.ink }}>4.8</strong> (212) · $$ · BBQ
-                      </div>
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
-                        {["linear-gradient(135deg,#e8d6c4,#d8b48f)", "linear-gradient(135deg,#dfe8de,#a8c3b0)", "linear-gradient(135deg,#f0ddc8,#e0a875)"].map((g, i) => (<div key={i} style={{ height: 58, borderRadius: 10, background: g }} />))}
-                      </div>
-                      <div style={{ display: "flex", gap: 8 }}>
-                        <span style={{ flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 0", borderRadius: 10, background: "rgba(59,105,51,0.1)", color: K.green, fontSize: 13, fontWeight: 700 }}><IcoPin /> Directions</span>
-                        <span style={{ flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 0", borderRadius: 10, background: "rgba(223,135,82,0.14)", color: K.terraDeep, fontSize: 13, fontWeight: 700 }}><IcoPhone /> Call</span>
-                      </div>
-                    </div>
+                {/* Right — lifestyle photo + floating chips */}
+                <div className="reveal reveal-delay-2" style={{ position: "relative", marginTop: isMobile ? 18 : 0 }}>
+                  <div style={{ borderRadius: 26, overflow: "hidden", boxShadow: K.shadow, border: "1px solid rgba(255,255,255,0.6)", background: "linear-gradient(135deg,#e9dbc9,#cb7f4e)", aspectRatio: isMobile ? "16/12" : "5/6" }}>
+                    {/* Placeholder lifestyle photo — swap for a real photo of the client's restaurant. */}
+                    <img
+                      src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                      alt="A warm, busy neighborhood restaurant"
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
                   </div>
                   {/* floating chip: reservation */}
                   <div style={{ position: "absolute", top: isMobile ? -12 : -20, right: isMobile ? 8 : -18, background: K.card, borderRadius: 14, boxShadow: K.chip, border: `1px solid ${K.line}`, padding: "10px 13px", display: "flex", alignItems: "center", gap: 10 }}>
