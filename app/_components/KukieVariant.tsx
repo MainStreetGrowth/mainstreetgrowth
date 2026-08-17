@@ -468,7 +468,7 @@ const BODY = `
     <div class="cta-panel rv">
       <span class="eyebrow">GET STARTED</span>
       <h2>Let's fill your tables. <span class="accent">Starting with a free audit.</span></h2>
-      <p>We'll audit your current online presence for free and show you exactly what's costing you customers. Before we even get on the phone.</p>
+      <p>We'll audit your current online presence for free and show you exactly what's costing you customers.<br>Before we even get on the phone.</p>
       <a class="btn btn-primary" href="/contact" style="font-size:16px;padding:16px 30px">Get a free revenue audit ${ARROW}</a>
     </div>
   </div>
