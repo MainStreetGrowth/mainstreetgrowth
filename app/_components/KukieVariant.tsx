@@ -72,8 +72,8 @@ const CSS = `
 .kk *{box-sizing:border-box;margin:0;padding:0}
 .kk a{text-decoration:none;color:inherit}
 .kk img{display:block;max-width:100%}
-.kk .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.kk .inner{max-width:1080px;margin:0 auto;padding:0 24px}
+.kk .wrap{max-width:1600px;margin:0 auto;padding:0 clamp(18px,2.6vw,40px)}
+.kk .inner{max-width:1340px;margin:0 auto;padding:0 clamp(18px,2.6vw,40px)}
 .kk .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;border-radius:12px;padding:14px 24px;cursor:pointer;border:none;transition:transform .15s, box-shadow .15s, background .15s}
 .kk .btn-primary{background:var(--accent);color:#fff;box-shadow:0 12px 26px -12px var(--accent-glow)}
 .kk .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
@@ -125,11 +125,11 @@ const CSS = `
 .kk .float.res{top:-20px;right:-18px}
 .kk .float.rev{bottom:-20px;left:-22px}
 @media(max-width:900px){.kk .hero-grid{grid-template-columns:1fr;gap:44px}.kk .hero h1{font-size:3.1rem}.kk .float.res{right:8px}.kk .float.rev{left:6px}}
-.kk .marquee{padding:44px 0 8px}
-.kk .marquee p{text-align:center;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin-bottom:18px}
+.kk .marquee{padding:clamp(48px,6vw,80px) 0 clamp(56px,7vw,88px)}
+.kk .marquee p{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin-bottom:26px}
 .kk .marq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
-.kk .marq-track{display:flex;gap:56px;width:max-content;animation:kkscroll 32s linear infinite}
-.kk .marq-track span{font-size:17px;font-weight:600;font-style:italic;color:var(--ink);opacity:.32;white-space:nowrap}
+.kk .marq-track{display:flex;align-items:center;gap:60px;width:max-content;padding:8px 0;animation:kkscroll 34s linear infinite}
+.kk .marq-track span{font-size:clamp(19px,1.7vw,24px);font-weight:600;font-style:italic;color:var(--ink);opacity:.34;white-space:nowrap;line-height:1.3}
 @keyframes kkscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .kk section.block{padding:92px 0}
 .kk .card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 16px 34px -22px rgba(0,0,0,.16)}
