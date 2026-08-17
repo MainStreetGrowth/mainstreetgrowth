@@ -25,6 +25,8 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-bg": "#e9f0e6",
     "--win-border": "#cfe0cc",
     "--photo": "linear-gradient(135deg,#dfe8e0,#e9dbc9)",
+    "--dark": "#12241a",
+    "--accent-bright": "#8cb86e",
     "--p-blue-bg": "#e5efe2", "--p-blue-fg": "#2b5226",
     "--p-green-bg": "#e7efe9", "--p-green-fg": "#3f574c",
     "--p-amber-bg": "#fbe7d3", "--p-amber-fg": "#9c5220",
@@ -52,6 +54,8 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-bg": "#eef1fb",
     "--win-border": "#d3dbfb",
     "--photo": "linear-gradient(135deg,#c9d3f6,#e9dbc9)",
+    "--dark": "#0a0f28",
+    "--accent-bright": "#6d8cff",
     "--p-blue-bg": "#e7ecff", "--p-blue-fg": "#2b45d6",
     "--p-green-bg": "#e2f4e6", "--p-green-fg": "#2f8a4a",
     "--p-amber-bg": "#fdf1d6", "--p-amber-fg": "#a5761a",
@@ -201,6 +205,24 @@ const CSS = `
 .kk .foot-bottom a{color:var(--faint);margin-left:18px}
 .kk .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
 .kk .rv.in{opacity:1;transform:none}
+/* Dark contrast band (How it works) */
+.kk section.dark{background:var(--dark);padding:clamp(72px,8vw,108px) 0}
+.kk section.dark .eyebrow{color:var(--accent-bright)}
+.kk section.dark .sec-head h2{color:#fff}
+.kk section.dark .sec-head p{color:rgba(255,255,255,.62)}
+.kk section.dark .accent{color:var(--accent-bright)}
+.kk section.dark .card.step{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);box-shadow:none}
+.kk section.dark .step h3{color:#fff}
+.kk section.dark .step p{color:rgba(255,255,255,.6)}
+.kk section.dark .step .n{background:rgba(255,255,255,.1);color:var(--accent-bright)}
+.kk section.dark .three>.card.step:last-child{border-color:var(--accent)}
+/* Hero fits the viewport height on desktop so the photo never crops */
+@media(min-width:900px){
+  .kk .hero{padding:14px 0 12px}
+  .kk .hero-panel{display:flex;align-items:center;min-height:calc(100dvh - 108px)}
+  .kk .hero-grid{width:100%}
+  .kk .photo{aspect-ratio:auto;height:calc(100dvh - 234px);min-height:340px}
+}
 @media(prefers-reduced-motion:reduce){.kk .rv{opacity:1;transform:none;transition:none}.kk .marq-track{animation:none}}
 `;
 
@@ -366,7 +388,7 @@ const BODY = `
   </div>
 </section>
 
-<section class="block" style="padding-top:0">
+<section class="block dark">
   <div class="inner">
     <div class="sec-head rv"><span class="eyebrow">HOW IT WORKS</span><h2>Up and running <span class="accent">in three steps.</span></h2></div>
     <div class="three">
