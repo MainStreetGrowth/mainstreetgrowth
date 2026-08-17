@@ -138,6 +138,19 @@ const CSS = `
 .kk .float .t2{font-size:11px;color:var(--faint)}
 .kk .float.res{top:-20px;right:-18px}
 .kk .float.rev{bottom:-20px;left:-22px}
+/* Hero stat cluster (replaces the photo) */
+.kk .hero-visual{position:relative;display:flex;flex-direction:column;gap:16px}
+.kk .statbig{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 4px 10px rgba(0,0,0,.05), 0 26px 54px -26px rgba(0,0,0,.2);padding:clamp(28px,3vw,40px)}
+.kk .statbig .num{font-weight:800;font-size:clamp(3rem,6vw,4.8rem);letter-spacing:-.045em;line-height:.92;margin-bottom:14px}
+.kk .statbig .lab{font-size:15px;color:var(--body);line-height:1.5;max-width:340px}
+.kk .statrow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kk .statcard{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 16px 34px -22px rgba(0,0,0,.16);padding:22px 22px}
+.kk .statcard .num2{font-weight:800;font-size:clamp(2rem,3.4vw,2.8rem);letter-spacing:-.03em;line-height:.95;margin-bottom:8px}
+.kk .statcard .lab2{font-size:12.5px;color:var(--body);line-height:1.4}
+.kk .float-chip{position:absolute;top:-16px;right:-14px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 22px -8px rgba(0,0,0,.28);padding:10px 13px}
+.kk .float-chip .ic{width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kk .float-chip .t1{display:block;font-size:12.5px;font-weight:800;color:var(--ink)}
+.kk .float-chip .t2{display:block;font-size:11px;color:var(--faint)}
 @media(max-width:900px){.kk .hero-grid{grid-template-columns:1fr;gap:44px}.kk .hero h1{font-size:3.1rem}.kk .float.res{right:8px}.kk .float.rev{left:6px}}
 .kk .marquee{padding:clamp(48px,6vw,80px) 0 clamp(56px,7vw,88px)}
 .kk .marquee p{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin-bottom:26px}
@@ -240,10 +253,9 @@ const CSS = `
 .kk section.dark .three>.card.step:last-child::before{content:"";position:absolute;inset:0;border-radius:24px;padding:1.6px;background:conic-gradient(from var(--kkangle), transparent 58%, var(--accent-bright) 80%, #ffffff 90%, var(--accent-bright) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:kkspin 4.5s linear infinite;pointer-events:none}
 /* Hero fits the viewport height on desktop so the photo never crops */
 @media(min-width:900px){
-  .kk .hero{padding:14px 0 12px}
-  .kk .hero-panel{display:flex;align-items:center;min-height:calc(100dvh - 108px)}
+  .kk .hero{padding:16px 0 12px}
+  .kk .hero-panel{display:flex;align-items:center}
   .kk .hero-grid{width:100%}
-  .kk .photo{aspect-ratio:auto;height:calc(100dvh - 234px);min-height:340px}
 }
 @media(prefers-reduced-motion:reduce){.kk .rv{opacity:1;transform:none;transition:none}.kk .marq-track{animation:none}.kk section.dark .three>.card.step:last-child::before{animation:none}}
 `;
@@ -291,16 +303,14 @@ const BODY = `
           </div>
         </div>
         <div class="hero-visual rv">
-          <div class="photo">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="A warm, busy neighborhood restaurant" />
+          <div class="statbig">
+            <div class="num" style="color:var(--accent)">~$3,100</div>
+            <div class="lab">in extra revenue a typical restaurant can capture every month online.</div>
+            <span class="float-chip"><span class="ic" style="background:var(--p-green-bg);color:var(--p-green-fg)">${CK}</span><span><span class="t1">New reservation</span><span class="t2">Table for 4 · just now</span></span></span>
           </div>
-          <div class="float res">
-            <span class="ic" style="background:var(--p-green-bg);color:var(--p-green-fg)">${CK}</span>
-            <div><div class="t1">New reservation</div><div class="t2">Table for 4 · just now</div></div>
-          </div>
-          <div class="float rev">
-            <span class="stars" style="margin:0">${STAR5}</span>
-            <div><div class="t1">New 5-star review</div><div class="t2">2 minutes ago</div></div>
+          <div class="statrow">
+            <div class="statcard"><div class="num2" style="color:var(--p-amber-fg)">80%</div><div class="lab2">search online before choosing where to eat</div></div>
+            <div class="statcard"><div class="num2" style="color:var(--ink)">5–20×</div><div class="lab2">more per catering and event booking</div></div>
           </div>
         </div>
       </div>
