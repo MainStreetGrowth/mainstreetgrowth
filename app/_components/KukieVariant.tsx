@@ -139,7 +139,11 @@ const CSS = `
 .kk .float.res{top:-20px;right:-18px}
 .kk .float.rev{bottom:-20px;left:-22px}
 /* Hero stat panel (replaces the photo) — clean "by the numbers" card */
-.kk .statpanel{background:linear-gradient(160deg, rgba(255,255,255,.66), rgba(255,255,255,.40));backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border:1px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,.04), 0 34px 64px -30px rgba(22,38,29,.28), inset 0 1px 0 rgba(255,255,255,.7);padding:clamp(26px,2.8vw,40px)}
+.kk .hero-visual{position:relative;isolation:isolate}
+.kk .hero-visual::before,.kk .hero-visual::after{content:"";position:absolute;border-radius:50%;filter:blur(52px);z-index:0;pointer-events:none}
+.kk .hero-visual::before{width:240px;height:240px;top:-26px;right:2px;background:var(--accent);opacity:.5}
+.kk .hero-visual::after{width:260px;height:260px;bottom:-34px;left:-4px;background:var(--p-amber-fg);opacity:.42}
+.kk .statpanel{position:relative;z-index:1;background:linear-gradient(150deg, rgba(255,255,255,.52), rgba(255,255,255,.22));backdrop-filter:blur(26px) saturate(1.7);-webkit-backdrop-filter:blur(26px) saturate(1.7);border:1px solid rgba(255,255,255,.75);border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,.05), 0 40px 72px -30px rgba(22,38,29,.34), inset 0 1px 0 rgba(255,255,255,.85);padding:clamp(26px,2.8vw,40px)}
 .kk .stat-hero{padding-bottom:clamp(20px,2.2vw,28px);border-bottom:1px solid var(--line)}
 .kk .sh-num{font-weight:800;font-size:clamp(3rem,5.4vw,4.4rem);letter-spacing:-.045em;line-height:.95;color:var(--accent);margin-bottom:12px}
 .kk .sh-lab{font-size:15px;color:var(--body);line-height:1.5;max-width:360px}
