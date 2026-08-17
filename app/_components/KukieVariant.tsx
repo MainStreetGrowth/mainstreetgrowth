@@ -25,8 +25,13 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-bg": "#e9f0e6",
     "--win-border": "#cfe0cc",
     "--photo": "linear-gradient(135deg,#dfe8e0,#e9dbc9)",
-    "--dark": "radial-gradient(1000px 560px at 50% 4%, rgba(59,105,51,.22), transparent 60%), linear-gradient(180deg,#122a1c 0%,#0b1a12 100%)",
-    "--dark-card3": "rgba(59,105,51,.20)",
+    "--dark":
+      "radial-gradient(1200px 560px at 50% -10%, rgba(103,176,96,.34), transparent 58%)," +
+      "radial-gradient(1000px 620px at 82% 14%, rgba(70,140,80,.20), transparent 60%)," +
+      "radial-gradient(1200px 720px at 14% 44%, rgba(55,110,70,.16), transparent 62%)," +
+      "radial-gradient(1500px 900px at 50% 128%, rgba(0,0,0,.55), transparent 60%)," +
+      "linear-gradient(180deg,#102a1b 0%, #0d2216 55%, #07150e 100%)",
+    "--dark-card3": "rgba(103,176,96,.20)",
     "--accent-bright": "#8cb86e",
     "--p-blue-bg": "#e5efe2", "--p-blue-fg": "#2b5226",
     "--p-green-bg": "#e7efe9", "--p-green-fg": "#3f574c",
@@ -55,7 +60,12 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-bg": "#eef1fb",
     "--win-border": "#d3dbfb",
     "--photo": "linear-gradient(135deg,#c9d3f6,#e9dbc9)",
-    "--dark": "radial-gradient(1000px 560px at 50% 4%, rgba(58,91,255,.20), transparent 60%), linear-gradient(180deg,#0c1230 0%,#080c22 100%)",
+    "--dark":
+      "radial-gradient(1200px 560px at 50% -10%, rgba(86,116,255,.40), transparent 58%)," +
+      "radial-gradient(1000px 620px at 82% 14%, rgba(52,96,235,.24), transparent 60%)," +
+      "radial-gradient(1200px 720px at 14% 44%, rgba(40,72,200,.18), transparent 62%)," +
+      "radial-gradient(1500px 900px at 50% 128%, rgba(0,0,0,.55), transparent 60%)," +
+      "linear-gradient(180deg,#0b1030 0%, #0a0d28 55%, #06091e 100%)",
     "--dark-card3": "rgba(58,91,255,.16)",
     "--accent-bright": "#6d8cff",
     "--p-blue-bg": "#e7ecff", "--p-blue-fg": "#2b45d6",
