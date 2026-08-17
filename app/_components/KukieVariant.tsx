@@ -31,21 +31,11 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--p-purple-bg": "#f2ddca", "--p-purple-fg": "#8a441a",
     "--p-pink-bg": "#f6e6da", "--p-pink-fg": "#a5561f",
     "--wash":
-      "radial-gradient(1200px 720px at 10% -6%, rgba(134,164,150,.24), transparent 55%)," +
-      "radial-gradient(1100px 820px at 94% 2%, rgba(223,135,82,.15), transparent 55%)," +
-      "radial-gradient(1100px 900px at 50% 34%, rgba(59,105,51,.06), transparent 60%)," +
-      "radial-gradient(1200px 1000px at 6% 66%, rgba(134,164,150,.14), transparent 55%)," +
-      "radial-gradient(1200px 1000px at 96% 92%, rgba(252,235,220,.6), transparent 55%)," +
-      "#fbfaf6",
-    "--hero-bg":
-      "radial-gradient(900px 480px at 88% 2%, rgba(59,105,51,.14), transparent 55%)," +
-      "radial-gradient(760px 520px at 4% 6%, rgba(134,164,150,.26), transparent 55%)," +
-      "radial-gradient(820px 620px at 60% 120%, rgba(252,235,220,.7), transparent 58%)," +
-      "#eef2ec",
-    "--cta-bg":
-      "radial-gradient(760px 380px at 84% -10%, rgba(59,105,51,.16), transparent 60%)," +
-      "radial-gradient(620px 340px at 2% 112%, rgba(252,235,220,.7), transparent 60%)," +
-      "#eef2ec",
+      "radial-gradient(1400px 620px at 20% 0%, rgba(134,164,150,.20), transparent 60%)," +
+      "radial-gradient(1300px 640px at 96% 4%, rgba(223,135,82,.12), transparent 60%)," +
+      "linear-gradient(168deg, #eef2ec 0%, #f6f4ec 44%, #ffffff 100%)",
+    "--hero-bg": "linear-gradient(103deg, #e7efe8 0%, #eef2ee 48%, #f6eee2 100%)",
+    "--cta-bg": "linear-gradient(103deg, #e7efe8 0%, #eef2ee 50%, #f6eee2 100%)",
   } as React.CSSProperties,
   blue: {
     ["--accent" as string]: "#3a5bff",
@@ -68,26 +58,17 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--p-purple-bg": "#efe7fb", "--p-purple-fg": "#6b4bbd",
     "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#b83f77",
     "--wash":
-      "radial-gradient(1200px 720px at 10% -6%, rgba(120,150,255,.16), transparent 55%)," +
-      "radial-gradient(1100px 820px at 94% 2%, rgba(122,214,178,.16), transparent 55%)," +
-      "radial-gradient(1100px 900px at 50% 34%, rgba(58,91,255,.05), transparent 60%)," +
-      "radial-gradient(1200px 1000px at 6% 66%, rgba(150,175,255,.09), transparent 55%)," +
-      "radial-gradient(1200px 1000px at 96% 92%, rgba(244,206,176,.10), transparent 55%)," +
-      "#f6f8fe",
-    "--hero-bg":
-      "radial-gradient(900px 480px at 88% 2%, rgba(58,91,255,.14), transparent 55%)," +
-      "radial-gradient(760px 520px at 4% 6%, rgba(120,150,255,.16), transparent 55%)," +
-      "radial-gradient(820px 620px at 60% 120%, rgba(122,214,178,.24), transparent 58%)," +
-      "#eef1fb",
-    "--cta-bg":
-      "radial-gradient(760px 380px at 84% -10%, rgba(58,91,255,.16), transparent 60%)," +
-      "radial-gradient(620px 340px at 2% 112%, rgba(122,214,178,.24), transparent 60%)," +
-      "#eef1fb",
+      "radial-gradient(1400px 620px at 18% 0%, rgba(120,150,255,.16), transparent 60%)," +
+      "radial-gradient(1300px 660px at 98% 4%, rgba(122,214,178,.16), transparent 60%)," +
+      "linear-gradient(168deg, #edf0fb 0%, #f4f7fd 44%, #ffffff 100%)",
+    "--hero-bg": "linear-gradient(103deg, #ecf0fb 0%, #eef2f7 48%, #e8f6ef 100%)",
+    "--cta-bg": "linear-gradient(103deg, #ecf0fb 0%, #eef2f7 50%, #e8f6ef 100%)",
   } as React.CSSProperties,
 };
 
 const CSS = `
-.kk{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;background:var(--wash);background-attachment:fixed;min-height:100vh}
+.kk{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;background:#ffffff;min-height:100vh}
+.kk .wash{background:var(--wash)}
 .kk *{box-sizing:border-box;margin:0;padding:0}
 .kk a{text-decoration:none;color:inherit}
 .kk img{display:block;max-width:100%}
@@ -290,6 +271,7 @@ const BODY = `
   </div>
 </section>
 
+<div class="wash">
 <section class="block" id="outcomes">
   <div class="inner">
     <div class="sec-head rv">
@@ -443,6 +425,7 @@ const BODY = `
     </div>
   </div>
 </section>
+</div>
 
 <footer>
   <div class="wrap">
