@@ -25,7 +25,8 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-bg": "#e9f0e6",
     "--win-border": "#cfe0cc",
     "--photo": "linear-gradient(135deg,#dfe8e0,#e9dbc9)",
-    "--dark": "#12241a",
+    "--dark": "radial-gradient(1000px 560px at 50% 4%, rgba(59,105,51,.22), transparent 60%), linear-gradient(180deg,#122a1c 0%,#0b1a12 100%)",
+    "--dark-card3": "rgba(59,105,51,.20)",
     "--accent-bright": "#8cb86e",
     "--p-blue-bg": "#e5efe2", "--p-blue-fg": "#2b5226",
     "--p-green-bg": "#e7efe9", "--p-green-fg": "#3f574c",
@@ -54,7 +55,8 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-bg": "#eef1fb",
     "--win-border": "#d3dbfb",
     "--photo": "linear-gradient(135deg,#c9d3f6,#e9dbc9)",
-    "--dark": "#0a0f28",
+    "--dark": "radial-gradient(1000px 560px at 50% 4%, rgba(58,91,255,.20), transparent 60%), linear-gradient(180deg,#0c1230 0%,#080c22 100%)",
+    "--dark-card3": "rgba(58,91,255,.16)",
     "--accent-bright": "#6d8cff",
     "--p-blue-bg": "#e7ecff", "--p-blue-fg": "#2b45d6",
     "--p-green-bg": "#e2f4e6", "--p-green-fg": "#2f8a4a",
@@ -215,7 +217,11 @@ const CSS = `
 .kk section.dark .step h3{color:#fff}
 .kk section.dark .step p{color:rgba(255,255,255,.6)}
 .kk section.dark .step .n{background:rgba(255,255,255,.1);color:var(--accent-bright)}
-.kk section.dark .three>.card.step:last-child{border-color:var(--accent)}
+/* Third "Go live" card: glassy accent fill + animated border-beam travelling the edge */
+@property --kkangle{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes kkspin{to{--kkangle:360deg}}
+.kk section.dark .three>.card.step:last-child{position:relative;isolation:isolate;background:linear-gradient(180deg, var(--dark-card3), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14)}
+.kk section.dark .three>.card.step:last-child::before{content:"";position:absolute;inset:0;border-radius:24px;padding:1.6px;background:conic-gradient(from var(--kkangle), transparent 58%, var(--accent-bright) 80%, #ffffff 90%, var(--accent-bright) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:kkspin 4.5s linear infinite;pointer-events:none}
 /* Hero fits the viewport height on desktop so the photo never crops */
 @media(min-width:900px){
   .kk .hero{padding:14px 0 12px}
@@ -223,7 +229,7 @@ const CSS = `
   .kk .hero-grid{width:100%}
   .kk .photo{aspect-ratio:auto;height:calc(100dvh - 234px);min-height:340px}
 }
-@media(prefers-reduced-motion:reduce){.kk .rv{opacity:1;transform:none;transition:none}.kk .marq-track{animation:none}}
+@media(prefers-reduced-motion:reduce){.kk .rv{opacity:1;transform:none;transition:none}.kk .marq-track{animation:none}.kk section.dark .three>.card.step:last-child::before{animation:none}}
 `;
 
 const STAR = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>`;
