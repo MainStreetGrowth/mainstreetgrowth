@@ -142,8 +142,14 @@ const CSS = `
 .kk .marquee{padding:clamp(48px,6vw,80px) 0 clamp(56px,7vw,88px)}
 .kk .marquee p{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin-bottom:26px}
 .kk .marq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
-.kk .marq-track{display:flex;align-items:center;gap:60px;width:max-content;padding:8px 0;animation:kkscroll 34s linear infinite}
-.kk .marq-track span{font-size:clamp(19px,1.7vw,24px);font-weight:600;font-style:italic;color:var(--ink);opacity:.34;white-space:nowrap;line-height:1.3}
+.kk .marq-track{display:flex;align-items:center;gap:16px;width:max-content;padding:6px 0;animation:kkscroll 40s linear infinite}
+.kk .mchip{display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 20px 8px 8px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 12px 26px -20px rgba(0,0,0,.18);white-space:nowrap;font-size:15px;font-weight:600;color:var(--ink)}
+.kk .mbadge{width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex-shrink:0}
+.kk .mbadge.c0{background:var(--p-blue-bg);color:var(--p-blue-fg)}
+.kk .mbadge.c1{background:var(--p-green-bg);color:var(--p-green-fg)}
+.kk .mbadge.c2{background:var(--p-purple-bg);color:var(--p-purple-fg)}
+.kk .mbadge.c3{background:var(--p-pink-bg);color:var(--p-pink-fg)}
+.kk .mbadge.c4{background:var(--p-amber-bg);color:var(--p-amber-fg)}
 @keyframes kkscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .kk section.block{padding:92px 0}
 .kk .card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 16px 34px -22px rgba(0,0,0,.16)}
@@ -496,7 +502,12 @@ export default function KukieVariant({ variant }: { variant: Variant }) {
     const marq = root.querySelector("[data-marq]");
     if (marq && !marq.childElementCount) {
       const names = ["The Magnolia Café", "River Bend BBQ", "Cotton Row Diner", "Delta Blues Kitchen", "Porch & Table", "Red River Smokehouse", "Southern Roots Kitchen", "Main Street Diner"];
-      marq.innerHTML = [...names, ...names].map((n) => `<span>${n}</span>`).join("");
+      marq.innerHTML = [...names, ...names]
+        .map((n, i) => {
+          const initial = n.replace(/^The\s+/, "").charAt(0).toUpperCase();
+          return `<span class="mchip"><span class="mbadge c${i % 5}">${initial}</span>${n}</span>`;
+        })
+        .join("");
     }
 
     // Sticky nav border on scroll
