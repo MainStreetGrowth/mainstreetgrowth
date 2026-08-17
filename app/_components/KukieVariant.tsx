@@ -138,19 +138,22 @@ const CSS = `
 .kk .float .t2{font-size:11px;color:var(--faint)}
 .kk .float.res{top:-20px;right:-18px}
 .kk .float.rev{bottom:-20px;left:-22px}
-/* Hero stat cluster (replaces the photo) */
-.kk .hero-visual{position:relative;display:flex;flex-direction:column;gap:16px}
-.kk .statbig{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 4px 10px rgba(0,0,0,.05), 0 26px 54px -26px rgba(0,0,0,.2);padding:clamp(28px,3vw,40px)}
-.kk .statbig .num{font-weight:800;font-size:clamp(3rem,6vw,4.8rem);letter-spacing:-.045em;line-height:.92;margin-bottom:14px}
-.kk .statbig .lab{font-size:15px;color:var(--body);line-height:1.5;max-width:340px}
-.kk .statrow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.kk .statcard{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 16px 34px -22px rgba(0,0,0,.16);padding:22px 22px}
-.kk .statcard .num2{font-weight:800;font-size:clamp(2rem,3.4vw,2.8rem);letter-spacing:-.03em;line-height:.95;margin-bottom:8px}
-.kk .statcard .lab2{font-size:12.5px;color:var(--body);line-height:1.4}
-.kk .float-chip{position:absolute;top:-16px;right:-14px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 22px -8px rgba(0,0,0,.28);padding:10px 13px}
-.kk .float-chip .ic{width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.kk .float-chip .t1{display:block;font-size:12.5px;font-weight:800;color:var(--ink)}
-.kk .float-chip .t2{display:block;font-size:11px;color:var(--faint)}
+/* Hero revenue-dashboard card (replaces the photo) */
+.kk .dash{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 6px 16px rgba(0,0,0,.05), 0 34px 64px -30px rgba(0,0,0,.24);padding:clamp(22px,2.4vw,30px)}
+.kk .dash-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.kk .dash-cap{font-size:13.5px;font-weight:700;color:var(--ink)}
+.kk .dash-sub{font-size:12px;color:var(--faint);margin-top:2px}
+.kk .dash-head .pill svg{margin-right:1px}
+.kk .dash-num{font-weight:800;font-size:clamp(2.8rem,5.6vw,4.4rem);letter-spacing:-.045em;line-height:1;color:var(--accent);margin:14px 0 18px}
+.kk .dash-bars{display:flex;align-items:flex-end;gap:9px;height:92px;margin-bottom:20px}
+.kk .dash-bars span{flex:1;border-radius:6px 6px 4px 4px;background:var(--p-blue-bg)}
+.kk .dash-bars span:last-child{background:var(--accent)}
+.kk .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid var(--line);padding-top:18px}
+.kk .dash-stat{display:flex;align-items:center;gap:11px}
+.kk .ds-ic{width:38px;height:38px;border-radius:11px;background:var(--p-blue-bg);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kk .ds-ic.warm{background:var(--p-amber-bg);color:var(--p-amber-fg)}
+.kk .ds-n{font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.kk .ds-l{font-size:11.5px;color:var(--faint);line-height:1.3;margin-top:3px}
 @media(max-width:900px){.kk .hero-grid{grid-template-columns:1fr;gap:44px}.kk .hero h1{font-size:3.1rem}.kk .float.res{right:8px}.kk .float.rev{left:6px}}
 .kk .marquee{padding:clamp(48px,6vw,80px) 0 clamp(56px,7vw,88px)}
 .kk .marquee p{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin-bottom:26px}
@@ -303,15 +306,20 @@ const BODY = `
           </div>
         </div>
         <div class="hero-visual rv">
-          <div class="statbig">
-            <div class="num" style="color:var(--accent)">~$3,100</div>
-            <div class="lab">in extra revenue a typical restaurant can capture every month online.</div>
-            <span class="float-chip"><span class="ic" style="background:var(--p-green-bg);color:var(--p-green-fg)">${CK}</span><span><span class="t1">New reservation</span><span class="t2">Table for 4 · just now</span></span></span>
+          <div class="dash">
+            <div class="dash-head">
+              <div><div class="dash-cap">Extra revenue captured</div><div class="dash-sub">per month, online</div></div>
+              <span class="pill green"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 7v5h-5"/></svg>+38%</span>
+            </div>
+            <div class="dash-num">~$3,100</div>
+            <div class="dash-bars"><span style="height:32%"></span><span style="height:46%"></span><span style="height:40%"></span><span style="height:62%"></span><span style="height:54%"></span><span style="height:78%"></span><span style="height:100%"></span></div>
+            <div class="dash-grid">
+              <div class="dash-stat"><span class="ds-ic"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M21 21l-4-4"/></svg></span><div><div class="ds-n">80%</div><div class="ds-l">search online first</div></div></div>
+              <div class="dash-stat"><span class="ds-ic warm"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path stroke-linecap="round" d="M3 9h18M8 3v4m8-4v4"/></svg></span><div><div class="ds-n">5–20×</div><div class="ds-l">per catering booking</div></div></div>
+            </div>
           </div>
-          <div class="statrow">
-            <div class="statcard"><div class="num2" style="color:var(--p-amber-fg)">80%</div><div class="lab2">search online before choosing where to eat</div></div>
-            <div class="statcard"><div class="num2" style="color:var(--ink)">5–20×</div><div class="lab2">more per catering and event booking</div></div>
-          </div>
+          <div class="float res"><span class="ic" style="background:var(--p-green-bg);color:var(--p-green-fg)">${CK}</span><div><div class="t1">New reservation</div><div class="t2">Table for 4 · just now</div></div></div>
+          <div class="float rev"><span class="stars" style="margin:0">${STAR5}</span><div><div class="t1">New 5-star review</div><div class="t2">2 minutes ago</div></div></div>
         </div>
       </div>
     </div>
