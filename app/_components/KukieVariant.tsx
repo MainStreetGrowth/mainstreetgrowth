@@ -26,11 +26,10 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-border": "#cfe0cc",
     "--photo": "linear-gradient(135deg,#dfe8e0,#e9dbc9)",
     "--dark":
-      "radial-gradient(1200px 560px at 50% -10%, rgba(103,176,96,.34), transparent 58%)," +
-      "radial-gradient(1000px 620px at 82% 14%, rgba(70,140,80,.20), transparent 60%)," +
-      "radial-gradient(1200px 720px at 14% 44%, rgba(55,110,70,.16), transparent 62%)," +
-      "radial-gradient(1500px 900px at 50% 128%, rgba(0,0,0,.55), transparent 60%)," +
-      "linear-gradient(180deg,#102a1b 0%, #0d2216 55%, #07150e 100%)",
+      "radial-gradient(1500px 950px at 50% 54%, rgba(66,124,78,.16), transparent 60%)," +
+      "radial-gradient(1200px 640px at 50% -4%, rgba(92,150,92,.10), transparent 58%)," +
+      "radial-gradient(1700px 1100px at 50% 122%, rgba(0,0,0,.55), transparent 55%)," +
+      "linear-gradient(180deg,#0b1c12 0%, #07140d 100%)",
     "--dark-card3": "rgba(103,176,96,.20)",
     "--accent-bright": "#8cb86e",
     "--p-blue-bg": "#e5efe2", "--p-blue-fg": "#2b5226",
@@ -61,11 +60,10 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
     "--win-border": "#d3dbfb",
     "--photo": "linear-gradient(135deg,#c9d3f6,#e9dbc9)",
     "--dark":
-      "radial-gradient(1200px 560px at 50% -10%, rgba(86,116,255,.40), transparent 58%)," +
-      "radial-gradient(1000px 620px at 82% 14%, rgba(52,96,235,.24), transparent 60%)," +
-      "radial-gradient(1200px 720px at 14% 44%, rgba(40,72,200,.18), transparent 62%)," +
-      "radial-gradient(1500px 900px at 50% 128%, rgba(0,0,0,.55), transparent 60%)," +
-      "linear-gradient(180deg,#0b1030 0%, #0a0d28 55%, #06091e 100%)",
+      "radial-gradient(1500px 950px at 50% 54%, rgba(58,92,230,.16), transparent 60%)," +
+      "radial-gradient(1200px 640px at 50% -4%, rgba(80,110,255,.10), transparent 58%)," +
+      "radial-gradient(1700px 1100px at 50% 122%, rgba(0,0,0,.55), transparent 55%)," +
+      "linear-gradient(180deg,#080b20 0%, #06081a 100%)",
     "--dark-card3": "rgba(58,91,255,.16)",
     "--accent-bright": "#6d8cff",
     "--p-blue-bg": "#e7ecff", "--p-blue-fg": "#2b45d6",
