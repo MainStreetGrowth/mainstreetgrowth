@@ -168,6 +168,7 @@ const CSS = `
 .kk .avatars{display:flex}
 .kk .avatars .av{width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11.5px;font-weight:800;border:2px solid var(--mock);margin-left:-9px}
 .kk .avatars .av:first-child{margin-left:0}
+.kk .av-sm{width:26px;height:26px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:800;flex-shrink:0}
 @media(max-width:900px){.kk .feat-grid{grid-template-columns:1fr}.kk .feat.span{grid-column:auto;flex-direction:column}}
 .kk .roi-grid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:16px}
 .kk .roi{padding:30px 28px}
@@ -360,16 +361,11 @@ const BODY = `
           <h3>Turn first-timers into regulars</h3>
           <p>With your own email list, text list, and loyalty program, you bring your best customers back on your terms instead of hoping they remember you.</p>
         </div>
-        <div class="mock" style="justify-content:center">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-            <div class="avatars">
-              <span class="av" style="background:var(--accent)">TR</span>
-              <span class="av" style="background:var(--p-green-fg)">ML</span>
-              <span class="av" style="background:var(--p-purple-fg)">JP</span>
-              <span class="av" style="background:var(--ink)">+9</span>
-            </div>
-            <span class="pill pink"><span class="dot"></span>+38% repeat</span>
-          </div>
+        <div class="mock">
+          <div class="bignum"><b style="color:var(--p-pink-fg)">+38%</b><span>more repeat visits</span></div>
+          <div class="mrow strong"><span class="l"><span class="av-sm" style="background:var(--accent)">TR</span>Tommy R.</span><span class="pill pink"><span class="dot"></span>Regular · 12</span></div>
+          <div class="mrow strong"><span class="l"><span class="av-sm" style="background:var(--p-green-fg)">ML</span>Maria L.</span><span class="pill pink"><span class="dot"></span>Regular · 9</span></div>
+          <div class="mrow"><span class="l"><span class="av-sm" style="background:var(--p-purple-fg)">JP</span>James P.</span><span style="font-size:12px;color:var(--faint)">7 visits</span></div>
         </div>
       </div>
     </div>
