@@ -218,7 +218,8 @@ const CSS = `
 /* Dark contrast band (How it works) */
 .kk section.dark{background:var(--dark);padding:clamp(72px,8vw,108px) 0}
 .kk section.dark .eyebrow{color:var(--accent-bright)}
-.kk section.dark .sec-head h2{color:#fff}
+.kk section.dark .sec-head h2{color:#fff;white-space:nowrap;font-size:clamp(1.9rem,3.8vw,3rem)}
+@media(max-width:640px){.kk section.dark .sec-head h2{white-space:normal;font-size:1.9rem}}
 .kk section.dark .sec-head p{color:rgba(255,255,255,.62)}
 .kk section.dark .accent{color:var(--accent-bright)}
 .kk section.dark .card.step{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);box-shadow:none}
@@ -404,7 +405,7 @@ const BODY = `
 
 <section class="block dark">
   <div class="inner">
-    <div class="sec-head rv"><span class="eyebrow">HOW IT WORKS</span><h2>Up and running <span class="accent">in three steps.</span></h2></div>
+    <div class="sec-head rv"><span class="eyebrow">HOW IT WORKS</span><h2>Up and running in three steps.</h2></div>
     <div class="three">
       <div class="card step rv"><span class="n">01</span><h3>We audit your revenue funnel</h3><p>We map exactly where customers are slipping away before we build anything.</p></div>
       <div class="card step rv"><span class="n">02</span><h3>We build your capture system</h3><p>Website, Google profile, local SEO, and ads. All live within two weeks.</p></div>
