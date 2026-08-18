@@ -4,7 +4,7 @@ import { theme as T } from "../_lib/theme";
 
 /* Floating switch between the homepage variants:
    "/" (warm, main), "/light" (kukie-style green), "/blue" (kukie-style blue). */
-const ROUTES = ["/", "/light", "/blue"] as const;
+const ROUTES = ["/", "/light", "/blue", "/terracotta", "/plum", "/teal"] as const;
 
 export default function VariantToggle() {
   const pathname = usePathname();
@@ -44,9 +44,12 @@ export default function VariantToggle() {
         zIndex: 95,
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        maxWidth: "calc(100vw - 24px)",
         gap: 2,
         padding: 4,
-        borderRadius: 999,
+        borderRadius: 22,
         background: "rgba(255,248,244,0.94)",
         border: "1px solid rgba(34,26,17,0.12)",
         boxShadow: "0 6px 24px rgba(34,26,17,0.16)",
@@ -61,6 +64,9 @@ export default function VariantToggle() {
       {pill("/", "Warm")}
       {pill("/light", "Green")}
       {pill("/blue", "Blue")}
+      {pill("/terracotta", "Terracotta")}
+      {pill("/plum", "Plum")}
+      {pill("/teal", "Teal")}
     </div>
   );
 }
