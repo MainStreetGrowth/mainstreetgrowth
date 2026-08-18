@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
    CSS custom properties so both variants share everything else.
    ──────────────────────────────────────────────────────────────── */
 
-type Variant = "green" | "blue" | "terracotta" | "plum" | "teal";
+type Variant = "green" | "blue" | "terracotta" | "plum" | "teal" | "honey" | "indigo" | "olive" | "charcoal";
 
 const PALETTES: Record<Variant, React.CSSProperties> = {
   green: {
@@ -179,6 +179,142 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
       "linear-gradient(168deg, #e6f1f0 0%, #f2f5ee 44%, #ffffff 100%)",
     "--hero-bg": "linear-gradient(103deg, #e2eeed 0%, #eef2ec 48%, #f3ece0 100%)",
     "--cta-bg": "linear-gradient(103deg, #e2eeed 0%, #eef2ec 50%, #f3ece0 100%)",
+  } as React.CSSProperties,
+  honey: {
+    ["--accent" as string]: "#9a6a12",
+    "--accent-dark": "#7f5710",
+    "--accent-glow": "rgba(154,106,18,.55)",
+    "--ink": "#241c17",
+    "--body": "rgba(36,28,23,0.6)",
+    "--faint": "rgba(36,28,23,0.42)",
+    "--line": "rgba(36,28,23,0.09)",
+    "--line-soft": "rgba(36,28,23,0.05)",
+    "--page": "#fbf8f2",
+    "--mock": "#f4f0e6",
+    "--star": "#e0913f",
+    "--win-bg": "#f7edd6",
+    "--win-border": "#ecd6a6",
+    "--photo": "linear-gradient(135deg,#e8ddc7,#e9dbc9)",
+    "--dark":
+      "radial-gradient(1500px 950px at 50% 54%, rgba(154,106,18,.18), transparent 60%)," +
+      "radial-gradient(1200px 640px at 50% -4%, rgba(210,160,60,.10), transparent 58%)," +
+      "radial-gradient(1700px 1100px at 50% 122%, rgba(0,0,0,.55), transparent 55%)," +
+      "linear-gradient(180deg,#1e1608 0%, #130d05 100%)",
+    "--dark-card3": "rgba(154,106,18,.20)",
+    "--accent-bright": "#e0b24a",
+    "--p-blue-bg": "#f6e8cf", "--p-blue-fg": "#7a5410",
+    "--p-green-bg": "#e4f0e2", "--p-green-fg": "#2f7a3a",
+    "--p-amber-bg": "#fbe7d3", "--p-amber-fg": "#9c5220",
+    "--p-purple-bg": "#efe7fb", "--p-purple-fg": "#6b4bbd",
+    "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#b83f77",
+    "--wash":
+      "radial-gradient(1400px 620px at 20% 0%, rgba(154,106,18,.13), transparent 60%)," +
+      "radial-gradient(1300px 640px at 96% 4%, rgba(210,175,110,.16), transparent 60%)," +
+      "linear-gradient(168deg, #f8efdc 0%, #faf3e6 44%, #ffffff 100%)",
+    "--hero-bg": "linear-gradient(103deg, #f6ead2 0%, #f5eee0 48%, #efe6d0 100%)",
+    "--cta-bg": "linear-gradient(103deg, #f6ead2 0%, #f5eee0 50%, #efe6d0 100%)",
+  } as React.CSSProperties,
+  indigo: {
+    ["--accent" as string]: "#3b3ea6",
+    "--accent-dark": "#30327f",
+    "--accent-glow": "rgba(59,62,166,.6)",
+    "--ink": "#1a1b2e",
+    "--body": "rgba(26,27,46,0.6)",
+    "--faint": "rgba(26,27,46,0.42)",
+    "--line": "rgba(26,27,46,0.09)",
+    "--line-soft": "rgba(26,27,46,0.05)",
+    "--page": "#f8f8fc",
+    "--mock": "#f1f1f8",
+    "--star": "#e0913f",
+    "--win-bg": "#e6e7f7",
+    "--win-border": "#c8caee",
+    "--photo": "linear-gradient(135deg,#d3d4ee,#e9dbc9)",
+    "--dark":
+      "radial-gradient(1500px 950px at 50% 54%, rgba(59,62,166,.20), transparent 60%)," +
+      "radial-gradient(1200px 640px at 50% -4%, rgba(110,110,220,.10), transparent 58%)," +
+      "radial-gradient(1700px 1100px at 50% 122%, rgba(0,0,0,.55), transparent 55%)," +
+      "linear-gradient(180deg,#0e0f28 0%, #07081c 100%)",
+    "--dark-card3": "rgba(59,62,166,.20)",
+    "--accent-bright": "#8a8dff",
+    "--p-blue-bg": "#e3e4f7", "--p-blue-fg": "#34368a",
+    "--p-green-bg": "#e4f0e2", "--p-green-fg": "#2f7a3a",
+    "--p-amber-bg": "#fbe7d3", "--p-amber-fg": "#9c5220",
+    "--p-purple-bg": "#efe7fb", "--p-purple-fg": "#6b4bbd",
+    "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#b83f77",
+    "--wash":
+      "radial-gradient(1400px 620px at 20% 0%, rgba(59,62,166,.12), transparent 60%)," +
+      "radial-gradient(1300px 640px at 96% 4%, rgba(224,150,120,.12), transparent 60%)," +
+      "linear-gradient(168deg, #ecebf7 0%, #f4f2f6 44%, #ffffff 100%)",
+    "--hero-bg": "linear-gradient(103deg, #e9e9f6 0%, #eeecf3 48%, #f2e6d8 100%)",
+    "--cta-bg": "linear-gradient(103deg, #e9e9f6 0%, #eeecf3 50%, #f2e6d8 100%)",
+  } as React.CSSProperties,
+  olive: {
+    ["--accent" as string]: "#5f6d24",
+    "--accent-dark": "#4d591c",
+    "--accent-glow": "rgba(95,109,36,.55)",
+    "--ink": "#232418",
+    "--body": "rgba(35,36,24,0.6)",
+    "--faint": "rgba(35,36,24,0.42)",
+    "--line": "rgba(35,36,24,0.09)",
+    "--line-soft": "rgba(35,36,24,0.05)",
+    "--page": "#faf9f3",
+    "--mock": "#f2f2e8",
+    "--star": "#d9822f",
+    "--win-bg": "#ebf0d8",
+    "--win-border": "#d4dfab",
+    "--photo": "linear-gradient(135deg,#dfe3c6,#e9dbc9)",
+    "--dark":
+      "radial-gradient(1500px 950px at 50% 54%, rgba(95,109,36,.18), transparent 60%)," +
+      "radial-gradient(1200px 640px at 50% -4%, rgba(150,165,80,.10), transparent 58%)," +
+      "radial-gradient(1700px 1100px at 50% 122%, rgba(0,0,0,.55), transparent 55%)," +
+      "linear-gradient(180deg,#191c0d 0%, #101207 100%)",
+    "--dark-card3": "rgba(95,109,36,.20)",
+    "--accent-bright": "#a8bb5f",
+    "--p-blue-bg": "#eaefd3", "--p-blue-fg": "#4c561d",
+    "--p-green-bg": "#e4f0e2", "--p-green-fg": "#2f7a3a",
+    "--p-amber-bg": "#fbe7d3", "--p-amber-fg": "#9c5220",
+    "--p-purple-bg": "#efe7fb", "--p-purple-fg": "#6b4bbd",
+    "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#b83f77",
+    "--wash":
+      "radial-gradient(1400px 620px at 20% 0%, rgba(95,109,36,.13), transparent 60%)," +
+      "radial-gradient(1300px 640px at 96% 4%, rgba(223,150,90,.13), transparent 60%)," +
+      "linear-gradient(168deg, #eef1e0 0%, #f5f3e8 44%, #ffffff 100%)",
+    "--hero-bg": "linear-gradient(103deg, #ebefdc 0%, #f0f0e4 48%, #f2e8d6 100%)",
+    "--cta-bg": "linear-gradient(103deg, #ebefdc 0%, #f0f0e4 50%, #f2e8d6 100%)",
+  } as React.CSSProperties,
+  charcoal: {
+    ["--accent" as string]: "#2b2723",
+    "--accent-dark": "#171310",
+    "--accent-glow": "rgba(20,18,16,.4)",
+    "--ink": "#221f1b",
+    "--body": "rgba(34,31,27,0.62)",
+    "--faint": "rgba(34,31,27,0.42)",
+    "--line": "rgba(34,31,27,0.1)",
+    "--line-soft": "rgba(34,31,27,0.05)",
+    "--page": "#faf9f6",
+    "--mock": "#f2f0ec",
+    "--star": "#e0913f",
+    "--win-bg": "#efeeeb",
+    "--win-border": "#d8d5cf",
+    "--photo": "linear-gradient(135deg,#e3ded6,#e9dbc9)",
+    "--dark":
+      "radial-gradient(1500px 950px at 50% 54%, rgba(120,110,98,.14), transparent 60%)," +
+      "radial-gradient(1200px 640px at 50% -4%, rgba(150,140,125,.08), transparent 58%)," +
+      "radial-gradient(1700px 1100px at 50% 122%, rgba(0,0,0,.5), transparent 55%)," +
+      "linear-gradient(180deg,#1c1a17 0%, #100e0c 100%)",
+    "--dark-card3": "rgba(255,255,255,.06)",
+    "--accent-bright": "#d6cfc4",
+    "--p-blue-bg": "#ececea", "--p-blue-fg": "#3a352f",
+    "--p-green-bg": "#e4f0e2", "--p-green-fg": "#2f7a3a",
+    "--p-amber-bg": "#fbe7d3", "--p-amber-fg": "#9c5220",
+    "--p-purple-bg": "#efe7fb", "--p-purple-fg": "#6b4bbd",
+    "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#b83f77",
+    "--wash":
+      "radial-gradient(1400px 620px at 20% 0%, rgba(120,110,98,.10), transparent 60%)," +
+      "radial-gradient(1300px 640px at 96% 4%, rgba(223,150,90,.10), transparent 60%)," +
+      "linear-gradient(168deg, #f2f0ec 0%, #f7f5f0 44%, #ffffff 100%)",
+    "--hero-bg": "linear-gradient(103deg, #efeeea 0%, #f2f0eb 48%, #f2e9dd 100%)",
+    "--cta-bg": "linear-gradient(103deg, #efeeea 0%, #f2f0eb 50%, #f2e9dd 100%)",
   } as React.CSSProperties,
 };
 
