@@ -134,7 +134,7 @@ export default function PricingPage() {
           <div className="inner">
             <div className="sec-head rv">
               <span className="eyebrow">CHOOSE YOUR PLAN</span>
-              <h2>Two plans. <span className="accent">Both flat, both fair.</span></h2>
+              <h2>Two plans.<br /><span className="accent">Both flat, both fair.</span></h2>
             </div>
             <div className="price-grid">
               {/* Starter */}

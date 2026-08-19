@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useReveal } from "./useReveal";
 
 /* ────────────────────────────────────────────────────────────────
    kukie-inspired homepage variant, ported from the standalone concept.
@@ -488,9 +489,10 @@ export const CSS = `
 .kk .foot-social a:hover{color:var(--ink);border-color:var(--ink)}
 .kk .foot-bottom{margin-top:44px;padding:20px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--faint)}
 .kk .foot-bottom a{color:var(--faint);margin-left:18px}
-/* Progressive: visible by default (no-JS, print, pre-hydration). Hidden+animated only once JS marks html.js. */
+/* Progressive: visible by default (no-JS, print, pre-hydration). Hidden until JS marks html.js,
+   then an IntersectionObserver adds .in as each element enters, playing this timed reveal. */
 .kk .rv{opacity:1;transform:none}
-html.js .kk .rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)}
+html.js .kk .rv{opacity:0;transform:translateY(26px);transition:opacity .72s cubic-bezier(0.25,0.46,0.45,0.94), transform .72s cubic-bezier(0.25,0.46,0.45,0.94)}
 html.js .kk .rv.in{opacity:1;transform:none}
 /* Dark contrast band (How it works) */
 .kk section.dark{background:var(--dark);padding:clamp(72px,8vw,108px) 0}
@@ -808,23 +810,15 @@ export default function KukieVariant({ variant }: { variant: Variant }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Reveal on scroll
-    const io = new IntersectionObserver(
-      (es) => es.forEach((e) => { if (e.isIntersecting) { (e.target as HTMLElement).classList.add("in"); io.unobserve(e.target); } }),
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    root.querySelectorAll(".rv").forEach((el, i) => {
-      (el as HTMLElement).style.transitionDelay = (Math.min(i % 4, 3) * 60) + "ms";
-      io.observe(el);
-    });
-
     return () => {
       window.removeEventListener("scroll", onScroll);
-      io.disconnect();
       menuBtn?.removeEventListener("click", onMenu);
       drawerLinks.forEach((a) => a.removeEventListener("click", closeMenu));
     };
   }, [variant]);
+
+  // Scroll reveal — native CSS scroll-driven where supported, IntersectionObserver fallback.
+  useReveal(rootRef, [variant]);
 
   return (
     <div className="kk" ref={rootRef} style={PALETTES[variant]}>

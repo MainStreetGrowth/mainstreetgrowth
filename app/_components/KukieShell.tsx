@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { CSS, PALETTES } from "./KukieVariant";
+import { useReveal } from "./useReveal";
 
 /* Shared kukie-olive shell: scope + styles + nav + footer + scroll/reveal effects.
    Every non-home page renders its content as children inside this. */
@@ -39,19 +40,8 @@ export default function KukieShell({ children }: { children: React.ReactNode }) 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    const io = new IntersectionObserver(
-      (es) => es.forEach((e) => { if (e.isIntersecting) { (e.target as HTMLElement).classList.add("in"); io.unobserve(e.target); } }),
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    root.querySelectorAll(".rv").forEach((el, i) => {
-      (el as HTMLElement).style.transitionDelay = (Math.min(i % 4, 3) * 60) + "ms";
-      io.observe(el);
-    });
-    return () => io.disconnect();
-  }, [pathname]);
+  // Scroll reveal — native CSS scroll-driven where supported, IntersectionObserver fallback.
+  useReveal(rootRef, [pathname]);
 
   const active = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
