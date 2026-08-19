@@ -9,7 +9,7 @@ import { useEffect, useRef } from "react";
 
 type Variant = "green" | "blue" | "terracotta" | "plum" | "teal" | "honey" | "indigo" | "olive" | "charcoal";
 
-const PALETTES: Record<Variant, React.CSSProperties> = {
+export const PALETTES: Record<Variant, React.CSSProperties> = {
   green: {
     ["--accent" as string]: "#3b6933",
     "--accent-dark": "#2f5426",
@@ -318,7 +318,7 @@ const PALETTES: Record<Variant, React.CSSProperties> = {
   } as React.CSSProperties,
 };
 
-const CSS = `
+export const CSS = `
 .kk{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;background:#ffffff;min-height:100vh}
 .kk .wash{background:var(--wash)}
 .kk *{box-sizing:border-box;margin:0;padding:0}
@@ -509,8 +509,8 @@ const BODY = `
   <div class="wrap nav-in">
     <a href="#" class="brand"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2.5 5.5L9 15l2.5-5.5z" fill="currentColor" stroke="none"/></svg></span>Main Street Compass</a>
     <nav class="nav-links">
-      <a class="link" href="#outcomes">Services</a>
-      <a class="link" href="#pricing">Pricing</a>
+      <a class="link" href="/services">Services</a>
+      <a class="link" href="/pricing">Pricing</a>
       <a class="link" href="/about">About</a>
       <a class="link" href="/blog">Blog</a>
       <a class="link" href="/faq">FAQ</a>
