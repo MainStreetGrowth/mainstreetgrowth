@@ -494,6 +494,9 @@ export const CSS = `
 .kk .rv{opacity:1;transform:none}
 html.js .kk .rv{opacity:0;transform:translateY(26px);transition:opacity .72s cubic-bezier(0.25,0.46,0.45,0.94), transform .72s cubic-bezier(0.25,0.46,0.45,0.94)}
 html.js .kk .rv.in{opacity:1;transform:none}
+/* Above-the-fold hero content renders immediately — protects LCP and avoids a load-time
+   fade on the headline. Scroll-reveal applies only to content below the hero. */
+html.js .kk .hero .rv{opacity:1;transform:none;transition:none}
 /* Dark contrast band (How it works) */
 .kk section.dark{background:var(--dark);padding:clamp(72px,8vw,108px) 0}
 .kk section.dark .eyebrow{color:var(--accent-bright)}
