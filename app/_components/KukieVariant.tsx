@@ -253,13 +253,13 @@ export const PALETTES: Record<Variant, React.CSSProperties> = {
     "--accent-dark": "#4d591c",
     "--accent-glow": "rgba(95,109,36,.55)",
     "--ink": "#232418",
-    "--body": "rgba(35,36,24,0.6)",
-    "--faint": "rgba(35,36,24,0.42)",
+    "--body": "rgba(35,36,24,0.72)",
+    "--faint": "rgba(35,36,24,0.66)",
     "--line": "rgba(35,36,24,0.09)",
     "--line-soft": "rgba(35,36,24,0.05)",
     "--page": "#faf9f3",
     "--mock": "#f2f2e8",
-    "--star": "#d9822f",
+    "--star": "#c06a1f",
     "--win-bg": "#ebf0d8",
     "--win-border": "#d4dfab",
     "--photo": "linear-gradient(135deg,#dfe3c6,#e9dbc9)",
@@ -271,10 +271,10 @@ export const PALETTES: Record<Variant, React.CSSProperties> = {
     "--dark-card3": "rgba(95,109,36,.20)",
     "--accent-bright": "#a8bb5f",
     "--p-blue-bg": "#eaefd3", "--p-blue-fg": "#4c561d",
-    "--p-green-bg": "#e4f0e2", "--p-green-fg": "#2f7a3a",
+    "--p-green-bg": "#e4f0e2", "--p-green-fg": "#2c7337",
     "--p-amber-bg": "#fbe7d3", "--p-amber-fg": "#9c5220",
     "--p-purple-bg": "#efe7fb", "--p-purple-fg": "#6b4bbd",
-    "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#b83f77",
+    "--p-pink-bg": "#fce6ef", "--p-pink-fg": "#a83668",
     "--wash":
       "radial-gradient(1400px 620px at 20% 0%, rgba(95,109,36,.13), transparent 60%)," +
       "radial-gradient(1300px 640px at 96% 4%, rgba(223,150,90,.13), transparent 60%)," +
@@ -319,7 +319,7 @@ export const PALETTES: Record<Variant, React.CSSProperties> = {
 };
 
 export const CSS = `
-.kk{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;background:#ffffff;min-height:100vh}
+.kk{font-family:var(--font-jakarta),'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;background:#ffffff;min-height:100vh}
 .kk .wash{background:var(--wash)}
 .kk *{box-sizing:border-box;margin:0;padding:0}
 .kk a{text-decoration:none;color:inherit}
@@ -338,12 +338,20 @@ export const CSS = `
 .kk .nav-in{height:74px;display:flex;align-items:center;justify-content:space-between}
 .kk .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
 .kk .brand .mark{width:30px;height:30px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff}
-.kk .nav-links{display:flex;align-items:center;gap:30px}
-.kk .nav-links a.link{font-size:14.5px;font-weight:600;color:var(--body);display:inline-flex;align-items:center;gap:5px}
+.kk .nav-links{display:flex;align-items:center;gap:26px}
+.kk .nav-links a.link{font-size:14.5px;font-weight:600;color:var(--body);display:inline-flex;align-items:center;gap:5px;position:relative}
 .kk .nav-links a.link:hover{color:var(--ink)}
+.kk .nav-links a.link.active{color:var(--accent);font-weight:700}
+.kk .nav-links a.link.active::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:2px;background:var(--accent)}
 .kk .nav-cta{display:flex;align-items:center;gap:22px}
 .kk .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink)}
 @media(max-width:900px){.kk .nav-links{display:none}.kk .menu-btn{display:flex}}
+.kk .mobile-drawer{display:none;flex-direction:column;gap:2px;padding:12px clamp(18px,2.6vw,40px) 22px;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+.kk header.nav.menu-open .mobile-drawer{display:flex}
+.kk .mobile-drawer a{font-size:16px;font-weight:600;padding:12px 4px;border-bottom:1px solid var(--line);color:var(--ink)}
+.kk .mobile-drawer a.active{color:var(--accent);font-weight:800}
+.kk .mobile-drawer a.cta{border-bottom:none;margin-top:14px;justify-content:center;color:#fff}
+@media(min-width:901px){.kk .mobile-drawer{display:none!important}}
 .kk .eyebrow{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.02em}
 .kk .sec-head{text-align:center;max-width:700px;margin:0 auto 60px}
 .kk .sec-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.06;margin:14px 0 0}
@@ -395,6 +403,7 @@ export const CSS = `
 .kk .marquee p{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin-bottom:26px}
 .kk .marq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
 .kk .marq-track{display:flex;align-items:center;gap:16px;width:max-content;padding:6px 0;animation:kkscroll 40s linear infinite}
+.kk .marq-track:hover{animation-play-state:paused}
 .kk .mchip{display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 20px 8px 8px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 12px 26px -20px rgba(0,0,0,.18);white-space:nowrap;font-size:15px;font-weight:600;color:var(--ink)}
 .kk .mbadge{width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex-shrink:0}
 .kk .mbadge.c0{background:var(--p-blue-bg);color:var(--p-blue-fg)}
@@ -404,6 +413,9 @@ export const CSS = `
 .kk .mbadge.c4{background:var(--p-amber-bg);color:var(--p-amber-fg)}
 @keyframes kkscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .kk section.block{padding:92px 0}
+/* Inner pages: white breathing room between the hero panel and the tinted
+   content region below it (the homepage gets this from the marquee band). */
+.kk .hero:has(+ .wash){padding-bottom:clamp(44px,5vw,76px)}
 .kk .card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 2px 6px rgba(0,0,0,.04), 0 16px 34px -22px rgba(0,0,0,.16)}
 .kk .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .kk .feat{padding:28px;display:flex;flex-direction:column;gap:22px}
@@ -470,10 +482,16 @@ export const CSS = `
 .kk .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
 .kk .foot-cols h4{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
 .kk .foot-cols a{display:block;font-size:14px;color:var(--body);line-height:2}
+.kk .foot-cols .foot-loc{display:block;font-size:14px;color:var(--body);line-height:2}
+.kk .foot-social{display:flex;gap:9px;margin-top:2px}
+.kk .foot-social a{width:34px;height:34px;border-radius:999px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--body)}
+.kk .foot-social a:hover{color:var(--ink);border-color:var(--ink)}
 .kk .foot-bottom{margin-top:44px;padding:20px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--faint)}
 .kk .foot-bottom a{color:var(--faint);margin-left:18px}
-.kk .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
-.kk .rv.in{opacity:1;transform:none}
+/* Progressive: visible by default (no-JS, print, pre-hydration). Hidden+animated only once JS marks html.js. */
+.kk .rv{opacity:1;transform:none}
+html.js .kk .rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)}
+html.js .kk .rv.in{opacity:1;transform:none}
 /* Dark contrast band (How it works) */
 .kk section.dark{background:var(--dark);padding:clamp(72px,8vw,108px) 0}
 .kk section.dark .eyebrow{color:var(--accent-bright)}
@@ -493,10 +511,12 @@ export const CSS = `
 /* Hero fits the viewport height on desktop so the photo never crops */
 @media(min-width:900px){
   .kk .hero{padding:16px 0 12px}
-  .kk .hero-panel{display:flex;align-items:center}
+  /* Only the homepage hero (which wraps a .hero-grid) becomes a flex row; inner-page
+     heroes place multiple children directly in .hero-panel and must keep stacking. */
+  .kk .hero-panel:has(.hero-grid){display:flex;align-items:center}
   .kk .hero-grid{width:100%}
 }
-@media(prefers-reduced-motion:reduce){.kk .rv{opacity:1;transform:none;transition:none}.kk .marq-track{animation:none}.kk section.dark .three>.card.step:last-child::before{animation:none}}
+@media(prefers-reduced-motion:reduce){html.js .kk .rv{opacity:1;transform:none;transition:none}.kk .marq-track{animation:none}.kk section.dark .three>.card.step:last-child::before{animation:none}}
 `;
 
 const STAR = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>`;
@@ -507,8 +527,9 @@ const CK = `<svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="
 const BODY = `
 <header class="nav" data-nav>
   <div class="wrap nav-in">
-    <a href="#" class="brand"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2.5 5.5L9 15l2.5-5.5z" fill="currentColor" stroke="none"/></svg></span>Main Street Compass</a>
+    <a href="/" class="brand"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2.5 5.5L9 15l2.5-5.5z" fill="currentColor" stroke="none"/></svg></span>Main Street Compass</a>
     <nav class="nav-links">
+      <a class="link active" href="/" aria-current="page">Home</a>
       <a class="link" href="/services">Services</a>
       <a class="link" href="/pricing">Pricing</a>
       <a class="link" href="/about">About</a>
@@ -519,9 +540,21 @@ const BODY = `
       <a class="link" href="tel:+16015550100">Call us</a>
       <a class="btn btn-primary" href="/contact">Get a free audit ${ARROW}</a>
     </div>
-    <button class="menu-btn" aria-label="Menu"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="kk-drawer"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
+  <nav id="kk-drawer" class="mobile-drawer" aria-label="Mobile">
+    <a class="active" href="/" aria-current="page">Home</a>
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/faq">FAQ</a>
+    <a href="tel:+16015550100">Call us</a>
+    <a class="btn btn-primary cta" href="/contact">Get a free audit ${ARROW}</a>
+  </nav>
 </header>
+
+<main>
 
 <section class="hero">
   <div class="wrap">
@@ -713,16 +746,22 @@ const BODY = `
 </section>
 </div>
 
+</main>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#" class="brand"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/></svg></span>Main Street Compass</a>
+        <a href="/" class="brand"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/></svg></span>Main Street Compass</a>
         <p>Customer acquisition for small-town restaurants. Serving Mississippi &amp; the Southeast.</p>
+        <div class="foot-social">
+          <a href="https://facebook.com/mainstreetcompass" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg></a>
+          <a href="https://instagram.com/mainstreetcompass" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        </div>
       </div>
       <div class="foot-cols">
         <div><h4>Explore</h4><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/about">About</a><a href="/blog">Blog</a><a href="/faq">FAQ</a><a href="/contact">Contact</a></div>
-        <div><h4>Contact</h4><a href="tel:+16015550100">(601) 555-0100</a><a href="mailto:hello@mainstreetcompass.com">hello@mainstreetcompass.com</a><a href="#">Mississippi &amp; the Southeast</a></div>
+        <div><h4>Contact</h4><a href="tel:+16015550100">(601) 555-0100</a><a href="mailto:hello@mainstreetcompass.com">hello@mainstreetcompass.com</a><span class="foot-loc">Mississippi &amp; the Southeast</span></div>
       </div>
     </div>
     <div class="foot-bottom"><span>© ${new Date().getFullYear()} Main Street Compass. All rights reserved.</span><span><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span></div>
@@ -734,17 +773,22 @@ export default function KukieVariant({ variant }: { variant: Variant }) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Load the Plus Jakarta Sans web font once.
-    if (!document.getElementById("kk-font")) {
-      const l = document.createElement("link");
-      l.id = "kk-font";
-      l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap";
-      document.head.appendChild(l);
-    }
-
     const root = rootRef.current;
     if (!root) return;
+
+    // Mobile menu drawer toggle
+    const menuBtn = root.querySelector<HTMLButtonElement>(".menu-btn");
+    const navEl = root.querySelector<HTMLElement>("header.nav");
+    const setMenu = (open: boolean) => {
+      navEl?.classList.toggle("menu-open", open);
+      menuBtn?.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    const onMenu = () => setMenu(!navEl?.classList.contains("menu-open"));
+    menuBtn?.addEventListener("click", onMenu);
+    const drawerLinks = Array.from(root.querySelectorAll<HTMLAnchorElement>(".mobile-drawer a"));
+    const closeMenu = () => setMenu(false);
+    drawerLinks.forEach((a) => a.addEventListener("click", closeMenu));
 
     // Marquee fill
     const marq = root.querySelector("[data-marq]");
@@ -774,7 +818,12 @@ export default function KukieVariant({ variant }: { variant: Variant }) {
       io.observe(el);
     });
 
-    return () => { window.removeEventListener("scroll", onScroll); io.disconnect(); };
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
+      menuBtn?.removeEventListener("click", onMenu);
+      drawerLinks.forEach((a) => a.removeEventListener("click", closeMenu));
+    };
   }, [variant]);
 
   return (

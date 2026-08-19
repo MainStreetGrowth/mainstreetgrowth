@@ -53,12 +53,12 @@ export default function TermsPage() {
                 style={{
                   fontSize: 15,
                   lineHeight: 1.7,
-                  color: "var(--body)",
                   margin: 0,
                   padding: "16px 20px",
-                  background: "rgba(255,255,255,0.6)",
+                  background: "var(--p-amber-bg)",
+                  color: "var(--p-amber-fg)",
                   borderRadius: 12,
-                  borderLeft: "3px solid var(--star)",
+                  border: "1px solid var(--win-border)",
                   maxWidth: 620,
                 }}
               >

@@ -37,8 +37,8 @@ body { margin: 0; }
   --inverse-on-surface: #ffeee0;
 
   /* Typography */
-  --font-display: var(--font-source-serif), Georgia, "Times New Roman", serif;
-  --font-body:    var(--font-work-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-body:    var(--font-jakarta), system-ui, -apple-system, sans-serif;
 
   /* Radii */
   --radius-sm:  2px;    /* 0.125rem */
@@ -83,7 +83,7 @@ a[href^="#"]:active, button:active { transform: scale(0.97); }
 /* ── Focus visibility (keyboard) ───────────────────────────── */
 /* box-shadow ring shows even where inline styles set outline:none. */
 :where(a, button, [role="button"], summary):focus-visible {
-  outline: 2px solid var(--green);
+  outline: 2px solid #5f6d24;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -91,8 +91,8 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: none;
-  border-color: var(--green) !important;
-  box-shadow: 0 0 0 3px rgba(59, 105, 51, 0.28);
+  border-color: #5f6d24 !important;
+  box-shadow: 0 0 0 3px rgba(95, 109, 36, 0.30);
 }
 
 /* ── Scroll reveal (progressive: visible without JS) ────────── */

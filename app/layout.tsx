@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Work_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import SiteMotion from "./_components/SiteMotion";
 import { SITE } from "./_lib/theme";
 
-const sourceSerif = Source_Serif_4({
+// Self-hosted + preloaded via next/font (no runtime Google-Fonts fetch, no FOUT).
+// Exposed as --font-jakarta, consumed by the .kk design scope.
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-source-serif",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-});
-
-const workSans = Work_Sans({
-  subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-jakarta",
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -67,18 +60,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sourceSerif.variable} ${workSans.variable} h-full antialiased`}
+      className={`${jakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        {/* Mark JS-enabled before paint so `.reveal` only hides when JS can un-hide it. */}
+        {/* Mark JS-enabled before paint so reveal effects only hide when JS can un-hide them. */}
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.add('js')",
           }}
         />
         {children}
-        <SiteMotion />
       </body>
     </html>
   );

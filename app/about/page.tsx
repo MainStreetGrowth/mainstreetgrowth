@@ -186,7 +186,7 @@ export default function AboutPage() {
         </section>
       </div>
 
-      {/* ── OUR APPROACH + VALUES — dark band ─────────────────── */}
+      {/* ── OUR APPROACH — dark band ─────────────────────────── */}
       <section className="block dark">
         <div className="inner">
           <div className="sec-head rv">
@@ -202,20 +202,30 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          <div className="three rv" style={{ marginTop: 18, paddingTop: 34, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-            {VALUES.map(({ title, body }) => (
-              <div key={title} className="card step">
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       <div className="wash">
-        {/* ── WHO WE ARE ──────────────────────────────────────── */}
+        {/* ── WHAT YOU CAN COUNT ON — values ───────────────────── */}
         <section className="block">
+          <div className="inner">
+            <div className="sec-head rv">
+              <span className="eyebrow">WHAT YOU CAN COUNT ON</span>
+              <h2>How we work <span className="accent">with you.</span></h2>
+            </div>
+            <div className="three">
+              {VALUES.map(({ title, body }) => (
+                <div key={title} className="card step rv">
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHO WE ARE ──────────────────────────────────────── */}
+        <section className="block" style={{ paddingTop: 0 }}>
           <div className="inner">
             <div className="sec-head rv">
               <span className="eyebrow">WHO WE ARE</span>

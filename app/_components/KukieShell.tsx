@@ -7,6 +7,7 @@ import { CSS, PALETTES } from "./KukieVariant";
    Every non-home page renders its content as children inside this. */
 
 const NAV = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
@@ -32,13 +33,6 @@ export default function KukieShell({ children }: { children: React.ReactNode }) 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!document.getElementById("kk-font")) {
-      const l = document.createElement("link");
-      l.id = "kk-font";
-      l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap";
-      document.head.appendChild(l);
-    }
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -70,7 +64,7 @@ export default function KukieShell({ children }: { children: React.ReactNode }) 
           <a href="/" className="brand"><Mark />Main Street Compass</a>
           <nav className="nav-links">
             {NAV.map((n) => (
-              <a key={n.href} className="link" href={n.href} style={active(n.href) ? { color: "var(--ink)" } : undefined}>{n.label}</a>
+              <a key={n.href} className={`link${active(n.href) ? " active" : ""}`} href={n.href} aria-current={active(n.href) ? "page" : undefined}>{n.label}</a>
             ))}
           </nav>
           <div className="nav-cta nav-links">
@@ -85,9 +79,12 @@ export default function KukieShell({ children }: { children: React.ReactNode }) 
         </div>
         {open && (
           <nav style={{ background: "rgba(255,255,255,0.97)", backdropFilter: "blur(8px)", borderTop: "1px solid var(--line)", padding: "12px 24px 22px", display: "flex", flexDirection: "column", gap: 2 }}>
-            {NAV.map((n) => (
-              <a key={n.href} href={n.href} style={{ fontSize: 16, fontWeight: 600, padding: "12px 4px", borderBottom: "1px solid var(--line)", color: "var(--ink)" }}>{n.label}</a>
-            ))}
+            {NAV.map((n) => {
+              const on = active(n.href);
+              return (
+                <a key={n.href} href={n.href} aria-current={on ? "page" : undefined} style={{ fontSize: 16, fontWeight: on ? 800 : 600, padding: "12px 4px", borderBottom: "1px solid var(--line)", color: on ? "var(--accent)" : "var(--ink)" }}>{n.label}</a>
+              );
+            })}
             <a className="btn btn-primary" href="/contact" style={{ marginTop: 14, justifyContent: "center" }}>Get a free audit <Arrow /></a>
           </nav>
         )}

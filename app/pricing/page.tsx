@@ -171,31 +171,31 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* ── HONEST COMPARISON ─────────────────────────────── */}
-        <section className="block" style={{ paddingTop: 0 }}>
+        {/* ── HONEST COMPARISON — dark band ─────────────────── */}
+        <section className="block dark">
           <div className="inner">
             <div className="sec-head rv">
               <span className="eyebrow">AN HONEST COMPARISON</span>
-              <h2>How we stack up <span className="accent">against a typical ordering platform.</span></h2>
+              <h2 style={{ whiteSpace: "normal" }}>How we stack up <span className="accent">against a typical ordering platform.</span></h2>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 18 }}>
               {COMPARE.map((row) => (
-                <div key={row.label} className="card rv" style={{ padding: "26px 28px 28px" }}>
-                  <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--faint)", marginBottom: 16 }}>
+                <div key={row.label} className="card rv" style={{ padding: "26px 28px 28px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "none" }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>
                     {row.label}
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 12 }}>
-                    <span style={{ color: "var(--p-green-fg)", display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoCheck /></span>
-                    <span style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", lineHeight: 1.45 }}>{row.us}</span>
+                    <span style={{ color: "var(--accent-bright)", display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoCheck /></span>
+                    <span style={{ fontSize: 15, fontWeight: 700, color: "#fff", lineHeight: 1.45 }}>{row.us}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <span style={{ color: "var(--p-amber-fg)", display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoNo /></span>
-                    <span style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.45 }}>{row.them}</span>
+                    <span style={{ color: "rgba(255,255,255,0.4)", display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoNo /></span>
+                    <span style={{ fontSize: 15, color: "rgba(255,255,255,0.62)", lineHeight: 1.45 }}>{row.them}</span>
                   </div>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: 13, color: "var(--body)", marginTop: 22, maxWidth: 640, lineHeight: 1.6, textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", marginTop: 22, maxWidth: 640, lineHeight: 1.6, textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
               A fair, general comparison. Every platform is different, and this is meant to show the difference in
               approach, not to call anyone out.
             </p>
@@ -203,7 +203,7 @@ export default function PricingPage() {
         </section>
 
         {/* ── MINI FAQ ──────────────────────────────────────── */}
-        <section className="block" style={{ paddingTop: 0 }}>
+        <section className="block">
           <div className="inner">
             <div className="sec-head rv">
               <span className="eyebrow">COMMON QUESTIONS</span>

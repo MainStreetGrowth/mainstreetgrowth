@@ -47,7 +47,7 @@ export default function BlogIndex() {
           <div className="inner">
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 18 }}>
               {POSTS.map((post) => (
-                <a key={post.slug} className="card rv" style={{ padding: 26, display: "block" }} href={`/blog/${post.slug}`}>
+                <a key={post.slug} className="card rv" style={{ padding: 26, display: "flex", flexDirection: "column" }} href={`/blog/${post.slug}`}>
                   <span className="pill amber">
                     <span className="dot" />
                     {post.category}
@@ -65,7 +65,7 @@ export default function BlogIndex() {
                     {post.title}
                   </h3>
                   <p style={{ color: "var(--body)", fontSize: 15, lineHeight: 1.65, margin: "0 0 20px" }}>{post.excerpt}</p>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginTop: "auto" }}>
                     <span style={{ fontSize: 13, color: "var(--faint)" }}>
                       {formatDate(post.date)} · {post.readMins} min read
                     </span>
