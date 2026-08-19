@@ -1,6 +1,4 @@
-import SiteNav from "../_components/SiteNav";
-import SiteFooter from "../_components/SiteFooter";
-import { theme as T } from "../_lib/theme";
+import KukieShell from "../_components/KukieShell";
 
 export const metadata = {
   title: "FAQ | Main Street Compass",
@@ -9,35 +7,17 @@ export const metadata = {
 };
 
 const IcoArrow = () => (
-  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4} aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
   </svg>
 );
 
-const SECTION_PAD = "clamp(64px,10vw,110px) 24px";
-const WRAP: React.CSSProperties = { maxWidth: 1160, margin: "0 auto" };
-
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  const color = dark ? T.sage : T.green;
-  return (
-    <div
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 10,
-        fontSize: 12,
-        fontWeight: 700,
-        letterSpacing: "0.14em",
-        textTransform: "uppercase",
-        color,
-        marginBottom: 20,
-      }}
-    >
-      <span style={{ width: 22, height: 2, background: color, display: "inline-block" }} />
-      {children}
-    </div>
-  );
-}
+const FAQ_CSS =
+  ".kk .faq{list-style:none}" +
+  ".kk .faq > summary{list-style:none}" +
+  ".kk .faq > summary::-webkit-details-marker{display:none}" +
+  ".kk .faq .faq-mark{transition:transform .2s ease}" +
+  ".kk .faq[open] .faq-mark{transform:rotate(45deg)}";
 
 type QA = { q: string; a: React.ReactNode };
 
@@ -93,63 +73,36 @@ const FAQS: QA[] = [
 
 export default function FaqPage() {
   return (
-    <>
-      <SiteNav />
-      <style
-        dangerouslySetInnerHTML={{
-          __html:
-            ".faq-item > summary::-webkit-details-marker{display:none}" +
-            ".faq-item .faq-mark{transition:transform .2s ease,background .2s ease}" +
-            ".faq-item[open] .faq-mark{transform:rotate(45deg)}",
-        }}
-      />
-      <main style={{ fontFamily: "var(--font-body,system-ui)" }}>
-        {/* ── HERO — forest ─────────────────────────────────────── */}
-        <section className="grain" style={{ background: T.ink, padding: "clamp(72px,11vw,120px) 24px" }}>
-          <div style={WRAP}>
-            <div className="reveal" style={{ maxWidth: 760 }}>
-              <Eyebrow dark>Frequently asked</Eyebrow>
-              <h1
-                style={{
-                  fontSize: "clamp(2.6rem,6vw,4.6rem)",
-                  fontWeight: 800,
-                  lineHeight: 1.0,
-                  letterSpacing: "-0.04em",
-                  color: T.onInk,
-                  margin: "0 0 24px",
-                }}
-              >
-                Questions,{" "}
-                <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>
-                  answered.
-                </span>
+    <KukieShell>
+      <style dangerouslySetInnerHTML={{ __html: FAQ_CSS }} />
+
+      {/* ── HERO ──────────────────────────────────────────────── */}
+      <section className="hero">
+        <div className="wrap">
+          <div className="hero-panel">
+            <div style={{ textAlign: "center", maxWidth: 820, margin: "0 auto" }}>
+              <span className="eyebrow rv">Frequently asked</span>
+              <h1 className="rv" style={{ marginTop: 14 }}>
+                Questions, <span className="accent">answered.</span>
               </h1>
-              <p style={{ fontSize: "clamp(17px,2vw,20px)", color: T.onInkMuted, lineHeight: 1.65, margin: 0, maxWidth: 580 }}>
+              <p className="sub rv" style={{ margin: "0 auto", maxWidth: 600 }}>
                 No fine print, no runaround. Here is exactly how the pricing, timeline, and service work, the way we
                 would explain it to a neighbor across the counter.
               </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── ACCORDIONS — ivory ─────────────────────────────────── */}
-        <section style={{ background: T.cream, padding: SECTION_PAD }}>
-          <div style={{ ...WRAP, maxWidth: 860 }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              {FAQS.map(({ q, a }, i) => (
-                <details
-                  key={q}
-                  className={`faq-item lift reveal reveal-delay-${(i % 4) + 1}`}
-                  style={{
-                    background: "#FFFFFF",
-                    borderRadius: 8,
-                    border: "1px solid rgba(34,26,17,0.1)",
-                    padding: "0 clamp(20px,3vw,28px)",
-                  }}
-                >
+      <div className="wash">
+        {/* ── ACCORDIONS ──────────────────────────────────────── */}
+        <section className="block">
+          <div className="inner">
+            <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", flexDirection: "column", gap: 14 }}>
+              {FAQS.map(({ q, a }) => (
+                <details key={q} className="faq card rv" style={{ padding: "4px clamp(20px,3vw,28px)" }}>
                   <summary
                     style={{
-                      listStyle: "none",
                       cursor: "pointer",
                       display: "flex",
                       alignItems: "center",
@@ -158,7 +111,7 @@ export default function FaqPage() {
                       padding: "22px 0",
                       fontSize: "clamp(16px,1.9vw,18px)",
                       fontWeight: 700,
-                      color: T.ink,
+                      color: "var(--ink)",
                       letterSpacing: "-0.01em",
                     }}
                   >
@@ -168,15 +121,15 @@ export default function FaqPage() {
                       aria-hidden="true"
                       style={{
                         flexShrink: 0,
-                        width: 26,
-                        height: 26,
+                        width: 28,
+                        height: 28,
                         borderRadius: "50%",
-                        background: "rgba(59,105,51,0.1)",
-                        color: T.green,
+                        background: "var(--p-blue-bg)",
+                        color: "var(--accent)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: 20,
+                        fontSize: 21,
                         fontWeight: 700,
                         lineHeight: 1,
                       }}
@@ -184,15 +137,7 @@ export default function FaqPage() {
                       +
                     </span>
                   </summary>
-                  <div
-                    style={{
-                      fontSize: 15.5,
-                      lineHeight: 1.75,
-                      color: T.muted,
-                      padding: "0 0 24px",
-                      maxWidth: 680,
-                    }}
-                  >
+                  <div style={{ fontSize: 15.5, lineHeight: 1.75, color: "var(--body)", padding: "0 0 24px", maxWidth: 700 }}>
                     {a}
                   </div>
                 </details>
@@ -200,13 +145,16 @@ export default function FaqPage() {
             </div>
 
             {/* still have questions */}
-            <p className="reveal" style={{ fontSize: 15.5, color: T.muted, lineHeight: 1.7, marginTop: 32 }}>
+            <p
+              className="rv"
+              style={{ maxWidth: 860, margin: "32px auto 0", fontSize: 15.5, color: "var(--body)", lineHeight: 1.7 }}
+            >
               Still have a question?{" "}
-              <a href="/pricing" style={{ color: T.green, fontWeight: 700, textDecoration: "none" }}>
+              <a href="/pricing" style={{ color: "var(--accent)", fontWeight: 700 }}>
                 Compare the plans
               </a>{" "}
               or{" "}
-              <a href="/contact" style={{ color: T.green, fontWeight: 700, textDecoration: "none" }}>
+              <a href="/contact" style={{ color: "var(--accent)", fontWeight: 700 }}>
                 get in touch
               </a>
               . We are happy to talk it through, no pressure.
@@ -214,52 +162,23 @@ export default function FaqPage() {
           </div>
         </section>
 
-        {/* ── CTA — forest ───────────────────────────────────────── */}
-        <section className="grain" style={{ background: T.ink, padding: SECTION_PAD }}>
-          <div style={{ ...WRAP, textAlign: "center", maxWidth: 780 }}>
-            <div className="reveal">
-              <Eyebrow dark>Ready when you are</Eyebrow>
-              <h2
-                style={{
-                  fontSize: "clamp(2rem,5vw,3.6rem)",
-                  fontWeight: 800,
-                  color: T.onInk,
-                  lineHeight: 1.04,
-                  letterSpacing: "-0.035em",
-                  margin: "0 auto 20px",
-                }}
-              >
-                Let us fill your tables,{" "}
-                <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>
-                  starting with a free audit.
-                </span>
-              </h2>
-              <p style={{ fontSize: 17, color: T.onInkMuted, lineHeight: 1.7, margin: "0 auto 32px", maxWidth: 560 }}>
+        {/* ── CTA ─────────────────────────────────────────────── */}
+        <section className="block" style={{ paddingTop: 12 }}>
+          <div className="wrap">
+            <div className="cta-panel rv">
+              <span className="eyebrow">Ready when you are</span>
+              <h2>Let us fill your tables, <span className="accent">starting with a free audit.</span></h2>
+              <p>
                 We will review your online presence for free and show you exactly what is costing you customers before
                 we ever get on the phone.
               </p>
-              <a
-                href="/contact"
-                style={{
-                  background: T.onInk,
-                  color: T.ink,
-                  padding: "16px 32px",
-                  borderRadius: 4,
-                  fontSize: 16,
-                  fontWeight: 800,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 9,
-                  textDecoration: "none",
-                }}
-              >
+              <a className="btn btn-primary" href="/contact" style={{ fontSize: 16, padding: "16px 30px" }}>
                 Get a free revenue audit <IcoArrow />
               </a>
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter />
-    </>
+      </div>
+    </KukieShell>
   );
 }

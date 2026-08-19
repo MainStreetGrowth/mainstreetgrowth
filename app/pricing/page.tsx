@@ -1,7 +1,4 @@
-import type { ReactNode } from "react";
-import SiteNav from "../_components/SiteNav";
-import SiteFooter from "../_components/SiteFooter";
-import { theme as T } from "../_lib/theme";
+import KukieShell from "../_components/KukieShell";
 
 export const metadata = {
   title: "Pricing | Main Street Compass",
@@ -11,12 +8,12 @@ export const metadata = {
 
 /* ─── Stroke-only line icons (no emoji) ─────────────────────── */
 const IcoArrow = () => (
-  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4} aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
   </svg>
 );
 const IcoCheck = () => (
-  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true">
+  <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
   </svg>
 );
@@ -26,39 +23,6 @@ const IcoNo = () => (
     <path strokeLinecap="round" d="M6.5 6.5l11 11" />
   </svg>
 );
-
-/* ─── Reusable header pieces ────────────────────────────────── */
-function Eyebrow({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
-  const c = dark ? T.sage : T.green;
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-      <span style={{ width: 22, height: 2, background: c, display: "inline-block", flexShrink: 0 }} />
-      <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: c }}>
-        {children}
-      </span>
-    </div>
-  );
-}
-
-function Heading({ lead, accent, dark = false }: { lead: string; accent: string; dark?: boolean }) {
-  return (
-    <h2
-      style={{
-        fontWeight: 800,
-        fontSize: "clamp(2rem,4.5vw,3.4rem)",
-        letterSpacing: "-0.03em",
-        lineHeight: 1.04,
-        color: dark ? T.onInk : T.ink,
-        margin: 0,
-      }}
-    >
-      {lead}{" "}
-      <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: dark ? T.sage : T.green }}>
-        {accent}
-      </span>
-    </h2>
-  );
-}
 
 const NO_FEES = [
   "No per-order fees",
@@ -85,103 +49,61 @@ const FAQ: { q: string; a: string }[] = [
   { q: "Can I cancel?", a: "Yes, any time, no penalty. Give us a heads-up and we will wrap things up cleanly." },
 ];
 
-const SECTION = { maxWidth: 1160, margin: "0 auto" };
-
 export default function PricingPage() {
   return (
-    <>
-      <SiteNav />
-      <main style={{ fontFamily: "var(--font-body,system-ui)" }}>
+    <KukieShell>
 
-        {/* ── HERO — forest ─────────────────────────────────── */}
-        <section className="grain" style={{ background: T.ink, padding: "clamp(72px,11vw,120px) 24px clamp(64px,9vw,104px)" }}>
-          <div style={{ ...SECTION, maxWidth: 900 }}>
-            <div className="reveal">
-              <Eyebrow dark>Pricing</Eyebrow>
-            </div>
-            <h1
-              className="reveal reveal-delay-1"
-              style={{
-                fontSize: "clamp(2.6rem,6vw,4.6rem)",
-                fontWeight: 800,
-                lineHeight: 1.0,
-                letterSpacing: "-0.04em",
-                color: T.onInk,
-                margin: "0 0 24px",
-              }}
-            >
-              Simple,{" "}
-              <span className="font-display" style={{ fontStyle: "italic", fontWeight: 700, color: T.sage }}>
-                transparent pricing.
-              </span>
+      {/* ── HERO ───────────────────────────────────────────── */}
+      <section className="hero">
+        <div className="wrap">
+          <div className="hero-panel rv" style={{ textAlign: "center" }}>
+            <span className="eyebrow">PRICING</span>
+            <h1 style={{ margin: "14px auto 0", maxWidth: 820 }}>
+              Simple, <span className="accent">transparent pricing.</span>
             </h1>
-            <p
-              className="reveal reveal-delay-2"
-              style={{ fontSize: 19, color: T.onInkMuted, lineHeight: 1.65, margin: "0 0 32px", maxWidth: 560 }}
-            >
+            <p className="sub" style={{ margin: "22px auto 30px", maxWidth: 600 }}>
               One flat monthly fee, everything done for you. No setup fees, no contracts, and never a cut of your
               sales. You always know exactly what you pay.
             </p>
-            <div className="reveal reveal-delay-3" style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-              <a
-                href="/contact"
-                style={{
-                  background: T.onInk, color: T.ink, padding: "16px 30px", borderRadius: 4,
-                  fontSize: 16, fontWeight: 800, textDecoration: "none",
-                  display: "inline-flex", alignItems: "center", gap: 9,
-                }}
-              >
-                Get a free revenue audit <IcoArrow />
-              </a>
-              <a
-                href="/services"
-                style={{
-                  color: T.onInk, fontSize: 15, fontWeight: 700, textDecoration: "none",
-                  display: "inline-flex", alignItems: "center", gap: 7,
-                  borderBottom: "2px solid rgba(255,248,244,0.3)", paddingBottom: 3,
-                }}
-              >
-                See what&apos;s included
-              </a>
+            <div className="hero-actions" style={{ justifyContent: "center" }}>
+              <a className="btn btn-primary" href="/contact">Get a free revenue audit <IcoArrow /></a>
+              <a className="btn-text" href="/services">See what&apos;s included</a>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── WHAT YOU ACTUALLY PAY — ivory ─────────────────── */}
-        <section style={{ background: T.cream, padding: "clamp(64px,10vw,110px) 24px" }}>
-          <div style={SECTION}>
-            <div className="reveal" style={{ maxWidth: 680, marginBottom: "clamp(36px,5vw,48px)" }}>
-              <Eyebrow>What you actually pay</Eyebrow>
-              <Heading lead="A flat fee." accent="And your own ad budget." />
+      <div className="wash">
+
+        {/* ── WHAT YOU ACTUALLY PAY ─────────────────────────── */}
+        <section className="block">
+          <div className="inner">
+            <div className="sec-head rv">
+              <span className="eyebrow">WHAT YOU ACTUALLY PAY</span>
+              <h2>A flat fee. <span className="accent">And your own ad budget.</span></h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 28 }}>
-              <div
-                className="reveal"
-                style={{ background: "#FFFFFF", borderRadius: 8, border: "1px solid rgba(34,26,17,0.1)", padding: "30px 32px 34px" }}
-              >
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.green, marginBottom: 14 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 18, marginBottom: 24 }}>
+              <div className="card rv" style={{ padding: "30px 32px 34px" }}>
+                <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 14 }}>
                   Your management fee
                 </div>
                 <div style={{ marginBottom: 12 }}>
-                  <span className="font-display" style={{ fontSize: 48, fontWeight: 800, color: T.ink, letterSpacing: "-0.04em" }}>$200–$300</span>
-                  <span style={{ fontSize: 16, color: T.muted, marginLeft: 6 }}>/month</span>
+                  <span style={{ fontSize: 48, fontWeight: 800, color: "var(--ink)", letterSpacing: "-.04em" }}>$200–$300</span>
+                  <span style={{ fontSize: 16, color: "var(--body)", marginLeft: 6 }}>/month</span>
                 </div>
-                <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.65, margin: 0 }}>
+                <p style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.65, margin: 0 }}>
                   One flat fee covers the whole system: website, Google profile, local SEO, reporting, and (on Growth)
                   managed ads. Done for you, month to month.
                 </p>
               </div>
-              <div
-                className="reveal reveal-delay-1"
-                style={{ background: T.linen, borderRadius: 8, border: "1px solid rgba(34,26,17,0.1)", padding: "30px 32px 34px" }}
-              >
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.terracottaDeep, marginBottom: 14 }}>
+              <div className="card rv" style={{ padding: "30px 32px 34px", background: "var(--mock)" }}>
+                <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--p-amber-fg)", marginBottom: 14 }}>
                   Your ad budget (Growth)
                 </div>
                 <div style={{ marginBottom: 12 }}>
-                  <span className="font-display" style={{ fontSize: 48, fontWeight: 800, color: T.ink, letterSpacing: "-0.04em" }}>You set it</span>
+                  <span style={{ fontSize: 48, fontWeight: 800, color: "var(--ink)", letterSpacing: "-.04em" }}>You set it</span>
                 </div>
-                <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.65, margin: 0 }}>
+                <p style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.65, margin: 0 }}>
                   If you run Google Ads, your budget is separate and stays yours. It goes straight to Google, and we never
                   mark it up or take a cut. Start small, scale when it works.
                 </p>
@@ -189,20 +111,17 @@ export default function PricingPage() {
             </div>
 
             {/* No-fees strip */}
-            <div
-              className="reveal"
-              style={{ display: "flex", flexWrap: "wrap", gap: 12 }}
-            >
+            <div className="rv" style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
               {NO_FEES.map((f) => (
                 <span
                   key={f}
                   style={{
                     display: "inline-flex", alignItems: "center", gap: 8,
-                    background: "#FFFFFF", border: "1px solid rgba(34,26,17,0.1)", borderRadius: 4,
-                    padding: "11px 16px", fontSize: 14, fontWeight: 700, color: T.ink,
+                    background: "#fff", border: "1px solid var(--line)", borderRadius: 12,
+                    padding: "11px 16px", fontSize: 14, fontWeight: 700, color: "var(--ink)",
                   }}
                 >
-                  <span style={{ color: T.terracottaDeep, display: "inline-flex" }}><IcoNo /></span>
+                  <span style={{ color: "var(--p-amber-fg)", display: "inline-flex" }}><IcoNo /></span>
                   {f}
                 </span>
               ))}
@@ -210,171 +129,119 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* ── THE TWO PLANS — linen ─────────────────────────── */}
-        <section style={{ background: T.linen, padding: "clamp(64px,10vw,110px) 24px" }}>
-          <div style={SECTION}>
-            <div className="reveal" style={{ maxWidth: 680, marginBottom: "clamp(40px,6vw,56px)" }}>
-              <Eyebrow>Choose your plan</Eyebrow>
-              <Heading lead="Two plans." accent="Both flat, both fair." />
+        {/* ── THE TWO PLANS ─────────────────────────────────── */}
+        <section className="block" style={{ paddingTop: 0 }}>
+          <div className="inner">
+            <div className="sec-head rv">
+              <span className="eyebrow">CHOOSE YOUR PLAN</span>
+              <h2>Two plans. <span className="accent">Both flat, both fair.</span></h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 22 }}>
+            <div className="price-grid">
               {/* Starter */}
-              <div
-                className="lift reveal"
-                style={{ background: T.cream, borderRadius: 8, border: "1px solid rgba(34,26,17,0.1)", padding: "36px 34px 38px" }}
-              >
-                <div style={{ fontSize: 12, fontWeight: 700, color: T.muted, textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Starter</div>
-                <div style={{ marginBottom: 4 }}>
-                  <span className="font-display" style={{ fontSize: 56, fontWeight: 800, color: T.ink, letterSpacing: "-0.04em" }}>$200</span>
-                  <span style={{ fontSize: 16, color: T.muted, marginLeft: 4 }}>/month</span>
-                </div>
-                <p style={{ fontSize: 14.5, color: T.muted, margin: "0 0 26px" }}>Get found online</p>
-                <div style={{ height: 1, background: "rgba(34,26,17,0.1)", marginBottom: 24 }} />
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 30px", display: "flex", flexDirection: "column", gap: 13 }}>
+              <div className="card plan rv">
+                <span className="pill amber">Starter</span>
+                <div className="amt"><b>$200</b><span>/month</span></div>
+                <div className="desc">Get found online</div>
+                <ul>
                   {STARTER.map((item) => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 14.5, color: T.ink }}>
-                      <span style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(59,105,51,0.12)", color: T.green }}>
-                        <IcoCheck />
-                      </span>
-                      {item}
-                    </li>
+                    <li key={item}><span className="ck"><IcoCheck /></span>{item}</li>
                   ))}
                 </ul>
-                <a
-                  href="/contact"
-                  style={{ display: "block", textAlign: "center", border: `2px solid ${T.ink}`, color: T.ink, borderRadius: 4, padding: "14px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}
-                >
-                  Get started
-                </a>
+                <a className="btn btn-ghost" style={{ width: "100%", justifyContent: "center" }} href="/contact">Get started</a>
               </div>
 
               {/* Growth */}
-              <div
-                className="lift reveal reveal-delay-1"
-                style={{ background: T.ink, borderRadius: 8, border: "1px solid rgba(255,255,255,0.12)", padding: "36px 34px 38px", position: "relative" }}
-              >
-                <div style={{ position: "absolute", top: -14, left: 34, background: T.terracotta, color: T.ink, fontSize: 12, fontWeight: 700, padding: "5px 16px", borderRadius: 4, whiteSpace: "nowrap" }}>
-                  Most popular
-                </div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: T.onInkMuted, textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>Growth</div>
-                <div style={{ marginBottom: 4 }}>
-                  <span className="font-display" style={{ fontSize: 56, fontWeight: 800, color: T.onInk, letterSpacing: "-0.04em" }}>$300</span>
-                  <span style={{ fontSize: 16, color: T.onInkMuted, marginLeft: 4 }}>/month</span>
-                </div>
-                <p style={{ fontSize: 14.5, color: T.onInkMuted, margin: "0 0 26px" }}>Full capture system</p>
-                <div style={{ height: 1, background: "rgba(255,255,255,0.12)", marginBottom: 24 }} />
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 30px", display: "flex", flexDirection: "column", gap: 13 }}>
+              <div className="card plan hot rv">
+                <span className="badge2 pill blue"><span className="dot"></span>Most popular</span>
+                <span className="pill blue">Growth</span>
+                <div className="amt"><b>$300</b><span>/month</span></div>
+                <div className="desc">Full capture system</div>
+                <ul>
                   {GROWTH.map((item) => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 11, fontSize: 14.5, color: "rgba(255,248,244,0.85)" }}>
-                      <span style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(134,164,150,0.25)", color: T.sage }}>
-                        <IcoCheck />
-                      </span>
-                      {item}
-                    </li>
+                    <li key={item}><span className="ck"><IcoCheck /></span>{item}</li>
                   ))}
                 </ul>
-                <a
-                  href="/contact"
-                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: T.green, color: T.onInk, borderRadius: 4, padding: "14px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}
-                >
-                  Get started <IcoArrow />
-                </a>
+                <a className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} href="/contact">Get started <IcoArrow /></a>
               </div>
             </div>
-            <p style={{ fontSize: 14.5, color: T.muted, marginTop: 26 }}>
+            <p style={{ textAlign: "center", fontSize: 14.5, color: "var(--body)", marginTop: 26 }}>
               Not sure which plan fits?{" "}
-              <a href="/contact" style={{ color: T.green, fontWeight: 700, textDecoration: "none" }}>Let&apos;s talk.</a> We&apos;ll help you figure it out.
+              <a href="/contact" style={{ color: "var(--accent)", fontWeight: 700 }}>Let&apos;s talk.</a> We&apos;ll help you figure it out.
             </p>
           </div>
         </section>
 
-        {/* ── HONEST COMPARISON — ivory ─────────────────────── */}
-        <section style={{ background: T.cream, padding: "clamp(64px,10vw,110px) 24px" }}>
-          <div style={SECTION}>
-            <div className="reveal" style={{ maxWidth: 680, marginBottom: "clamp(36px,5vw,48px)" }}>
-              <Eyebrow>An honest comparison</Eyebrow>
-              <Heading lead="How we stack up" accent="against a typical ordering platform." />
+        {/* ── HONEST COMPARISON ─────────────────────────────── */}
+        <section className="block" style={{ paddingTop: 0 }}>
+          <div className="inner">
+            <div className="sec-head rv">
+              <span className="eyebrow">AN HONEST COMPARISON</span>
+              <h2>How we stack up <span className="accent">against a typical ordering platform.</span></h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-              {COMPARE.map((row, i) => (
-                <div
-                  key={row.label}
-                  className={`reveal reveal-delay-${(i % 3) + 1}`}
-                  style={{ background: "#FFFFFF", borderRadius: 8, border: "1px solid rgba(34,26,17,0.1)", padding: "26px 28px 28px" }}
-                >
-                  <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.muted, marginBottom: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 18 }}>
+              {COMPARE.map((row) => (
+                <div key={row.label} className="card rv" style={{ padding: "26px 28px 28px" }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--faint)", marginBottom: 16 }}>
                     {row.label}
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 12 }}>
-                    <span style={{ color: T.green, display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoCheck /></span>
-                    <span style={{ fontSize: 15, fontWeight: 700, color: T.ink, lineHeight: 1.45 }}>{row.us}</span>
+                    <span style={{ color: "var(--p-green-fg)", display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoCheck /></span>
+                    <span style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", lineHeight: 1.45 }}>{row.us}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <span style={{ color: T.terracottaDeep, display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoNo /></span>
-                    <span style={{ fontSize: 15, color: T.muted, lineHeight: 1.45 }}>{row.them}</span>
+                    <span style={{ color: "var(--p-amber-fg)", display: "inline-flex", marginTop: 2, flexShrink: 0 }}><IcoNo /></span>
+                    <span style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.45 }}>{row.them}</span>
                   </div>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: 13, color: T.muted, marginTop: 22, maxWidth: 640, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 13, color: "var(--body)", marginTop: 22, maxWidth: 640, lineHeight: 1.6, textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
               A fair, general comparison. Every platform is different, and this is meant to show the difference in
               approach, not to call anyone out.
             </p>
           </div>
         </section>
 
-        {/* ── MINI FAQ — linen ──────────────────────────────── */}
-        <section style={{ background: T.linen, padding: "clamp(64px,10vw,110px) 24px" }}>
-          <div style={SECTION}>
-            <div className="reveal" style={{ maxWidth: 680, marginBottom: "clamp(36px,5vw,48px)" }}>
-              <Eyebrow>Common questions</Eyebrow>
-              <Heading lead="The fine print," accent="in plain English." />
+        {/* ── MINI FAQ ──────────────────────────────────────── */}
+        <section className="block" style={{ paddingTop: 0 }}>
+          <div className="inner">
+            <div className="sec-head rv">
+              <span className="eyebrow">COMMON QUESTIONS</span>
+              <h2>The fine print, <span className="accent">in plain English.</span></h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-              {FAQ.map((item, i) => (
-                <div
-                  key={item.q}
-                  className={`reveal reveal-delay-${(i % 3) + 1}`}
-                  style={{ background: T.cream, borderRadius: 8, border: "1px solid rgba(34,26,17,0.1)", padding: "26px 28px 28px" }}
-                >
-                  <h3 style={{ fontSize: 17, fontWeight: 800, color: T.ink, letterSpacing: "-0.015em", margin: "0 0 10px" }}>{item.q}</h3>
-                  <p style={{ fontSize: 14.5, color: T.muted, lineHeight: 1.65, margin: 0 }}>{item.a}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 18 }}>
+              {FAQ.map((item) => (
+                <div key={item.q} className="card rv" style={{ padding: "26px 28px 28px" }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--ink)", letterSpacing: "-.015em", margin: "0 0 10px" }}>{item.q}</h3>
+                  <p style={{ fontSize: 14.5, color: "var(--body)", lineHeight: 1.65, margin: 0 }}>{item.a}</p>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: 14.5, color: T.muted, marginTop: 24 }}>
+            <p style={{ textAlign: "center", fontSize: 14.5, color: "var(--body)", marginTop: 24 }}>
               More questions?{" "}
-              <a href="/faq" style={{ color: T.green, fontWeight: 700, textDecoration: "none" }}>Read the full FAQ.</a>
+              <a href="/faq" style={{ color: "var(--accent)", fontWeight: 700 }}>Read the full FAQ.</a>
             </p>
           </div>
         </section>
 
-        {/* ── FINAL CTA — forest ────────────────────────────── */}
-        <section className="grain" style={{ background: T.ink, padding: "clamp(64px,10vw,110px) 24px" }}>
-          <div style={{ ...SECTION, maxWidth: 820 }}>
-            <div className="reveal">
-              <Eyebrow dark>Get started</Eyebrow>
-              <Heading dark lead="See what you’re missing." accent="Free, before you pay a cent." />
-              <p style={{ fontSize: 18, color: T.onInkMuted, lineHeight: 1.7, margin: "20px 0 32px", maxWidth: 560 }}>
+        {/* ── FINAL CTA ─────────────────────────────────────── */}
+        <section className="block" style={{ paddingTop: 12 }}>
+          <div className="wrap">
+            <div className="cta-panel rv">
+              <span className="eyebrow">GET STARTED</span>
+              <h2>See what you&rsquo;re missing. <span className="accent">Free, before you pay a cent.</span></h2>
+              <p>
                 We&apos;ll audit your current online presence for free and show you exactly where new customers are
                 slipping away. No contract, no pressure, just a clear picture of what a flat monthly fee could do.
               </p>
-              <a
-                href="/contact"
-                style={{
-                  background: T.onInk, color: T.ink, padding: "16px 30px", borderRadius: 4,
-                  fontSize: 16, fontWeight: 800, textDecoration: "none",
-                  display: "inline-flex", alignItems: "center", gap: 9,
-                }}
-              >
+              <a className="btn btn-primary" href="/contact" style={{ fontSize: 16, padding: "16px 30px" }}>
                 Get my free revenue audit <IcoArrow />
               </a>
             </div>
           </div>
         </section>
 
-      </main>
-      <SiteFooter />
-    </>
+      </div>
+    </KukieShell>
   );
 }
