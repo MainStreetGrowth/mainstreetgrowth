@@ -208,7 +208,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ── ACQUISITION vs ORDERING ───────────────────────── */}
-        <section className="block" style={{ paddingTop: 0 }}>
+        <section className="block">
           <div className="inner">
             <div className="sec-head rv">
               <span className="eyebrow">WHY IT MATTERS</span>
